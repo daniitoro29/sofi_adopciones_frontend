@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
 
-      <Route path="/home" render={() => <Home/>}/>
+      <Route path="/" render={() => <Home/>}/>
 
       <Route path="/register">
         <Form />
