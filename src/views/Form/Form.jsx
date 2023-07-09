@@ -2,8 +2,13 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../redux/actions";
 import "../Form/Form.css";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 
-const Form = () => {
+/* const Form = () => {
   const dispatch = useDispatch();
   const [form, setForm] = useState({
     nombre: "",
@@ -127,6 +132,87 @@ const Form = () => {
       </div>
     </>
   );
+}; */
+
+const Form = () => {
+ return (
+  <div style={{ display: "flex", justifyContent: "center" }}>
+   <div className="general-container_form">
+    <h1>Completa los datos para crear tu cuenta</h1>
+    <Grid container className="container_form">
+     <Grid item xs={6} md={6}>
+     <label>Nombre</label>
+      <TextField
+       id="form_input"
+       variant="standard"
+      />
+     </Grid>
+     <Grid item xs={6} md={6}>
+     <label>Apellido</label>
+      <TextField
+       id="standard-helperText"
+       variant="standard"
+      />
+     </Grid>
+     <Grid item xs={6} md={6}>
+     <label>Teléfono</label>
+      <TextField
+       id="standard-number"
+       type="number"
+       InputLabelProps={{
+        shrink: true,
+       }}
+       variant="standard"
+      />
+     </Grid>
+     <Grid item xs={6} md={6}>
+     <label>Correo</label>
+      <TextField
+       id="standard-helperText"
+       variant="standard"
+      />
+     </Grid>
+     <Grid item xs={6} md={6}>
+     <label>Contraseña</label>
+      <TextField
+       id="standard-password-input"
+       type="password"
+       autoComplete="current-password"
+       variant="standard"
+      />
+     </Grid>
+     <Grid item xs={6} md={6}>
+     <label>Confirmar contraseña</label>
+      <TextField
+       id="standard-password-input"
+       type="password"
+       autoComplete="current-password"
+       variant="standard"
+      />
+     </Grid>
+     <Grid item xs={6} md={6}>
+     <label>Género</label>
+      <TextField
+       id="standard-helperText"
+       variant="standard"
+      />
+     </Grid>
+     <Grid item xs={6} md={6}>
+     <label>Rol</label>
+      <TextField
+       id="standard-helperText"
+       variant="standard"
+      />
+     </Grid>
+    </Grid>
+    <div className="container_button">
+
+    <Button variant="contained">Registrarse</Button>
+    <Button variant="outlined">Cancelar</Button>
+    </div>
+   </div>
+  </div>
+ );
 };
 
 export default Form;

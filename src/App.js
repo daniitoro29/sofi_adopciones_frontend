@@ -7,7 +7,7 @@ import Welcome from "./views/Welcome/Welcome";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ width: "100%"}}>
 
       <Route path="/" render={() => <Home/>}/>
 
