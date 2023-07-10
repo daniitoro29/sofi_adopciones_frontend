@@ -19,14 +19,17 @@ body {
 .general-container_form .css-1x51dt5-MuiInputBase-input-MuiInput-input {
   border: 1px solid #D9D9D9;
     border-radius: 6px;
-    height: 30px;
+    
 }
 
 .general-container_form .css-v4u5dn-MuiInputBase-root-MuiInput-root:before {
   border-bottom: none;
 }
-.general-container_form .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+.general-container_form .css-1u3bzj6-MuiFormControl-root-MuiTextField-root,
+.general-container_form .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
   width: 231px;
+  height: 40px;
+  padding: 0 !important;
 }
 
 .general-container_form .css-11lq3yg-MuiGrid-root {
@@ -71,3 +74,5 @@ body {
   color: #969696;
   margin-bottom: 5px;
 }
+
+

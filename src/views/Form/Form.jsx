@@ -3,10 +3,12 @@ import { useDispatch } from "react-redux";
 import { createUser } from "../../redux/actions";
 import "../Form/Form.css";
 import * as React from "react";
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import axios from "axios"
 
 /* const Form = () => {
   const dispatch = useDispatch();
@@ -135,80 +137,156 @@ import Button from "@mui/material/Button";
 }; */
 
 const Form = () => {
+ const dispatch = useDispatch();
+
+ const [form, setForm] = useState({
+  nombre: "",
+  apellido: "",
+  telefono: "",
+  correo: "",
+  contraseña: "",
+  genero: "",
+  estado: "",
+  Rol_Id:1
+ });
+
+
+
+ const changeHandler = (event) => {
+  const property = event.target.name;
+  const value = event.target.value;
+
+  setForm({
+   ...form,
+   [property]: value,
+  });
+ };
+ console.log('Este es el formmmmmm', form)
+/*  const handleSend = () => {
+  dispatch(
+   createUser({
+    Usu_Nombre: form.nombre,
+    Usu_Apellido: form.apellido,
+    Usu_Telefono: form.telefono,
+    Usu_Correo: form.correo,
+    Usu_Contraseña: form.contraseña,
+    Usu_Genero: form.genero,
+    Usu_Estado: form.estado,
+    Rol_Id:1
+   })
+  );
+ }; */
+
+
+ const handleSend = (event) => {
+  event.preventDefault()
+  axios.post("http://localhost:3001/users", {
+    Usu_Nombre: form.nombre,
+    Usu_Apellido: form.apellido,
+    Usu_Telefono: form.telefono,
+    Usu_Correo: form.correo,
+    Usu_Contraseña: form.contraseña,
+    Usu_Genero: form.genero,
+    Usu_Estado: form.estado,
+    Rol_Id: 1
+  })
+      .then(res => {
+          console.log(res, "h")
+      })
+      .catch(err => {
+          console.log(err, "ño")
+      })
+};
+
+
  return (
   <div style={{ display: "flex", justifyContent: "center" }}>
    <div className="general-container_form">
     <h1>Completa los datos para crear tu cuenta</h1>
     <Grid container className="container_form">
      <Grid item xs={6} md={6}>
-     <label>Nombre</label>
+      <label>Nombre</label>
       <TextField
        id="form_input"
        variant="standard"
+       type="text"
+       name="nombre"
+       value={form.nombre}
+       onChange={changeHandler}
       />
      </Grid>
      <Grid item xs={6} md={6}>
-     <label>Apellido</label>
+      <label>Apellido</label>
       <TextField
-       id="standard-helperText"
        variant="standard"
+       type="text"
+       name="apellido"
+       value={form.apellido}
+       onChange={changeHandler}
       />
      </Grid>
      <Grid item xs={6} md={6}>
-     <label>Teléfono</label>
+      <label>Teléfono</label>
       <TextField
-       id="standard-number"
-       type="number"
-       InputLabelProps={{
-        shrink: true,
-       }}
        variant="standard"
+       type="text"
+       name="telefono"
+       value={form.telefono}
+       onChange={changeHandler}
       />
      </Grid>
      <Grid item xs={6} md={6}>
-     <label>Correo</label>
+      <label>Correo</label>
       <TextField
-       id="standard-helperText"
        variant="standard"
+       type="email"
+       name="correo"
+       value={form.correo}
+       onChange={changeHandler}
       />
      </Grid>
      <Grid item xs={6} md={6}>
-     <label>Contraseña</label>
+      <label>Contraseña</label>
       <TextField
-       id="standard-password-input"
-       type="password"
+       type="text"
        autoComplete="current-password"
        variant="standard"
+       name="contraseña"
+       value={form.contraseña}
+       onChange={changeHandler}
       />
      </Grid>
      <Grid item xs={6} md={6}>
-     <label>Confirmar contraseña</label>
-      <TextField
-       id="standard-password-input"
-       type="password"
-       autoComplete="current-password"
-       variant="standard"
-      />
+      <label>Estado</label>
+      <Select name="estado" value={form.estado} onChange={changeHandler}>
+       <MenuItem value="Activo">Activo</MenuItem>
+       <MenuItem value="Inactivo">Inactivo</MenuItem>
+      </Select>
      </Grid>
      <Grid item xs={6} md={6}>
-     <label>Género</label>
-      <TextField
-       id="standard-helperText"
-       variant="standard"
-      />
+      <label>Género</label>
+      <Select name="genero" value={form.genero} onChange={changeHandler}>
+       <MenuItem value="Femenino">Femenino</MenuItem>
+       <MenuItem value="Masculino">Masculino</MenuItem>
+       <MenuItem value="0tro">Otro</MenuItem>
+      </Select>
      </Grid>
+
      <Grid item xs={6} md={6}>
-     <label>Rol</label>
-      <TextField
-       id="standard-helperText"
-       variant="standard"
-      />
+      <label>Rol</label>
+      <TextField variant="standard" />
      </Grid>
     </Grid>
     <div className="container_button">
-
-    <Button variant="contained">Registrarse</Button>
-    <Button variant="outlined">Cancelar</Button>
+     <Button
+      variant="contained"
+      className="buttonForm"
+      type="submit"
+      onClick={handleSend}
+     >
+      Registrarse
+     </Button>
+     <Button variant="outlined" type="button">Cancelar</Button>
     </div>
    </div>
   </div>
