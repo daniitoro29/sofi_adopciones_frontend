@@ -6,25 +6,24 @@ import Login from "./views/Login/Login";
 import Welcome from "./views/Welcome/Welcome";
 
 function App() {
-  return (
-    <div className="App" style={{ width: "100%"}}>
+ return (
+  <div className="App" style={{ width: "100%" }}>
+   <Route path="/" render={() => <Home />} />
 
-      <Route path="/" render={() => <Home/>}/>
-
-      <Route path="/register">
-        <FormCreateUser />
-      </Route>
-      <Route path="/users">
-        <User />
-      </Route>
-      <Route path="/login">
-        <Login />
-      </Route>
-      <Route path="/welcome">
-        <Welcome />
-      </Route>
-    </div>
-  );
+   <Route path="/register">
+    <FormCreateUser />
+   </Route>
+   <Route path="/users">
+    <User />
+   </Route>
+   <Route path="/login">
+    <Login />
+   </Route>
+   <Route path="/welcome">
+    <Welcome />
+   </Route>
+  </div>
+ );
 }
 
 export default App;
