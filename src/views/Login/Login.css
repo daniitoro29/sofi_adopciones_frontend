@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;600&display=swap");
 
 .general-container_login {
- margin-top: 50px;
+ margin-top: 90px;
  max-width: 329px;
  height: 405px;
  background: #fcfafa;
@@ -67,4 +67,8 @@
 
 .general-container_login .css-11lq3yg-MuiGrid-root {
   row-gap: 7px;
+}
+
+.login footer {
+  margin-top: 97px !important;
 }

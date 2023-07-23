@@ -8,6 +8,7 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer/Footer";
 import Swal from "sweetalert2";
 
 function Login() {
@@ -38,12 +39,12 @@ function Login() {
   if (userResult.length > 0) {
    history.push("/welcome");
   } else {
-    Swal.fire("Error", "Por favor verifique los datos", "error");
+   Swal.fire("Error", "Por favor verifique los datos", "error");
   }
  };
 
  return (
-  <div>
+  <div className="login">
    <NavBar />
 
    <div style={{ display: "flex", justifyContent: "center" }}>
@@ -80,10 +81,17 @@ function Login() {
       >
        Iniciar sesión
       </Button>
-      <Button variant="outlined" type="button" onClick={() => history.push("/register")}>Registrate</Button>
+      <Button
+       variant="outlined"
+       type="button"
+       onClick={() => history.push("/register")}
+      >
+       Registrate
+      </Button>
      </div>
     </div>
    </div>
+   <Footer />
   </div>
  );
 }
