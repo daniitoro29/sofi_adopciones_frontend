@@ -1,6 +1,6 @@
 import { Route } from "react-router-dom";
 import Home from "./views/Home/Home";
-import Form from "./views/Form/Form";
+import FormCreateUser from "./views/FormCreateUser/FormCreateUser";
 import User from "./views/User/User";
 import Login from "./views/Login/Login";
 import Welcome from "./views/Welcome/Welcome";
@@ -12,7 +12,7 @@ function App() {
       <Route path="/" render={() => <Home/>}/>
 
       <Route path="/register">
-        <Form />
+        <FormCreateUser />
       </Route>
       <Route path="/users">
         <User />
