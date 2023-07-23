@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../redux/actions";
 import Swal from "sweetalert2";
@@ -12,6 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 
 const Form = () => {
  const dispatch = useDispatch();
+ const history = useHistory();
 
  const [form, setForm] = useState({
   nombre: "",
@@ -162,9 +164,9 @@ const Form = () => {
        <MenuItem value="Inactivo">Inactivo</MenuItem>
       </Select>
      </Grid> */}
-     <Grid item xs={6} md={6}>
+     <Grid item xs={6} md={6} >
       <label>Género</label>
-      <Select name="genero" value={form.genero} onChange={changeHandler}>
+      <Select name="genero" value={form.genero} onChange={changeHandler} className="select">
        <MenuItem value="Femenino">Femenino</MenuItem>
        <MenuItem value="Masculino">Masculino</MenuItem>
        <MenuItem value="0tro">Otro</MenuItem>
@@ -189,7 +191,7 @@ const Form = () => {
      >
       Registrarse
      </Button>
-     <Button variant="outlined" type="button">Cancelar</Button>
+     <Button variant="outlined" type="button" onClick={() => history.push("/")}>Cancelar</Button>
     </div>
    </div>
   </div>

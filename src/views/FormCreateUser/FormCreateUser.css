@@ -75,4 +75,6 @@ body {
   margin-bottom: 5px;
 }
 
-
+.general-container_form .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border-color: #D9D9D9;
+}
