@@ -20,7 +20,7 @@ const Form = () => {
   correo: "",
   contraseña: "",
   genero: "",
-  estado: "",
+  estado: "Activo",
   rol: "1",
  });
 
@@ -155,13 +155,13 @@ const Form = () => {
        onChange={changeHandler}
       />
      </Grid>
-     <Grid item xs={6} md={6}>
+{/*      <Grid item xs={6} md={6}>
       <label>Estado</label>
       <Select name="estado" value={form.estado} onChange={changeHandler}>
        <MenuItem value="Activo">Activo</MenuItem>
        <MenuItem value="Inactivo">Inactivo</MenuItem>
       </Select>
-     </Grid>
+     </Grid> */}
      <Grid item xs={6} md={6}>
       <label>Género</label>
       <Select name="genero" value={form.genero} onChange={changeHandler}>
