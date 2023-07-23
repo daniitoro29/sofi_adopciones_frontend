@@ -37,10 +37,13 @@ function NavBar() {
     <div className="container-general_home">
       <nav>
         <ul>
-          <img
+        <a href="/">
+        <img
             src={logo}
             alt="logo"
           />
+        </a>
+
           <ol>
             <p>Inicio</p>
           </ol>
