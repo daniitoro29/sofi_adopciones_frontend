@@ -10,6 +10,8 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import NavBar from "../NavBar/NavBar";
+import { dialogClasses } from "@mui/material";
 
 const Form = () => {
  const dispatch = useDispatch();
@@ -102,7 +104,10 @@ const Form = () => {
 
 
  return (
-  <div style={{ display: "flex", justifyContent: "center" }}>
+  <div>
+  <NavBar />
+
+   <div style={{ display: "flex", justifyContent: "center" }}>
    <div className="general-container_form">
     <h1>Completa los datos para crear tu cuenta</h1>
     <Grid container className="container_form">
@@ -157,13 +162,6 @@ const Form = () => {
        onChange={changeHandler}
       />
      </Grid>
-{/*      <Grid item xs={6} md={6}>
-      <label>Estado</label>
-      <Select name="estado" value={form.estado} onChange={changeHandler}>
-       <MenuItem value="Activo">Activo</MenuItem>
-       <MenuItem value="Inactivo">Inactivo</MenuItem>
-      </Select>
-     </Grid> */}
      <Grid item xs={6} md={6} >
       <label>Género</label>
       <Select name="genero" value={form.genero} onChange={changeHandler} className="select">
@@ -194,6 +192,7 @@ const Form = () => {
      <Button variant="outlined" type="button" onClick={() => history.push("/")}>Cancelar</Button>
     </div>
    </div>
+  </div>
   </div>
  );
 };
