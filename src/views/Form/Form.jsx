@@ -9,7 +9,6 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import axios from "axios"
 
 const Form = () => {
  const dispatch = useDispatch();
@@ -22,7 +21,7 @@ const Form = () => {
   contraseña: "",
   genero: "",
   estado: "",
-  Rol_Id:1
+  rol: "1",
  });
 
 
@@ -74,6 +73,7 @@ const Form = () => {
             Usu_Contraseña: form.contraseña,
             Usu_Genero: form.genero,
             Usu_Estado: form.estado,
+            Rol_Id: form.rol,
           })
         );
   
@@ -85,6 +85,7 @@ const Form = () => {
           contraseña: "",
           genero: "",
           estado: "",
+          rol: "",
         });
   
         Swal.fire("¡Registro exitoso!", "El usuario se ha creado correctamente", "success");
@@ -147,8 +148,7 @@ const Form = () => {
      <Grid item xs={6} md={6}>
       <label>Contraseña</label>
       <TextField
-       type="text"
-       autoComplete="current-password"
+       type="password"
        variant="standard"
        name="contraseña"
        value={form.contraseña}
@@ -173,7 +173,11 @@ const Form = () => {
 
      <Grid item xs={6} md={6}>
       <label>Rol</label>
-      <TextField variant="standard" />
+      <Select name="rol" value={form.rol} onChange={changeHandler}>
+       <MenuItem value="2">Voluntario</MenuItem>
+       <MenuItem value="3">Empleado</MenuItem>
+       <MenuItem value="4">Adoptante</MenuItem>
+      </Select>
      </Grid>
     </Grid>
     <div className="container_button">
