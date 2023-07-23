@@ -3,13 +3,18 @@ import "../Login/Login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { getUsers } from "../../redux/actions";
+import { useHistory } from "react-router-dom";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 import NavBar from "../NavBar/NavBar";
+import Swal from "sweetalert2";
 
 function Login() {
+ const history = useHistory();
  const [username, setUsername] = useState("");
  const [password, setPassword] = useState("");
  const [redirectToRegister, setRedirectToRegister] = useState(false);
- const [message, setMessage] = useState("");
  const users = useSelector((state) => state.users);
 
  const handleSubmit = (e) => {
@@ -17,11 +22,6 @@ function Login() {
   setUsername(username);
   setPassword(password);
  };
-
- // {Usu_Correo: 'rubycorreahernandez@gmail.com', Usu_Contraseña: "12345678"}
- // {Usu_Correo: 'cristiancrz@gmail.com', Usu_Contraseña: "12345678"}
- // {Usu_Correo: 'gracielamunozchacon@gmail.com', Usu_Contraseña: "12345678"}
- // {Usu_Correo: "maikolarboleda@gmail.com", Usu_Contraseña: "1234567"}
 
  const dispatch = useDispatch();
 
@@ -36,42 +36,53 @@ function Login() {
   );
 
   if (userResult.length > 0) {
-   setRedirectToRegister(true);
+   history.push("/welcome");
   } else {
-   setMessage("Por favor verifique los datos");
+    Swal.fire("Error", "Por favor verifique los datos", "error");
   }
  };
 
  return (
   <div>
    <NavBar />
-   <div className="login-container">
-    <form onSubmit={handleSubmit} className="login-form">
-     <label>
-      <p>Email:</p>
-      <input
-       type="text"
-       value={username}
-       onChange={(e) => setUsername(e.target.value)}
-      />
-     </label>
-     <label>
-      <p>Contraseña:</p>
-      <input
-       type="password"
-       value={password}
-       onChange={(e) => setPassword(e.target.value)}
-      />
-     </label>
-     <button type="submit" onClick={handlerValidateUser}>
-      Ingresar
-     </button>
-    </form>
-    {redirectToRegister ? (
-     <Redirect to="/welcome" />
-    ) : (
-     <p className="login-message_fail">{message}</p>
-    )}
+
+   <div style={{ display: "flex", justifyContent: "center" }}>
+    <div className="general-container_login">
+     <h1>¡Hola! Ingresa a tu cuenta</h1>
+     <Grid container className="container_login">
+      <Grid item>
+       <label>Correo electrónico</label>
+       <TextField
+        type="email"
+        variant="standard"
+        name="correo"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+       />
+      </Grid>
+      <Grid item>
+       <label>Contraseña</label>
+       <TextField
+        type="password"
+        variant="standard"
+        name="contraseña"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+       />
+      </Grid>
+     </Grid>
+     <div className="container_button">
+      <Button
+       variant="contained"
+       className="buttonForm"
+       type="submit"
+       onClick={handlerValidateUser}
+      >
+       Iniciar sesión
+      </Button>
+      <Button variant="outlined" type="button" onClick={() => history.push("/register")}>Registrate</Button>
+     </div>
+    </div>
    </div>
   </div>
  );
