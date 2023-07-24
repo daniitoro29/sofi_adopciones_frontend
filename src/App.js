@@ -1,30 +1,23 @@
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Home from "./views/Home/Home";
-import Form from "./views/Form/Form";
-import User from "./views/User/User";
+import FormCreateUser from "./views/FormCreateUser/FormCreateUser";
+import AllUsers from "./views/AllUsers/AllUsers";
 import Login from "./views/Login/Login";
 import Welcome from "./views/Welcome/Welcome";
 
 function App() {
-  return (
-    <div className="App">
+ return (
+  <div className="App" style={{ width: "100%" }}>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/register" component={FormCreateUser} />
+        <Route exact path="/users" component={AllUsers} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/welcome" component={Welcome} />
+      </Switch>
 
-      <Route path="/" render={() => <Home/>}/>
-
-      <Route path="/register">
-        <Form />
-      </Route>
-      <Route path="/users">
-        <User />
-      </Route>
-      <Route path="/login">
-        <Login />
-      </Route>
-      <Route path="/welcome">
-        <Welcome />
-      </Route>
-    </div>
-  );
+  </div>
+ );
 }
 
 export default App;

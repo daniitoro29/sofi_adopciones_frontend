@@ -1,85 +1,91 @@
 import React, { useEffect, useState } from "react";
 import "../Login/Login.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 import { getUsers } from "../../redux/actions";
+import { useHistory } from "react-router-dom";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer/Footer";
+import Swal from "sweetalert2";
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [redirectToRegister, setRedirectToRegister] = useState(false);
-  const [message, setMessage] = useState("");
-  const users = useSelector((state) => state.users);
+ const history = useHistory();
+ const [username, setUsername] = useState("");
+ const [password, setPassword] = useState("");
+ const users = useSelector((state) => state.users);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setUsername(username);
-    setPassword(password);
-  };
+ const dispatch = useDispatch();
 
-  // {Usu_Correo: 'rubycorreahernandez@gmail.com', Usu_Contraseña: "12345678"}
-  // {Usu_Correo: 'cristiancrz@gmail.com', Usu_Contraseña: "12345678"}
-  // {Usu_Correo: 'gracielamunozchacon@gmail.com', Usu_Contraseña: "12345678"}
-  // {Usu_Correo: "maikolarboleda@gmail.com", Usu_Contraseña: "1234567"}
+ useEffect(() => {
+  dispatch(getUsers());
+  // eslint-disable-next-line
+ }, []);
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getUsers());
-    // eslint-disable-next-line
-  }, []);
-
-  const handlerValidateUser = () => {
-    const userResult = users.filter(
-      (user) => user.Usu_Correo === username && user.Usu_Contraseña === password
-    );
-
-    if (userResult.length > 0) {
-      setRedirectToRegister(true);
-    } else {
-      setMessage("Por favor verifique los datos");
-    }
-  };
-
-  return (
-    <div className="login-container">
-      <div className="title-User">
-        <a href="/home">
-          <img
-            src="https://peluditosconfuturo.org/wp-content/uploads/2015/01/logo2.png"
-            alt="log"
-          />
-        </a>
-        <h1>Ingresar</h1>
-      </div>
-      <form onSubmit={handleSubmit} className="login-form">
-        <label>
-          <p>Email:</p>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        <label>
-          <p>Contraseña:</p>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <button type="submit" onClick={handlerValidateUser}>
-          Ingresar
-        </button>
-      </form>
-      {redirectToRegister ? (
-        <Redirect to="/welcome" />
-      ) : (
-        <p className="login-message_fail">{message}</p>
-      )}
-    </div>
+ const handlerValidateUser = () => {
+  const userResult = users.filter(
+   (user) => user.Usu_Correo === username && user.Usu_Contraseña === password
   );
+
+  if (userResult.length > 0) {
+   history.push("/welcome");
+  } else {
+   Swal.fire("Error", "Por favor verifique los datos", "error");
+  }
+ };
+
+ return (
+  <div className="login">
+   <NavBar />
+
+   <div style={{ display: "flex", justifyContent: "center" }}>
+    <div className="general-container_login">
+     <h1>¡Hola! Ingresa a tu cuenta</h1>
+     <Grid container className="container_login">
+      <Grid item>
+       <label>Correo electrónico</label>
+       <TextField
+        type="email"
+        variant="standard"
+        name="correo"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+       />
+      </Grid>
+      <Grid item>
+       <label>Contraseña</label>
+       <TextField
+        type="password"
+        variant="standard"
+        name="contraseña"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+       />
+      </Grid>
+     </Grid>
+     <div className="container_button">
+      <Button
+       variant="contained"
+       className="buttonForm"
+       type="submit"
+       onClick={handlerValidateUser}
+      >
+       Iniciar sesión
+      </Button>
+      <Button
+       variant="outlined"
+       type="button"
+       onClick={() => history.push("/register")}
+      >
+       Registrate
+      </Button>
+     </div>
+    </div>
+   </div>
+   <Footer />
+  </div>
+ );
 }
 
 export default Login;

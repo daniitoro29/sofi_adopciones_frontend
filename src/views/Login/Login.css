@@ -1,45 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;600&display=swap");
 
-.login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .login-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .login-form label {
-    margin-bottom: 0.5rem;
-  }
-  
-  .login-form input[type="text"],
-  .login-form input[type="password"] {
-    padding: 0.5rem;
-    width: 250px;
-  }
-  .login-form p {
-    margin-block: 3px;
-  }
-  
-  .login-form button[type="submit"] {
-    margin-top: 10px;
-    padding: 0.5rem 1rem;
-    background-color: #bfc8dd;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    width: 100px;
-    height: 35px;
-    font-size: 15px;
-    color: white;
-    font-weight: bold;
-  }
+.general-container_login {
+ margin-top: 90px;
+ max-width: 329px;
+ height: 405px;
+ background: #fcfafa;
+ border-radius: 8px;
+}
 
-  .login-message_fail {
-    color: #aabade;
-  }
+.general-container_login .css-1x51dt5-MuiInputBase-input-MuiInput-input {
+ border: 1px solid #d9d9d9;
+ border-radius: 6px;
+}
+
+.general-container_login .css-v4u5dn-MuiInputBase-root-MuiInput-root:before {
+ border-bottom: none;
+}
+
+.general-container_login .css-1u3bzj6-MuiFormControl-root-MuiTextField-root,
+.general-container_login
+ .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root,.general-container_login .css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
+ width: 231px;
+ height: 40px;
+}
+
+.general-container_login h1 {
+ font-family: "Poppins", sans-serif;
+ font-size: 24px;
+ margin: 53px 57px 30px 43px;
+}
+
+.general-container_login .css-sghohy-MuiButtonBase-root-MuiButton-root {
+ background-color: #ffa500 !important;
+ margin-top: 20px;
+}
+
+.general-container_login .css-1rwt2y5-MuiButtonBase-root-MuiButton-root{
+  color: #FFA500 !important;
+  border: none;
+}
+
+.general-container_login .css-sghohy-MuiButtonBase-root-MuiButton-root {
+ font-family: "Poppins", sans-serif;
+ font-weight: 600;
+}
+
+.general-container_login label {
+ font-family: "Poppins", sans-serif;
+ font-size: 14px;
+ color: #969696;
+ margin-bottom: 5px;
+}
+
+.general-container_login .css-13i4rnv-MuiGrid-root {
+  display: flex;
+  flex-direction: column;
+  margin-left: 43px;
+}
+
+.general-container_login .container_button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.general-container_login .css-11lq3yg-MuiGrid-root {
+  row-gap: 7px;
+}
+
+.login footer {
+  margin-top: 97px !important;
+}
