@@ -1,6 +1,6 @@
 import { Redirect } from "react-router-dom";
 import { useState } from "react";
-import logo from '../../assets/img/logo3.png';
+import logo from '../../assets/img/logo5.png';
 
 import "../NavBar/NavBar.css";
 

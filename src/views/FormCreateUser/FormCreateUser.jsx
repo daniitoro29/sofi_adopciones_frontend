@@ -11,7 +11,6 @@ import Button from "@mui/material/Button";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import NavBar from "../NavBar/NavBar";
-import { dialogClasses } from "@mui/material";
 
 const Form = () => {
  const dispatch = useDispatch();
@@ -39,7 +38,6 @@ const Form = () => {
    [property]: value,
   });
  };
- console.log('Este es el formmmmmm', form)
 
  const handleSend = async () => {
       if (!form.nombre || !form.apellido || !form.telefono || !form.correo || !form.contraseña || !form.genero || !form.estado) {

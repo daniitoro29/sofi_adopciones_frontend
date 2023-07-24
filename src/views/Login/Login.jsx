@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../Login/Login.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 import { getUsers } from "../../redux/actions";
 import { useHistory } from "react-router-dom";
 import TextField from "@mui/material/TextField";
@@ -15,14 +14,7 @@ function Login() {
  const history = useHistory();
  const [username, setUsername] = useState("");
  const [password, setPassword] = useState("");
- const [redirectToRegister, setRedirectToRegister] = useState(false);
  const users = useSelector((state) => state.users);
-
- const handleSubmit = (e) => {
-  e.preventDefault();
-  setUsername(username);
-  setPassword(password);
- };
 
  const dispatch = useDispatch();
 
