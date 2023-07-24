@@ -78,3 +78,6 @@ body {
 .container-edit-modal .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
   border-color: #D9D9D9;
 }
+.css-wop1k0-MuiDataGrid-footerContainer {
+    display: none !important;
+}

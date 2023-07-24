@@ -82,7 +82,7 @@ const AllUsers = () => {
  return (
   <>
    <NavBar />
-   <div style={{ height: 400, width: "100%" }}>
+   <div className="container-all_user">
     <DataGrid rows={rows} columns={columns} checkboxSelection />
    </div>
    {open && (
