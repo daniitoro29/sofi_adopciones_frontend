@@ -7,7 +7,8 @@ Ingresar a Registrate para registrar un nuevo usuario o a Usuarios para consulta
 
 #### Página de inicio sofi 
 
-<img width="1728" alt="Captura de pantalla 2023-07-24 a la(s) 12 23 56 a m  (2)" src="https://github.com/daniitoro29/sofi_adopciones_frontend/assets/97687455/ed9371af-8fcc-4a09-b23a-ea9073976b9c">
+![Captura de pantalla 2023-07-24 a la(s) 12 28 26 a m](https://github.com/daniitoro29/sofi_adopciones_frontend/assets/97687455/52eebf0d-2675-4ce5-8105-aa3d16281bb2)
+
 
 #### Página para registrarse
 
