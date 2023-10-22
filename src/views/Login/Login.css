@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;600&display=swap");
+@import '../../styles.css';
 
 .general-container_login {
  margin-top: 90px;
@@ -31,12 +32,12 @@
 }
 
 .general-container_login .css-sghohy-MuiButtonBase-root-MuiButton-root {
- background-color: #ffa500 !important;
+ background-color: var(--color1) !important;
  margin-top: 20px;
 }
 
 .general-container_login .css-1rwt2y5-MuiButtonBase-root-MuiButton-root{
-  color: #FFA500 !important;
+  color: var(--color1) !important;
   border: none;
 }
 

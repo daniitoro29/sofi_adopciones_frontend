@@ -1,3 +1,5 @@
+@import '../../styles.css';
+
 
 /* Estilos generales para todas las resoluciones */
 .container-general_home {
@@ -11,7 +13,7 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  background: #FFA500;
+  background: var(--color1);
   align-items: center;
 }
 
@@ -58,7 +60,7 @@ ul.menu-items li:hover {
     align-items: center;
     position: absolute;
     top: 60px;
-    background-color: #FFA500;
+    background-color: var(--color1);
     width: 100%;
     z-index: 1;
   }
