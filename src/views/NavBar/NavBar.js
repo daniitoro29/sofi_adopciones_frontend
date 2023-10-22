@@ -6,7 +6,6 @@ import { useState } from "react";
 function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
-  const [showUser, setShowUser] = useState(false);
   const [ isLogin, setIsLogin ] = useState(false);
 
   const toggleMenu = () => {
@@ -17,9 +16,6 @@ function NavBar() {
     setIsRegister(true);
   };
 
-  const handlerUser = () => {
-    setShowUser(true);
-  };
 
   const handlerLogin = () => {
     setIsLogin(true);
@@ -27,9 +23,6 @@ function NavBar() {
 
   if (isRegister) {
     return <Redirect to="/register" />;
-  }
-  if (showUser) {
-    return <Redirect to="/users" />;
   }
   if (isLogin) {
     return <Redirect to="/login" />;
@@ -49,7 +42,6 @@ function NavBar() {
           <li>Acerca de nosotros</li>
           <li>Adopciones</li>
           <li onClick={handlerRegister}>Registrate</li>
-          <li onClick={handlerUser}>Usuarios</li>
           <li onClick={handlerLogin}>Ingresar</li>
         </ul>
       </nav>

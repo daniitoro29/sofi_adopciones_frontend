@@ -11,81 +11,92 @@ import Footer from "../Footer/Footer";
 import Swal from "sweetalert2";
 
 function Login() {
- const history = useHistory();
- const [username, setUsername] = useState("");
- const [password, setPassword] = useState("");
- const users = useSelector((state) => state.users);
+    const history = useHistory();
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const users = useSelector((state) => state.users);
 
- const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
- useEffect(() => {
-  dispatch(getUsers());
-  // eslint-disable-next-line
- }, []);
+    useEffect(() => {
+        dispatch(getUsers());
+        // eslint-disable-next-line
+    }, []);
 
- const handlerValidateUser = () => {
-  const userResult = users.filter(
-   (user) => user.Usu_Correo === username && user.Usu_Contraseña === password
-  );
+    console.log('Esto es lo que llega en los usuarios ****', users);
 
-  if (userResult.length > 0) {
-   history.push("/welcome");
-  } else {
-   Swal.fire("Error", "Por favor verifique los datos", "error");
-  }
- };
+    const handlerValidateUser = () => {
 
- return (
-  <div className="login">
-   <NavBar />
+        if (username === '' || password === '') {
 
-   <div style={{ display: "flex", justifyContent: "center" }}>
-    <div className="general-container_login">
-     <h1>¡Hola! Ingresa a tu cuenta</h1>
-     <Grid container className="container_login">
-      <Grid item>
-       <label>Correo electrónico</label>
-       <TextField
-        type="email"
-        variant="standard"
-        name="correo"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-       />
-      </Grid>
-      <Grid item>
-       <label>Contraseña</label>
-       <TextField
-        type="password"
-        variant="standard"
-        name="contraseña"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-       />
-      </Grid>
-     </Grid>
-     <div className="container_button">
-      <Button
-       variant="contained"
-       className="buttonForm"
-       type="submit"
-       onClick={handlerValidateUser}
-      >
-       Iniciar sesión
-      </Button>
-      <Button
-       variant="outlined"
-       type="button"
-       onClick={() => history.push("/register")}
-      >
-       Registrate
-      </Button>
-     </div>
-    </div>
-   </div>
-   <Footer />
-  </div>
- );
+            Swal.fire("Error", "Por favor diligencie todos los campos", "error");
+        } else {
+            const foundUser = users.find(user => user.Usu_Correo === username);
+            if (!foundUser) {
+                Swal.fire("Error", "El correo ingresado es incorrecto", "error");
+                return;
+            }
+
+            if (foundUser.Usu_Contraseña !== password) {
+                Swal.fire("Error", "Contraseña incorrecta", "error");
+                return;
+            }
+            foundUser.Rol_Id === 1 ? history.push("/admin") : history.push("/welcome");
+        }
+
+    };
+
+    return (
+        <div className="login">
+            <NavBar />
+
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <div className="general-container_login">
+                    <h1>¡Hola! Ingresa a tu cuenta</h1>
+                    <Grid container className="container_login">
+                        <Grid item>
+                            <label>Correo electrónico</label>
+                            <TextField
+                                type="email"
+                                variant="standard"
+                                name="correo"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+                        </Grid>
+                        <Grid item>
+                            <label>Contraseña</label>
+                            <TextField
+                                type="password"
+                                variant="standard"
+                                name="contraseña"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </Grid>
+                    </Grid>
+                    <div className="container_button">
+                        <Button
+                            variant="contained"
+                            className="buttonForm"
+                            type="submit"
+                            onClick={handlerValidateUser}
+                        >
+                            Iniciar sesión
+                        </Button>
+                        <Button
+                            variant="outlined"
+                            type="button"
+                            onClick={() => history.push("/register")}
+                        >
+                            Registrate
+                        </Button>
+                    </div>
+                </div>
+            </div>
+            <Footer />
+        </div>
+    );
 }
 
 export default Login;
