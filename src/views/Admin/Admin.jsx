@@ -1,15 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import { deleteUser, /* editUser, */ getUsers } from "../../redux/actions";
 import { useState, useEffect } from "react";
-import "./AllUsers.css";
+import "./Admin.css";
 import NavBar from "../NavBar/NavBar";
 import Modal from "../ModalEdit/ModalEdit";
 import { DataGrid } from "@mui/x-data-grid";
 import edit from '../../assets/img/editar.png';
-//import delete from '../../assets/img/eliminar.png';
 import deleteU from '../../assets/img/eliminar.png';
 
-const AllUsers = () => {
+const Admin = () => {
  const [open, setOpen] = useState(false);
  const [userState, setUser] = useState("");
  const users = useSelector((state) => state.users);
@@ -92,4 +91,4 @@ const AllUsers = () => {
  );
 };
 
-export default AllUsers;
+export default Admin;
