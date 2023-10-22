@@ -1,5 +1,5 @@
 import "../NavBar/NavBar.css";
-import logo from '../../assets/img/logo5.png';
+import logo from '../../assets/img/pets.svg';
 import { Redirect } from "react-router-dom";
 import { useState } from "react";
 
