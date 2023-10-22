@@ -1,11 +1,11 @@
 import * as React from "react";
-import Modal from "@mui/material/Modal";
 import "./ModalEdit.css";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import Select from "@mui/material/Select";
+import Grid from "@mui/material/Grid";
 import MenuItem from "@mui/material/MenuItem";
+import Modal from "@mui/material/Modal";
+import Select from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
 import {  editUser, getUsers } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 

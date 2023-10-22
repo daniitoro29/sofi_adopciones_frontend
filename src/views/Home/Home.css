@@ -1,52 +1,87 @@
+/* Estilos generales para todas las resoluciones */
 .home h1 {
- text-align: center;
- padding: 1.5rem 13rem 0 13rem;
- font-family: sans-serif;
-}
-.home h2 {
- text-align: center;
- font-family: sans-serif;
- padding: 3rem;
-}
-.cont-parrafos {
- display: flex;
- justify-content: space-evenly;
-}
-.cont-parrafos p {
- background-color: #ffa500;
- width: 250px;
- height: auto;
- padding: 1.5rem;
- border-radius: 2rem;
- font-family: sans-serif;
- color: #ffffff;
-}
-.agradecimiento {
- text-align: center;
- font-family: sans-serif;
- font-weight: 700;
- margin: 5rem 0;
-}
-.description {
- display: flex;
- align-items: center;
- flex-direction: column;
-}
-.description img {
- width: 500px;
- height: auto;
- border-radius: 50px;
-}
-footer {
- text-align: center;
- font-family: sans-serif;
- background-color: #d9d9d9;
- padding: 10px;
-}
-footer img {
- width: 20px;
- height: 20px;
-}
-footer p {
- margin: 0;
+    text-align: center;
+    padding: 1.5rem 13rem 0 13rem;
+    font-family: sans-serif;
+  }
+  
+  .home h2 {
+    text-align: center;
+    font-family: sans-serif;
+    padding: 3rem;
+  }
+  
+  .cont-parrafos {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .cont-parrafos p {
+    background-color: #ffa500;
+    width: 250px;
+    height: auto;
+    padding: 1.5rem;
+    border-radius: 2rem;
+    font-family: sans-serif;
+    color: #ffffff;
+  }
+  
+  .agradecimiento {
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 700;
+    margin: 5rem 0;
+  }
+  
+  .description {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .description img {
+    width: 500px;
+    height: auto;
+    border-radius: 50px;
+  }
+  
+  footer {
+    text-align: center;
+    font-family: sans-serif;
+    background-color: #d9d9d9;
+    padding: 10px;
+  }
+  
+  footer img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+  /* Estilos para celular de 480px */
+  @media (max-width: 480px) {
+    .home h1 {
+      font-size: 20px;
+      padding: 1.5rem 2rem 0 2rem;
+    }
+  
+    .description img {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  
+  /* Estilos para tablet de 820px */
+  @media (min-width: 481px) and (max-width: 820px) {
+    .home h1 {
+      font-size: 24px; 
+      padding: 1.5rem 3rem 0 3rem;
+    }
+   /* Ancho de parrafos */
+    .cont-parrafos p {
+      width: 300px; 
+    }
 }
