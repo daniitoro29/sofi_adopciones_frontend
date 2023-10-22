@@ -6,7 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Modal from "@mui/material/Modal";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
-import {  editUser, getUsers } from "../../redux/actions";
+import {  editUser } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
 function ModalEdit({ form, setOpen, open, setForm, userState }) {
