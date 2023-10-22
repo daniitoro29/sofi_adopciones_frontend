@@ -1,17 +1,20 @@
 import { useSelector, useDispatch } from "react-redux";
-import { deleteUser, /* editUser, */ getUsers } from "../../redux/actions";
+import { getUsers } from "../../redux/actions";
 import { useState, useEffect } from "react";
 import "./Admin.css";
 import NavBar from "../NavBar/NavBar";
 import Modal from "../ModalEdit/ModalEdit";
+import ModalBan from '../ModalDelete/ModalDelete';
 import { DataGrid } from "@mui/x-data-grid";
 import edit from '../../assets/img/editar.png';
 import deleteU from '../../assets/img/eliminar.png';
 
 const Admin = () => {
  const [open, setOpen] = useState(false);
+ const [openBan, setOpenBan] = useState(false);
  const [userState, setUser] = useState("");
  const users = useSelector((state) => state.users);
+ const [actualUser, setActualUser] = useState({})
  const [form, setForm] = useState({
   id: "",
   nombre: "",
@@ -30,7 +33,9 @@ const Admin = () => {
  }, [dispatch]); // Update the users whenever getUsers action is dispatched
 
  const handleDelete = (user) => {
-  dispatch(deleteUser(user.Usu_Id));
+setOpenBan(true);
+setActualUser (users.find((u) => u.Usu_Id === user.id))
+  // dispatch(banUser(user.Usu_Id));
  };
 
  const handlerEdit = (user) => {
@@ -78,6 +83,7 @@ const Admin = () => {
   Estado: user.Usu_Estado,
  }));
 
+ console.log('Esto es userState *****', actualUser);
  return (
   <>
    <NavBar />
@@ -87,6 +93,11 @@ const Admin = () => {
    {open && (
     <Modal form={form} setOpen={setOpen} open={open} setForm={setForm} userState={userState}/>
    )}
+   {
+    openBan && (
+       < ModalBan openBan={openBan} setOpenBan={setOpenBan} actualUser={actualUser}/>
+    )
+   }
   </>
  );
 };
