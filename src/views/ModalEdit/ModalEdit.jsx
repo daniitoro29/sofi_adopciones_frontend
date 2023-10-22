@@ -6,7 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Modal from "@mui/material/Modal";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
-import {  editUser, getUsers } from "../../redux/actions";
+import {  editUser } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
 function ModalEdit({ form, setOpen, open, setForm, userState }) {
@@ -23,10 +23,13 @@ function ModalEdit({ form, setOpen, open, setForm, userState }) {
   });
  }; 
 
+ console.log('Este es el form', form);
+
     const handlerUpdate = () => {
   dispatch(
    editUser({
     Usu_Id: userState,
+    Rol_Id: form.rol,
     Usu_Nombre: form.nombre,
     Usu_Apellido: form.apellido,
     Usu_Telefono: form.telefono,
@@ -37,7 +40,6 @@ function ModalEdit({ form, setOpen, open, setForm, userState }) {
    })
   );
   handleClose();
-  dispatch(getUsers());
  }; 
 
  return (
@@ -109,10 +111,9 @@ function ModalEdit({ form, setOpen, open, setForm, userState }) {
 
        <Grid item xs={6} md={6}>
         <label>Rol</label>
-        <Select name="rol" value={form.rol} /*onChange={changeHandler}*/>
+        <Select name="rol" value={form.rol} onChange={changeHandler}>
          <MenuItem value="2">Voluntario</MenuItem>
-         <MenuItem value="3">Empleado</MenuItem>
-         <MenuItem value="4">Adoptante</MenuItem>
+         <MenuItem value="3">Adoptante</MenuItem>
         </Select>
        </Grid>
       </Grid>
@@ -121,7 +122,7 @@ function ModalEdit({ form, setOpen, open, setForm, userState }) {
         variant="contained"
         className="buttonForm"
         type="submit"
-        onClick={handlerUpdate}
+        onClick={() =>handlerUpdate()}
        >
         Confirmar
        </Button>

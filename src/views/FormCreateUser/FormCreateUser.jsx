@@ -173,8 +173,7 @@ const Form = () => {
       <label>Rol</label>
       <Select name="rol" value={form.rol} onChange={changeHandler}>
        <MenuItem value="2">Voluntario</MenuItem>
-       <MenuItem value="3">Empleado</MenuItem>
-       <MenuItem value="4">Adoptante</MenuItem>
+       <MenuItem value="3">Adoptante</MenuItem>
       </Select>
      </Grid>
     </Grid>
