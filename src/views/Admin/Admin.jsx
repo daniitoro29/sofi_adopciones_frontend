@@ -13,7 +13,7 @@ const Admin = () => {
  const [open, setOpen] = useState(false);
  const [openBan, setOpenBan] = useState(false);
  const [userState, setUser] = useState("");
- const users = useSelector((state) => state.users);
+ const users = useSelector((state) => state?.users)  ;
  const [actualUser, setActualUser] = useState({})
  const [form, setForm] = useState({
   id: "",
@@ -30,16 +30,16 @@ const Admin = () => {
 
  useEffect(() => {
   dispatch(getUsers());
- }, [dispatch]); // Update the users whenever getUsers action is dispatched
+ }, [users]); // Update the users whenever getUsers action is dispatched
 
  const handleDelete = (user) => {
 setOpenBan(true);
 setActualUser (users.find((u) => u.Usu_Id === user.id))
-  // dispatch(banUser(user.Usu_Id));
  };
 
  const handlerEdit = (user) => {
-  const userResult = users.find((u) => u.Usu_Id === user.id);
+  const userResult = users?.find((u) => u.Usu_Id === user.id);
+  console.log('Esto es user Result ****', userResult);
   setOpen(true);
   setUser(userResult.Usu_Id);
   setForm({
@@ -50,6 +50,7 @@ setActualUser (users.find((u) => u.Usu_Id === user.id))
    contraseña: userResult.Usu_Contraseña,
    genero: userResult.Usu_Genero,
    estado: userResult.Usu_Estado,
+   rol: userResult.Rol_Id
   });
  };
 
@@ -73,7 +74,7 @@ setActualUser (users.find((u) => u.Usu_Id === user.id))
   },
  ];
 
- const rows = users?.map((user) => ({
+ const rows = users.length > 0 && users?.map((user) => ({
   id: user.Usu_Id,
   Nombre: user.Usu_Nombre,
   Apellido: user.Usu_Apellido,
@@ -83,7 +84,6 @@ setActualUser (users.find((u) => u.Usu_Id === user.id))
   Estado: user.Usu_Estado,
  }));
 
- console.log('Esto es userState *****', actualUser);
  return (
   <>
    <NavBar />
@@ -91,7 +91,7 @@ setActualUser (users.find((u) => u.Usu_Id === user.id))
     <DataGrid rows={rows} columns={columns} checkboxSelection />
    </div>
    {open && (
-    <Modal form={form} setOpen={setOpen} open={open} setForm={setForm} userState={userState}/>
+    <Modal form={form} setOpen={setOpen} open={open} setForm={setForm} userState={userState} />
    )}
    {
     openBan && (

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import { banUser} from "../../redux/actions";
+import { banUser,getUsers} from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
 
@@ -13,6 +13,7 @@ function ModalDelete ({actualUser, openBan,  setOpenBan }) {
   const handleDelete = (user) => {
     dispatch(banUser(user.Usu_Id));
     handleClose()
+    dispatch(getUsers());
      };
 
 
@@ -33,7 +34,7 @@ function ModalDelete ({actualUser, openBan,  setOpenBan }) {
             variant="contained"
             className="buttonForm"
             type="submit"
-            onClick={handleDelete(actualUser)}
+            onClick={() => handleDelete(actualUser)}
            >
             Confirmar
            </Button>
