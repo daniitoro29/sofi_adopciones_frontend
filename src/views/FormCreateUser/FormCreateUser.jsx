@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../redux/actions";
 import Swal from "sweetalert2";
@@ -14,8 +14,7 @@ import NavBar from "../NavBar/NavBar";
 
 const Form = () => {
  const dispatch = useDispatch();
- const history = useHistory();
-
+ const navigate = useNavigate();
  const [form, setForm] = useState({
   nombre: "",
   apellido: "",
@@ -186,7 +185,7 @@ const Form = () => {
      >
       Registrarse
      </Button>
-     <Button variant="outlined" type="button" onClick={() => history.push("/")}>Cancelar</Button>
+     <Button variant="outlined" type="button" onClick={() => navigate("/")}>Cancelar</Button>
     </div>
    </div>
   </div>
