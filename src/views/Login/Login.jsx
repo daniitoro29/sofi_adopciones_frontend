@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../Login/Login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../redux/actions";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
@@ -11,7 +11,7 @@ import Footer from "../Footer/Footer";
 import Swal from "sweetalert2";
 
 function Login() {
-    const history = useHistory();
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const users = useSelector((state) => state.users);
@@ -41,7 +41,7 @@ function Login() {
                 Swal.fire("Error", "Contraseña incorrecta", "error");
                 return;
             }
-            foundUser.Rol_Id === 1 ? history.push("/admin") : history.push("/welcome");
+            foundUser.Rol_Id === 1 ? navigate("/admin") : navigate("/welcome");
         }
 
     };
@@ -87,7 +87,7 @@ function Login() {
                         <Button
                             variant="outlined"
                             type="button"
-                            onClick={() => history.push("/register")}
+                            onClick={() => navigate("/register")}
                         >
                             Registrate
                         </Button>

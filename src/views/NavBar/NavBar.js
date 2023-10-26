@@ -1,9 +1,10 @@
 import "../NavBar/NavBar.css";
 import logo from '../../assets/img/pets.svg';
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useState } from "react";
 
 function NavBar() {
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
   const [ isLogin, setIsLogin ] = useState(false);
@@ -22,10 +23,10 @@ function NavBar() {
   }
 
   if (isRegister) {
-    return <Redirect to="/register" />;
+    return <Navigate  to="/register" />;
   }
   if (isLogin) {
-    return <Redirect to="/login" />;
+    return <Navigate  to="/login" />;
   }
 
   return (
