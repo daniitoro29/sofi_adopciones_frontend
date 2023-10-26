@@ -78,7 +78,7 @@ const Form = () => {
           })
         );
   
-        setForm({
+/*         setForm({
           nombre: "",
           apellido: "",
           telefono: "",
@@ -87,7 +87,7 @@ const Form = () => {
           genero: "",
           estado: "",
           rol: "",
-        });
+        }); */
   
         Swal.fire("¡Registro exitoso!", "El usuario se ha creado correctamente", "success");
       } catch (error) {
