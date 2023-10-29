@@ -46,7 +46,7 @@ function Login() {
                 return;
             }
 
-            foundUser.Rol_Id === 1 ? history.push("/admin") : history.push("/welcome");
+            foundUser.Rol_Id === 1 ? navigate("/admin") : navigate("/welcome");
         }
 
     };

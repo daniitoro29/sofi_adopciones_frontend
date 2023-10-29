@@ -34,7 +34,7 @@ const Form = () => {
       vol_id: ""
    });
 
-/*    useEffect(() => {
+   useEffect(() => {
       dispatch(getVolunteers());
       dispatch(getUsers());
       const rescueVolunteers = volunteers.filter((volunteer) => volunteer.Vol_Tipo_Ayuda === "Rescate");
@@ -46,7 +46,7 @@ const Form = () => {
         };
       });
       setVolunteerData(volunteerFilter);
-    }, [dispatch]); */
+    }, [dispatch]);
 
      console.log('ESTO ES LO QUE ME ESTÁ FILTRANDO LA FUNCIÓN *****', volunteerData);
 
