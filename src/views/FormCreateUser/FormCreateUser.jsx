@@ -23,7 +23,7 @@ const Form = () => {
   contraseña: "",
   genero: "",
   estado: "Activo",
-  rol: "1",
+  rol: "",
  });
 
 
