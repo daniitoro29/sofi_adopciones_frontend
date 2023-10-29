@@ -9,7 +9,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import edit from '../../../../assets/img/editar.png';
 import deleteU from '../../../../assets/img/eliminar.png';
 
-const Admin = () => {
+const Users = () => {
  const [open, setOpen] = useState(false);
  const [openBan, setOpenBan] = useState(false);
  const [userState, setUser] = useState("");
@@ -30,7 +30,7 @@ const Admin = () => {
 
  useEffect(() => {
   dispatch(getUsers());
- }, [users]); // Update the users whenever getUsers action is dispatched
+ }, [dispatch]); // Update the users whenever getUsers action is dispatched
 
  const handleDelete = (user) => {
 setOpenBan(true);
@@ -102,4 +102,4 @@ setActualUser (users.find((u) => u.Usu_Id === user.id))
  );
 };
 
-export default Admin;
+export default Users;
