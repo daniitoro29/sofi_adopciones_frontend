@@ -30,6 +30,7 @@ function Login() {
             Swal.fire("Error", "Por favor diligencie todos los campos", "error");
         } else {
             const foundUser = users.find(user => user.Usu_Correo === username);
+            console.log('Esto es lo que llega en los usuarios ****', foundUser);
             if (!foundUser) {
                 Swal.fire("Error", "El correo ingresado es incorrecto", "error");
                 return;
@@ -39,7 +40,13 @@ function Login() {
                 Swal.fire("Error", "Contraseña incorrecta", "error");
                 return;
             }
-            foundUser.Rol_Id === 1 ? navigate("/admin") : navigate("/welcome");
+
+            if (foundUser.Usu_Estado === "Inactivo") {
+                Swal.fire("Usuario inactivo", "El usuario está inactivo. Por favor, contacta a soporte para resolver el problema.", "error");
+                return;
+            }
+
+            foundUser.Rol_Id === 1 ? history.push("/admin") : history.push("/welcome");
         }
 
     };
