@@ -23,8 +23,6 @@ function ModalEdit({ form, setOpen, open, setForm, userState }) {
   });
  }; 
 
- console.log('Este es el form', form);
-
     const handlerUpdate = () => {
   dispatch(
    editUser({
