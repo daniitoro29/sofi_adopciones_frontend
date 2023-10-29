@@ -15,7 +15,7 @@ function Home() {
         ¡Bienvenido a nuestra pagina de adopciones y campañas de animales rescatados
       </h1>
 
-      <p>
+      <p className="agradecimiento">
         En nuestro sitio web, nos apasiona conectar animales con hogares amorosos.
         Creemos Firmemente que cada perro merece tener un lugar seguro y cariñoso al
         que llama hogar. Nuestro objetivo es fomentar la adopción responsable y
@@ -24,7 +24,7 @@ function Home() {
       </p>
       <div className="description">
         <img src={perro1} alt="perro1" />
-        <p>
+        <p  className="agradecimiento">
           En esta plataforma, nos apasiona brindar apoyo y ayuda a las mascotas
           necesitadas. Creemos en el amor incondicional que los animales nos brindan
           y nos esforzamos por garantizar que cada mascota reciba el cuidado y el
