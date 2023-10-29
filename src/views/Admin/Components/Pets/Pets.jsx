@@ -12,8 +12,12 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import NavBar from "../../../NavBar/NavBar";
 import { useEffect } from "react";
+import { useContext } from "react";
+import { UserContext } from '../../../../Context/context';
 
 const Form = () => {
+   const user = useContext(UserContext);
+   console.log('Esto es user ****', user);
    const dispatch = useDispatch();
    const navigate = useNavigate();
    const volunteers = useSelector((state) => state?.volunteers)  ;
@@ -36,7 +40,7 @@ const Form = () => {
 
    useEffect(() => {
       dispatch(getVolunteers());
-      dispatch(getUsers());
+      // dispatch(getUsers());
       const rescueVolunteers = volunteers.filter((volunteer) => volunteer.Vol_Tipo_Ayuda === "Rescate");
       const volunteerFilter = rescueVolunteers.map((volunteer) => {
         return {
@@ -47,6 +51,7 @@ const Form = () => {
       });
       setVolunteerData(volunteerFilter);
     }, [dispatch]);
+
 
      console.log('ESTO ES LO QUE ME ESTÁ FILTRANDO LA FUNCIÓN *****', volunteerData);
 
@@ -118,7 +123,7 @@ const Form = () => {
    return (
       <div>
          <NavBar />
-
+         <h2>{`Hello ${user[0]} again!`}</h2>
          <div style={{ display: "flex", justifyContent: "center" }}>
             <div className="general-container_form">
                <h1>Completa los datos de la mascota</h1>
