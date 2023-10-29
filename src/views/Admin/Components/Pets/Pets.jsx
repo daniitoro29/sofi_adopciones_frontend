@@ -40,8 +40,6 @@ const Form = () => {
 
    useEffect(() => {
       dispatch(getVolunteers());
-      // dispatch(getUsers());
-      console.log('Esto es user ****', users);
       const rescueVolunteers = volunteers.filter((volunteer) => volunteer.Vol_Tipo_Ayuda === "Rescate");
       const volunteerFilter = rescueVolunteers.map((volunteer) => {
          return {
@@ -95,7 +93,7 @@ const Form = () => {
             })
          );
 
-         setForm({
+/*          setForm({
             nombre: "",
             especie: "",
             genero: "",
@@ -108,7 +106,7 @@ const Form = () => {
             edad: "",
             estado_adopcion: "",
             vol_id: ""
-         });
+         }); */
 
          Swal.fire("¡Registro exitoso!", "La mascota se ha creado correctamente", "success");
       } catch (error) {
@@ -245,7 +243,7 @@ const Form = () => {
                      <label>Rescatista</label>
                      <Select name="vol_id" value={form.vol_id} onChange={changeHandler}>
                         {volunteerData?.map((volunteer, i) => (
-                           <MenuItem key={i} value={volunteer.Usu_Id}>
+                           <MenuItem key={i} value={volunteer?.Vol_Id}>
                               {volunteer.nombre} {volunteer.apellido}
                            </MenuItem>
                         ))
