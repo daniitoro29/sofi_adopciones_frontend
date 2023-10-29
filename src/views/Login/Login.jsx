@@ -14,7 +14,7 @@ function Login() {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const users = useSelector((state) => state.users);
+    const users = useSelector((state) => state?.users);
 
     const dispatch = useDispatch();
 
@@ -22,8 +22,6 @@ function Login() {
         dispatch(getUsers());
         // eslint-disable-next-line
     }, []);
-
-    console.log('Esto es lo que llega en los usuarios ****', users);
 
     const handlerValidateUser = () => {
 
