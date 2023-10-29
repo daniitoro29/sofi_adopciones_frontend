@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {useSelector, useDispatch } from "react-redux";
-import { createPet, getVolunteers, getUsers } from "../../../../redux/actions";
+import { useSelector, useDispatch } from "react-redux";
+import { createPet, getVolunteers } from "../../../../redux/actions";
 import Swal from "sweetalert2";
 import "./Pets.css";
 import * as React from "react";
@@ -16,13 +16,13 @@ import { useContext } from "react";
 import { UserContext } from '../../../../Context/context';
 
 const Form = () => {
-   const user = useContext(UserContext);
-   console.log('Esto es user ****', user);
+   const users = useContext(UserContext);
+
    const dispatch = useDispatch();
    const navigate = useNavigate();
-   const volunteers = useSelector((state) => state?.volunteers)  ;
-   const users = useSelector((state) => state?.users)  ;
-   const [volunteerData, setVolunteerData] = useState({});
+   const volunteers = useSelector((state) => state?.volunteers);
+   // const users = useSelector((state) => state?.users)  ;
+   const [volunteerData, setVolunteerData] = useState([]);
    const [form, setForm] = useState({
       nombre: "",
       especie: "",
@@ -41,19 +41,20 @@ const Form = () => {
    useEffect(() => {
       dispatch(getVolunteers());
       // dispatch(getUsers());
+      console.log('Esto es user ****', users);
       const rescueVolunteers = volunteers.filter((volunteer) => volunteer.Vol_Tipo_Ayuda === "Rescate");
       const volunteerFilter = rescueVolunteers.map((volunteer) => {
-        return {
-          Vol_Id: volunteer.Vol_Id,
-          nombre: users.find((user) => user.Usu_Id === volunteer.Usu_Id).Usu_Nombre,
-          apellido: users.find((user) => user.Usu_Id === volunteer.Usu_Id).Usu_Apellido,
-        };
+         return {
+            Vol_Id: volunteer.Vol_Id,
+            nombre: users.find((user) => user.Usu_Id === volunteer.Usu_Id).Usu_Nombre,
+            apellido: users.find((user) => user.Usu_Id === volunteer.Usu_Id).Usu_Apellido,
+         };
       });
       setVolunteerData(volunteerFilter);
-    }, [dispatch]);
+   }, [users]);
 
 
-     console.log('ESTO ES LO QUE ME ESTÁ FILTRANDO LA FUNCIÓN *****', volunteerData);
+   console.log('ESTO ES LO QUE ME ESTÁ FILTRANDO LA FUNCIÓN *****', volunteerData);
 
    const changeHandler = (event) => {
       const property = event.target.name;
@@ -123,7 +124,6 @@ const Form = () => {
    return (
       <div>
          <NavBar />
-         <h2>{`Hello ${user[0]} again!`}</h2>
          <div style={{ display: "flex", justifyContent: "center" }}>
             <div className="general-container_form">
                <h1>Completa los datos de la mascota</h1>
@@ -244,8 +244,12 @@ const Form = () => {
                   <Grid item xs={6} md={6}>
                      <label>Rescatista</label>
                      <Select name="vol_id" value={form.vol_id} onChange={changeHandler}>
-                        <MenuItem value="2">Voluntario</MenuItem>
-                        <MenuItem value="3">Adoptante</MenuItem>
+                        {volunteerData?.map((volunteer, i) => (
+                           <MenuItem key={i} value={volunteer.Usu_Id}>
+                              {volunteer.nombre} {volunteer.apellido}
+                           </MenuItem>
+                        ))
+                        }
                      </Select>
                   </Grid>
                </Grid>
