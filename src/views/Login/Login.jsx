@@ -30,7 +30,6 @@ function Login() {
             Swal.fire("Error", "Por favor diligencie todos los campos", "error");
         } else {
             const foundUser = users.find(user => user.Usu_Correo === username);
-            console.log('Esto es lo que llega en los usuarios ****', foundUser);
             if (!foundUser) {
                 Swal.fire("Error", "El correo ingresado es incorrecto", "error");
                 return;

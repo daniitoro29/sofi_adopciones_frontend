@@ -16,7 +16,7 @@ import { useContext } from "react";
 import { UserContext } from '../../../../Context/context';
 
 const Form = () => {
-   const users = useContext(UserContext);
+   const {users} = useContext(UserContext);
 
    const dispatch = useDispatch();
    const navigate = useNavigate();
@@ -50,9 +50,6 @@ const Form = () => {
       });
       setVolunteerData(volunteerFilter);
    }, [users]);
-
-
-   console.log('ESTO ES LO QUE ME ESTÁ FILTRANDO LA FUNCIÓN *****', volunteerData);
 
    const changeHandler = (event) => {
       const property = event.target.name;
