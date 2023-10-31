@@ -39,7 +39,6 @@ setActualUser (users.find((u) => u.Usu_Id === user.id))
 
  const handlerEdit = (user) => {
   const userResult = users?.find((u) => u.Usu_Id === user.id);
-  console.log('Esto es user Result ****', userResult);
   setOpen(true);
   setUser(userResult.Usu_Id);
   setForm({

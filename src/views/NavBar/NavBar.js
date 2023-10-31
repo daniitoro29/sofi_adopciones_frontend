@@ -9,6 +9,7 @@ function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
   const [ isLogin, setIsLogin ] = useState(false);
+  const [ isGallery, setIsGallery ] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -23,11 +24,18 @@ function NavBar() {
     setIsLogin(true);
   }
 
+  const handlerGallery = () => {
+    setIsGallery(true);
+  }
+
   if (isRegister) {
     return <Navigate  to="/register" />;
   }
   if (isLogin) {
     return <Navigate  to="/login" />;
+  }
+  if (isGallery) {
+    return <Navigate  to="/gallery" />;
   }
 
   return (
@@ -42,7 +50,7 @@ function NavBar() {
         <ul className={`menu-items ${isMenuOpen ? "open" : ""}`}>
           <li>Inicio</li>
           <li>Acerca de nosotros</li>
-          <li>Adopciones</li>
+          <li onClick={handlerGallery}>Galería</li>
           <li onClick={handlerRegister}>Registrate</li>
           <li onClick={handlerLogin}>Ingresar</li>
         </ul>

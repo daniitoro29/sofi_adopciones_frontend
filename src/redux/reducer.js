@@ -1,4 +1,4 @@
-import { GET_USERS, DELETE_USER, CREATE_USER, EDIT_USER, BAN_USER, CREATE_PET, GET_VOLUNTEERS } from "./actions";
+import { GET_USERS, DELETE_USER, CREATE_USER, EDIT_USER, BAN_USER, CREATE_PET, GET_VOLUNTEERS, GET_PETS } from "./actions";
 
 const initialState = {
     users: [],
@@ -22,8 +22,10 @@ const rootReducer = (state = initialState, action) => {
         // Mascotas
         case CREATE_PET:
             return { ...state, pets: action.payload };
+        case GET_PETS:
+            return { ...state, pets: action.payload };
 
-                    // Voluntarios
+        // Voluntarios
         case GET_VOLUNTEERS:
             return { ...state, volunteers: action.payload };
         default:

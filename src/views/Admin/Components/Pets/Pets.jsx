@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {useSelector, useDispatch } from "react-redux";
-import { createPet, getVolunteers, getUsers } from "../../../../redux/actions";
+import { useSelector, useDispatch } from "react-redux";
+import { createPet, getVolunteers } from "../../../../redux/actions";
 import Swal from "sweetalert2";
 import "./Pets.css";
 import * as React from "react";
@@ -12,13 +12,17 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import NavBar from "../../../NavBar/NavBar";
 import { useEffect } from "react";
+import { useContext } from "react";
+import { UserContext } from '../../../../Context/context';
 
 const Form = () => {
+   const {users} = useContext(UserContext);
+
    const dispatch = useDispatch();
    const navigate = useNavigate();
-   const volunteers = useSelector((state) => state?.volunteers)  ;
-   const users = useSelector((state) => state?.users)  ;
-   const [volunteerData, setVolunteerData] = useState({});
+   const volunteers = useSelector((state) => state?.volunteers);
+   // const users = useSelector((state) => state?.users)  ;
+   const [volunteerData, setVolunteerData] = useState([]);
    const [form, setForm] = useState({
       nombre: "",
       especie: "",
@@ -34,21 +38,18 @@ const Form = () => {
       vol_id: ""
    });
 
-/*    useEffect(() => {
+   useEffect(() => {
       dispatch(getVolunteers());
-      dispatch(getUsers());
       const rescueVolunteers = volunteers.filter((volunteer) => volunteer.Vol_Tipo_Ayuda === "Rescate");
       const volunteerFilter = rescueVolunteers.map((volunteer) => {
-        return {
-          Vol_Id: volunteer.Vol_Id,
-          nombre: users.find((user) => user.Usu_Id === volunteer.Usu_Id).Usu_Nombre,
-          apellido: users.find((user) => user.Usu_Id === volunteer.Usu_Id).Usu_Apellido,
-        };
+         return {
+            Vol_Id: volunteer.Vol_Id,
+            nombre: users.find((user) => user.Usu_Id === volunteer.Usu_Id).Usu_Nombre,
+            apellido: users.find((user) => user.Usu_Id === volunteer.Usu_Id).Usu_Apellido,
+         };
       });
       setVolunteerData(volunteerFilter);
-    }, [dispatch]); */
-
-     console.log('ESTO ES LO QUE ME ESTÁ FILTRANDO LA FUNCIÓN *****', volunteerData);
+   }, [users]);
 
    const changeHandler = (event) => {
       const property = event.target.name;
@@ -89,7 +90,7 @@ const Form = () => {
             })
          );
 
-         setForm({
+/*          setForm({
             nombre: "",
             especie: "",
             genero: "",
@@ -102,7 +103,7 @@ const Form = () => {
             edad: "",
             estado_adopcion: "",
             vol_id: ""
-         });
+         }); */
 
          Swal.fire("¡Registro exitoso!", "La mascota se ha creado correctamente", "success");
       } catch (error) {
@@ -118,7 +119,6 @@ const Form = () => {
    return (
       <div>
          <NavBar />
-
          <div style={{ display: "flex", justifyContent: "center" }}>
             <div className="general-container_form">
                <h1>Completa los datos de la mascota</h1>
@@ -239,8 +239,12 @@ const Form = () => {
                   <Grid item xs={6} md={6}>
                      <label>Rescatista</label>
                      <Select name="vol_id" value={form.vol_id} onChange={changeHandler}>
-                        <MenuItem value="2">Voluntario</MenuItem>
-                        <MenuItem value="3">Adoptante</MenuItem>
+                        {volunteerData?.map((volunteer, i) => (
+                           <MenuItem key={i} value={volunteer?.Vol_Id}>
+                              {volunteer.nombre} {volunteer.apellido}
+                           </MenuItem>
+                        ))
+                        }
                      </Select>
                   </Grid>
                </Grid>
