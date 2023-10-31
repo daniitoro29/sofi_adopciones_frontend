@@ -24,7 +24,7 @@ const Form = () => {
   contraseña: "",
   genero: "",
   estado: "Activo",
-  rol: "1",
+  rol: "",
  });
 
 console.log("Correo********************", users)

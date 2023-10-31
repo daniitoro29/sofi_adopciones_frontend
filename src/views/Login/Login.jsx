@@ -14,7 +14,7 @@ function Login() {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const users = useSelector((state) => state.users);
+    const users = useSelector((state) => state?.users);
 
     const dispatch = useDispatch();
 
@@ -23,8 +23,6 @@ function Login() {
         // eslint-disable-next-line
     }, []);
 
-    console.log('Esto es lo que llega en los usuarios ****', users);
-
     const handlerValidateUser = () => {
 
         if (username === '' || password === '') {
@@ -32,7 +30,6 @@ function Login() {
             Swal.fire("Error", "Por favor diligencie todos los campos", "error");
         } else {
             const foundUser = users.find(user => user.Usu_Correo === username);
-            console.log('Esto es lo que llega en los usuarios ****', foundUser);
             if (!foundUser) {
                 Swal.fire("Error", "El correo ingresado es incorrecto", "error");
                 return;

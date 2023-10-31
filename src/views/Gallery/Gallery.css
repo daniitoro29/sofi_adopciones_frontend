@@ -1,0 +1,20 @@
+@import '../../styles.css';
+
+.gallery-container {
+    padding: 5rem 7rem;
+}
+ 
+.gallery-container_carousel {
+     height: 600px;
+     background-color: var(--color1);
+     padding: 2rem;
+     
+    }
+
+    .gallery-container h3 {
+     color: black;
+    }
+  
+    .gallery-container label {
+     display: block !important;
+    }

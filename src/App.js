@@ -5,7 +5,8 @@ import Welcome from "./views/Welcome/Welcome";
 import Admin from "./views/Admin/Admin";
 import Users from './views/Admin/Components/Users/Users';
 import Pets from './views/Admin/Components/Pets/Pets';
-import FormCreateUser from "./views/FormCreateUser/FormCreateUser";;
+import FormCreateUser from "./views/FormCreateUser/FormCreateUser";
+import Gallery from "./views/Gallery/Gallery";
 
 function App() {
  return (
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/admin" element={<Admin/>} />
         <Route exact path="/users" element={<Users/>} />
         <Route exact path="/pets" element={<Pets/>} />
+        <Route exact path="/gallery" element={<Gallery/>} />
       </Routes>
   </div>
  );
