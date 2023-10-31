@@ -2,6 +2,7 @@ import "../NavBar/NavBar.css";
 import logo from '../../assets/img/pets.svg';
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
+import menu from '../../assets/img/menu.svg';
 
 function NavBar() {
 
@@ -41,11 +42,11 @@ function NavBar() {
     <div className="container-general_home">
       <nav>
         <a href="/">
-          <img src={logo} alt="logo" />
+          <img className="logo1" src={logo} alt="logo" />
         </a>
-        <button className="menu-button" onClick={toggleMenu}>
-          ☰
-        </button>
+       
+        <img className="menu-button" src={menu} alt="menu" onClick={toggleMenu} />
+       
         <ul className={`menu-items ${isMenuOpen ? "open" : ""}`}>
           <li>Inicio</li>
           <li>Acerca de nosotros</li>

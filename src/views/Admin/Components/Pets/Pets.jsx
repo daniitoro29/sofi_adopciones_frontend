@@ -173,10 +173,10 @@ const Form = () => {
                      </Select>
                   </Grid>
 
-                  <Grid item xs={6} md={6}>
+                  <Grid item xs={6} md={2}>
                      <label>Descripción</label>
                      <textarea
-                        name="descripcion"
+                        id="descripcion"
                         value={form.descripcion}
                         onChange={changeHandler}
                         rows="4" // You can adjust the number of rows as needed

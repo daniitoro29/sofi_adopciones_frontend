@@ -11,3 +11,6 @@
     --color10: #7c360b;
     --color11: #481a00;
   }
+  body{
+    margin: 0;
+  }
