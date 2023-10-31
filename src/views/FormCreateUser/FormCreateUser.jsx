@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { createUser } from "../../redux/actions";
 import Swal from "sweetalert2";
 import "./FormCreateUser.css";
@@ -15,6 +15,7 @@ import NavBar from "../NavBar/NavBar";
 const Form = () => {
  const dispatch = useDispatch();
  const navigate = useNavigate();
+ const users = useSelector((state) => state.users);
  const [form, setForm] = useState({
   nombre: "",
   apellido: "",
@@ -26,7 +27,7 @@ const Form = () => {
   rol: "1",
  });
 
-
+console.log("Correo********************", users)
 
  const changeHandler = (event) => {
   const property = event.target.name;
@@ -64,6 +65,7 @@ const Form = () => {
         Swal.fire("Error", "El correo electrónico no es válido", "error");
         return;
       }
+
       try {
         await dispatch(
           createUser({
