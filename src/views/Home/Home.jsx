@@ -9,8 +9,9 @@ import perro2 from "../../assets/img/img-perros-2.png";
 
 function Home() {
   return (
-    <div className="home">
+    <>
       <NavBar />
+    <div className="home">
       <h1>
         ¡Bienvenido a nuestra pagina de adopciones y campañas de animales rescatados
       </h1>
@@ -55,6 +56,7 @@ function Home() {
         sociales y por considerar la adopciòn como una opciòn de amor! <br /> Una
         opciòn de amor!
       </p>
+    </div>
       <footer>
         <div className="cont-redes-img">
           <img src={facebook} alt="logo" />
@@ -63,7 +65,7 @@ function Home() {
         </div>
         <p>Copyright © SOF&</p>
       </footer>
-    </div>
+    </>
   );
 }
 

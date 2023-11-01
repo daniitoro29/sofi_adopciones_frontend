@@ -86,3 +86,11 @@
       width: 300px; 
     }
 }
+
+.home {
+  margin: 50px;
+}
+
+.home h1 {
+  margin-bottom: 50px;
+}

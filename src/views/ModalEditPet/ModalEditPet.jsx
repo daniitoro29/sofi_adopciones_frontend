@@ -55,7 +55,7 @@ function ModalEdit({ form, setOpen, open, setForm, userState }) {
         aria-describedby="modal-modal-description"
       >
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <div className="container-edit-modal">
+          <div className="container-edit-modal-pet">
             <h1>Completa los datos que quieres modificar</h1>
             <Grid container className="container_form">
               <Grid item xs={6} md={6}>
@@ -111,6 +111,7 @@ function ModalEdit({ form, setOpen, open, setForm, userState }) {
               <Grid item xs={6} md={6}>
                 <label>Descripción</label>
                 <textarea
+                  className="general-container-edit-modal-description"
                   name="descripcion"
                   value={form.descripcion}
                   onChange={changeHandler}
