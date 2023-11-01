@@ -104,6 +104,55 @@ export const createPet= ({Mas_Nombre,
   }
 }
 
+
+
+
+export const EDIT_PET = 'EDIT_PET';
+
+export const editPet = ({Mas_Id, Mas_Nombre,
+  Mas_Especie,
+  Mas_Genero,
+  Mas_Raza,
+  Mas_Tamano,
+  Mas_Descripcion,
+  Mas_Foto,
+  Mas_Fecha_Rescate,
+  Mas_Lugar_Rescate,
+  Mas_Edad,
+  Mas_Estado_Adopcion}) => async (dispatch) => {
+  try {
+    const response = await axios.put(`http://localhost:3001/pets/${Mas_Id}`, {
+      Mas_Id, Mas_Nombre,
+    Mas_Especie,
+    Mas_Genero,
+    Mas_Raza,
+    Mas_Tamano,
+    Mas_Descripcion,
+    Mas_Foto,
+    Mas_Fecha_Rescate,
+    Mas_Lugar_Rescate,
+    Mas_Edad,
+    Mas_Estado_Adopcion
+    })
+    const pets = response.data;
+    dispatch({type: EDIT_PET, payload: pets})
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const DELETE_PET = 'DELETE_PET';
+
+export const deletePet = (Mas_Id) => async (dispatch) => {
+  try {
+    const response = await axios.delete(`http://localhost:3001/pets/${Mas_Id}`)
+    const pets = response.data;
+    dispatch({type: DELETE_PET, payload: pets})
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export const GET_PETS = 'GET_PETS';
 
 export const getPets= () => async (dispatch) => {
@@ -115,6 +164,7 @@ export const getPets= () => async (dispatch) => {
       console.error(error);
     }
   };
+
 
 // Voluntarios
 

@@ -90,7 +90,7 @@ const Form = () => {
             })
          );
 
-/*          setForm({
+         setForm({
             nombre: "",
             especie: "",
             genero: "",
@@ -103,7 +103,7 @@ const Form = () => {
             edad: "",
             estado_adopcion: "",
             vol_id: ""
-         }); */
+         });
 
          Swal.fire("¡Registro exitoso!", "La mascota se ha creado correctamente", "success");
       } catch (error) {
@@ -120,7 +120,7 @@ const Form = () => {
       <div>
          <NavBar />
          <div style={{ display: "flex", justifyContent: "center" }}>
-            <div className="general-container_form">
+            <div className="general-container_formp">
                <h1>Completa los datos de la mascota</h1>
                <Grid container className="container_form">
                   <Grid item xs={6} md={6}>
@@ -173,9 +173,10 @@ const Form = () => {
                      </Select>
                   </Grid>
 
-                  <Grid item xs={6} md={6}>
+                  <Grid item xs={6} md={6} >
                      <label>Descripción</label>
                      <textarea
+                     className="text_area"
                         name="descripcion"
                         value={form.descripcion}
                         onChange={changeHandler}
@@ -255,7 +256,7 @@ const Form = () => {
                      type="submit"
                      onClick={handleSend}
                   >
-                     Registrarse
+                     Registrar mascota
                   </Button>
                   <Button variant="outlined" type="button" onClick={() => navigate("/")}>
                      Cancelar

@@ -2,9 +2,12 @@ import "../NavBar/NavBar.css";
 import logo5 from '../../assets/img/logo5.png';
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
-
+  const navigate = useNavigate();
+ 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
   const [ isLogin, setIsLogin ] = useState(false);
@@ -15,26 +18,19 @@ function NavBar() {
   };
 
   const handlerRegister = () => {
-    setIsRegister(true);
+    setIsRegister(!isRegister);
+    navigate("/register");
   };
 
 
   const handlerLogin = () => {
-    setIsLogin(true);
+    setIsLogin(!isLogin);
+    navigate("/login");
   }
 
   const handlerGallery = () => {
-    setIsGallery(true);
-  }
-
-  if (isRegister) {
-    return <Navigate  to="/register" />;
-  }
-  if (isLogin) {
-    return <Navigate  to="/login" />;
-  }
-  if (isGallery) {
-    return <Navigate  to="/gallery" />;
+    setIsGallery(!isGallery);
+    navigate("/gallery");
   }
 
   return (
@@ -47,8 +43,8 @@ function NavBar() {
           ☰
         </button>
         <ul className={`menu-items ${isMenuOpen ? "open" : ""}`}>
-          <li>Inicio</li>
-          <li>Acerca de nosotros</li>
+          <li > <Link to="/">Inicio</Link></li>
+          {/* <li>Acerca de nosotros</li> */}
           <li onClick={handlerGallery}>Galería</li>
           <li onClick={handlerRegister}>Registrate</li>
           <li onClick={handlerLogin}>Ingresar</li>
