@@ -1,7 +1,8 @@
 import "../NavBar/NavBar.css";
-import logo from '../../assets/img/pets.svg';
+import logo from '../../assets/img/logo5.png';
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function NavBar() {
 
@@ -47,8 +48,8 @@ function NavBar() {
           ☰
         </button>
         <ul className={`menu-items ${isMenuOpen ? "open" : ""}`}>
-          <li>Inicio</li>
-          <li>Acerca de nosotros</li>
+          <li > <Link to="/">Inicio</Link></li>
+          {/* <li>Acerca de nosotros</li> */}
           <li onClick={handlerGallery}>Galería</li>
           <li onClick={handlerRegister}>Registrate</li>
           <li onClick={handlerLogin}>Ingresar</li>
