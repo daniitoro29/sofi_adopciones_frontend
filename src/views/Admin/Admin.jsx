@@ -16,6 +16,10 @@ const Admin = () => {
         navigate("/pets");
     };
 
+    const handleNavigateAllPets = () => {
+        navigate("/allpets");
+    };
+
     const toggleDrawer = (open) => (event) => {
         if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
             return;
@@ -38,17 +42,20 @@ const Admin = () => {
                                 <ListItemText primary="Usuarios" />
                             </ListItem>
                             <ListItem button onClick={handleNavigateToPets}>
-                                <ListItemText primary="Mascotas" />
+                                <ListItemText primary="Registrar mascotas" />
+                            </ListItem>
+                            <ListItem button onClick={handleNavigateAllPets}>
+                                <ListItemText primary="Todas las mascotas" />
                             </ListItem>
                             
                         </List>
-                        <Button
+         {/*                <Button
                             variant="contained"
                             onClick={() => console.log("Botón adicional")}
                             className="additional-button"
                         >
                             Otra acción
-                        </Button>
+                        </Button> */}
                     </div>
                 </Drawer>
             </div>
