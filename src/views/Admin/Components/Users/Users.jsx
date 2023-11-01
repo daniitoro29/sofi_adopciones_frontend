@@ -57,7 +57,7 @@ setActualUser (users.find((u) => u.Usu_Id === user.id))
   { field: "Nombre", headerName: "Nombre", width: 150 },
   { field: "Apellido", headerName: "Apellido", width: 150 },
   { field: "Teléfono", headerName: "Teléfono", width: 150 },
-  { field: "Correo", headerName: "Correo", width: 200 },
+  { field: "Correo", headerName: "Correo", width: 250 },
   { field: "Género", headerName: "Género", width: 150 },
   { field: "Estado", headerName: "Estado", width: 150 },
   {
