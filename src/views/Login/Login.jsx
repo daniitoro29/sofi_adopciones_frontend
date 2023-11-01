@@ -45,7 +45,7 @@ function Login() {
                 return;
             }
 
-            foundUser.Rol_Id === 1 ? navigate("/admin") : navigate("/welcome");
+            foundUser.Rol_Id === 1 ? navigate("/admin") : navigate("/adoptions");
         }
 
     };
