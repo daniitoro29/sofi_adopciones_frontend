@@ -17,6 +17,8 @@ function Gallery() {
 
   }, [pets]);
 
+  console.log('ESTO ES PETS ****', pets);
+
   return (
     <>
       <NavBar />
