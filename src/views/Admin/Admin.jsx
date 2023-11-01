@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Drawer, List, ListItem, ListItemText } from "@mui/material";
+import { Drawer, List, ListItem, ListItemText } from "@mui/material";
 import "./Admin.css";
 import logo5 from "../../assets/img/logo5.png";
 import Users from "./Components/Users/Users";
@@ -87,10 +87,8 @@ const Admin = () => {
 
             {
                 !isDrawerOpen &&
-                <button type="button" className="button-menu">
-                    <a className="toggle-button" onClick={toggleDrawer(!isDrawerOpen)}>
-                        Menú
-                    </a>
+                <button type="button" className="button-menu" onClick={toggleDrawer(!isDrawerOpen)}>
+                    Menú
                 </button>
             }
 
