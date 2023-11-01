@@ -38,23 +38,23 @@ const Admin = () => {
         }
         setDrawerOpen(open);
     };
-    
+
     const handleResetState = () => {
         setIsUser(false);
         setIsPet(false);
         setIsAllPet(false);
-      };
-    
-      useEffect(() => {
+    };
+
+    useEffect(() => {
         handleResetState();
-      }, []);
+    }, []);
 
     return (
         <>
             <div className="admin-container">
-                <Button variant="contained" className="toggle-button" onClick={toggleDrawer(!isDrawerOpen)}>
-                    Abrir Barra de Navegación
-                </Button>
+
+
+
 
                 <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer(false)}>
                     <div className="sidebar">
@@ -76,14 +76,24 @@ const Admin = () => {
                 </Drawer>
             </div>
             {
-                isUser && <Users /> 
+                isUser && <Users />
             }
             {
                 isPet && <Pets />
             }
-                        {
+            {
                 isAllPet && <AllPets />
             }
+
+            {
+                !isDrawerOpen &&
+                <button type="button" className="button-menu">
+                    <a className="toggle-button" onClick={toggleDrawer(!isDrawerOpen)}>
+                        Menú
+                    </a>
+                </button>
+            }
+
         </>
     );
 };
