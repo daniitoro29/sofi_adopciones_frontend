@@ -27,7 +27,7 @@ function ModalPetsDelete ({actualUser, openBan,  setOpenBan }) {
        >
         <div style={{ display: "flex", justifyContent: "center" }}>
          <div className="container-edit-modal">
-          <h1>¿Estás segudo de eliminar está mascota?</h1>
+          <h1 className='delete-pet-title'>¿Estás seguro de eliminar está mascota?</h1>
 
           <div className="container_button">
            <Button
