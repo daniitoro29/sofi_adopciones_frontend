@@ -1,104 +1,129 @@
-import { useSelector, useDispatch } from "react-redux";
-import { getUsers } from "../../../../redux/actions";
-import { useState, useEffect } from "react";
+import { useState, useContext, useEffect} from "react";
 import "./AllPets.css";
 import NavBar from "../../../NavBar/NavBar";
-import Modal from "../../../ModalEdit/ModalEdit";
-import ModalBan from '../../../ModalDelete/ModalDelete';
+import Modal from "../../../ModalEditPet/ModalEditPet";
+import ModalBan from '../../../ModalPetsDelete/ModalPetsDelete';
 import { DataGrid } from "@mui/x-data-grid";
 import edit from '../../../../assets/img/editar.png';
 import deleteU from '../../../../assets/img/eliminar.png';
+import { UserContext } from '../../../../Context/context';
+import { useDispatch } from "react-redux";
+import { getPets } from "../../../../redux/actions";
 
-const Users = () => {
- const [open, setOpen] = useState(false);
- const [openBan, setOpenBan] = useState(false);
- const [userState, setUser] = useState("");
- const users = useSelector((state) => state?.users)  ;
- const [actualUser, setActualUser] = useState({})
- const [form, setForm] = useState({
-  id: "",
-  nombre: "",
-  apellido: "",
-  telefono: "",
-  correo: "",
-  contraseña: "",
-  genero: "",
-  estado: "",
- });
+const AllPets = () => {
+    const dispatch = useDispatch();
+    const [open, setOpen] = useState(false);
+    const [openBan, setOpenBan] = useState(false);
+    const { pets } = useContext(UserContext);
 
- const dispatch = useDispatch();
 
- useEffect(() => {
-  dispatch(getUsers());
- }, [dispatch]); // Update the users whenever getUsers action is dispatched
+       
+    console.log('Esto es lo que me está llegando en pets ****', pets);
 
- const handleDelete = (user) => {
-setOpenBan(true);
-setActualUser (users.find((u) => u.Usu_Id === user.id))
- };
 
- const handlerEdit = (user) => {
-  const userResult = users?.find((u) => u.Usu_Id === user.id);
-  setOpen(true);
-  setUser(userResult.Usu_Id);
-  setForm({
-   nombre: userResult.Usu_Nombre,
-   apellido: userResult.Usu_Apellido,
-   telefono: userResult.Usu_Telefono,
-   correo: userResult.Usu_Correo,
-   contraseña: userResult.Usu_Contraseña,
-   genero: userResult.Usu_Genero,
-   estado: userResult.Usu_Estado,
-   rol: userResult.Rol_Id
-  });
- };
+    const [actualPet, setActualPet] = useState({});
+    const [form, setForm] = useState({
+        id: "",
+        nombre: "",
+        especie: "",
+        genero: "",
+        raza: "",
+        tamano: "",
+        descripcion: "",
+        foto: "",
+        fecha_rescate: "",
+        lugar_rescate: "",
+        edad: "",
+        estado_adopcion: "",
+        vol_id: ""
+    });
 
- const columns = [
-  { field: "Nombre", headerName: "Nombre", width: 150 },
-  { field: "Apellido", headerName: "Apellido", width: 150 },
-  { field: "Teléfono", headerName: "Teléfono", width: 150 },
-  { field: "Correo", headerName: "Correo", width: 200 },
-  { field: "Género", headerName: "Género", width: 150 },
-  { field: "Estado", headerName: "Estado", width: 150 },
-  {
-   field: "Acciones",
-   headerName: "Acciones",
-   width: 200,
-   renderCell: (params) => (
-    <div className="container-icons">
-    <img src={edit} alt="editar" onClick={() => handlerEdit(params.row)}/>  
-    <img src={deleteU} alt="editar" onClick={() => handleDelete(params.row)}/>
-    </div>
-   ),
-  },
- ];
+ 
 
- const rows = users.length > 0 && users?.map((user) => ({
-  id: user.Usu_Id,
-  Nombre: user.Usu_Nombre,
-  Apellido: user.Usu_Apellido,
-  Teléfono: user.Usu_Telefono,
-  Correo: user.Usu_Correo,
-  Género: user.Usu_Genero,
-  Estado: user.Usu_Estado,
- }));
+    const handleDelete = (pet) => {
+        setOpenBan(true);
+        setActualPet(pets?.find((u) => u.Mas_Id === pet.id))
+    };
 
- return (
-  <>
-   <NavBar />
-   <div className="container-all_user">
-    <DataGrid rows={rows} columns={columns} checkboxSelection />
-   </div>
-   {open && (
-    <Modal form={form} setOpen={setOpen} open={open} setForm={setForm} userState={userState} />
-   )}
-   {
-    openBan && (
-       < ModalBan openBan={openBan} setOpenBan={setOpenBan} actualUser={actualUser}/>
-    )
-   }
-  </>
- );
+
+
+    const handlerEdit = (pet) => {
+        const petResult = pets?.find((u) => u.Mas_Id === pet.id);
+        setOpen(true);
+        setActualPet(petResult.Mas_Id);
+        setForm({
+            id: petResult.Mas_Id,
+            nombre: petResult.Mas_Nombre,
+            especie: petResult.Mas_Especie,
+            genero: petResult.Mas_Genero,
+            raza: petResult.Mas_Raza,
+            tamano: petResult.Mas_Tamano,
+            descripcion: petResult.Mas_Descripcion,
+            foto: petResult.Mas_Foto,
+            fecha_rescate: petResult.Mas_Fecha_Rescate,
+            lugar_rescate: petResult.Mas_Lugar_Rescate,
+            edad: petResult.Mas_Edad,
+            estado_adopcion: petResult.Mas_Estado_Adopcion,
+            vol_id: petResult.Vol_Id
+        });
+
+    };
+
+    const columns = [
+        { field: "nombre", headerName: "Nombre", width: 150 },
+        { field: "especie", headerName: "Especie", width: 150 },
+        { field: "genero", headerName: "Genero", width: 150 },
+        { field: "raza", headerName: "Raza", width: 200 },
+        { field: "tamano", headerName: "Tamaño", width: 150 },
+        { field: "descripcion", headerName: "Descripción", width: 150 },
+        { field: "foto", headerName: "Foto", width: 150 },
+        { field: "edad", headerName: "Edad", width: 150 },
+        { field: "estado_adopcion", headerName: "Estado", width: 150 },
+        {
+            field: "Acciones",
+            headerName: "Acciones",
+            width: 200,
+            renderCell: (params) => (
+                <div className="container-icons">
+                    <img src={edit} alt="editar" onClick={() => handlerEdit(params.row)} />
+                    <img src={deleteU} alt="eliminar" onClick={() => handleDelete(params.row)} />
+                </div>
+            ),
+        },
+    ];
+
+    const rows =  pets.length > 0 && pets?.map((pet) => ({
+        id: pet.Mas_Id,
+        nombre: pet.Mas_Nombre,
+        especie: pet.Mas_Especie,
+        genero: pet.Mas_Genero,
+        raza: pet.Mas_Raza,
+        tamano: pet.Mas_Tamano,
+        descripcion: pet.Mas_Descripcion,
+        foto: pet.Mas_Foto,
+        fecha_rescate: pet.Mas_Fecha_Rescate,
+        lugar_rescate: pet.Mas_Lugar_Rescate,
+        edad: pet.Mas_Edad,
+        estado_adopcion: pet.Mas_Estado_Adopcion,
+        vol_id: pet.Vol_Id
+    }));
+
+    return (
+        <>
+            <NavBar />
+            <div className="container-all_user">
+                <DataGrid rows={rows} columns={columns} checkboxSelection />
+            </div>
+            {open && (
+                <Modal form={form} setOpen={setOpen} open={open} setForm={setForm} userState={actualPet} />
+            )}
+            {
+                openBan && (
+                    < ModalBan openBan={openBan} setOpenBan={setOpenBan} actualUser={actualPet} />
+                )
+            }
+        </>
+    );
 };
 
-export default Users;
+export default AllPets;
