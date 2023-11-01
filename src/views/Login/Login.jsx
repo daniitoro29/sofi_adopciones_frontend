@@ -92,7 +92,12 @@ function Login() {
                             className="login_button"
                             variant="outlined"
                             type="button"
-                            onClick={() => navigate("/register")}   
+                            onClick={() => navigate("/register")}
+                            onKeyPress={(e) => {
+                                if (e.key === "Enter") {
+                                  handlerValidateUser();
+                                }
+                              }}   
                         >
                             Registrate
                         </Button>
