@@ -153,6 +153,41 @@ export const getPets= () => async (dispatch) => {
     }
   };
 
+
+export const EDIT_PET = 'EDIT_PET';
+
+export const editPet = ({Mas_Id, Mas_Nombre,
+  Mas_Especie,
+  Mas_Genero,
+  Mas_Raza,
+  Mas_Tamano,
+  Mas_Descripcion,
+  Mas_Foto,
+  Mas_Fecha_Rescate,
+  Mas_Lugar_Rescate,
+  Mas_Edad,
+  Mas_Estado_Adopcion}) => async (dispatch) => {
+  try {
+    const response = await axios.put(`http://localhost:3001/pets/${Mas_Id}`, {
+      Mas_Id, Mas_Nombre,
+    Mas_Especie,
+    Mas_Genero,
+    Mas_Raza,
+    Mas_Tamano,
+    Mas_Descripcion,
+    Mas_Foto,
+    Mas_Fecha_Rescate,
+    Mas_Lugar_Rescate,
+    Mas_Edad,
+    Mas_Estado_Adopcion
+    })
+    const pets = response.data;
+    dispatch({type: EDIT_PET, payload: pets})
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 // Voluntarios
 
 export const GET_VOLUNTEERS = 'GET_VOLUNTEERS';
