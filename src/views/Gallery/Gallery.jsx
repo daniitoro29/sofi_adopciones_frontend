@@ -26,11 +26,13 @@ function Gallery() {
           {pets.map((pet, index) => {
             return pet.Mas_Estado_Adopcion === "Disponible" ? (
               <Carousel.Item key={index} interval={15500} className={`${baseClassName}_carousel`}>
+                <div className="container-image">
                 <img
                   className={`d-block w-auto ${baseClassName}_img`}
                   src={pet.Mas_Foto}
                   alt={pet.Mas_Nombre}
                 />
+                </div>
                 <Carousel.Caption>
                   <h3>{pet.Mas_Nombre}</h3>
                   <p>Especie: {pet.Mas_Especie}</p>
@@ -39,6 +41,7 @@ function Gallery() {
                   <p>Tamaño: {pet.Mas_Tamano}</p>
                   <p>Descripción: {pet.Mas_Descripcion}</p>
                   <Button
+                    className="button-gallery"
                     variant="outlined"
                     type="button"
                     onClick={() => navigate("/adoptions")}

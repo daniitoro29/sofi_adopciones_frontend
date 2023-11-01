@@ -3,18 +3,49 @@
 .gallery-container {
     padding: 5rem 7rem;
 }
- 
-.gallery-container_carousel {
-     height: 600px;
-     background-color: var(--color1);
-     padding: 2rem;
-     
-    }
 
-    .gallery-container h3 {
-     color: black;
+.gallery-container .container-image {
+    display: flex;
+    justify-content: center;
+    height: 200px;
+
+    & img {
+        height: 100%;
     }
-  
-    .gallery-container label {
-     display: block !important;
-    }
+}
+
+.gallery-container_carousel {
+    height: 600px;
+    padding: 2rem;
+    border-radius: 20px;
+
+}
+
+.gallery-container h3{
+    font-weight: 600;
+
+}
+
+.gallery-container h3,
+p {
+    font-family: 'Poppins', sans-serif;
+    color: black;
+}
+
+.gallery-container label {
+    display: block !important;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    border-radius: 50px;
+    background-color: var(--color1);
+}
+
+.button-gallery {
+    background-color: var(--color1) !important;
+    margin-top: 20px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600 !important;
+    border: none !important;
+    color: white !important;
+   }
