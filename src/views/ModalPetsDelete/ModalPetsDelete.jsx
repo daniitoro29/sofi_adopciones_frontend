@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import { banUser,getUsers} from "../../redux/actions";
+import { deletePet,getPets} from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
 
@@ -10,10 +10,10 @@ function ModalPetsDelete ({actualUser, openBan,  setOpenBan }) {
 
   const dispatch = useDispatch();
 
-  const handleDelete = (user) => {
-    dispatch(banUser(user.Usu_Id));
+  const handleDelete = (pet) => {
+    dispatch(deletePet(pet.Mas_Id));
     handleClose()
-    dispatch(getUsers());
+    dispatch(getPets());
      };
 
 
@@ -27,7 +27,7 @@ function ModalPetsDelete ({actualUser, openBan,  setOpenBan }) {
        >
         <div style={{ display: "flex", justifyContent: "center" }}>
          <div className="container-edit-modal">
-          <h1>¿Estás segudo de bannear este usuario?</h1>
+          <h1>¿Estás segudo de eliminar está mascota?</h1>
 
           <div className="container_button">
            <Button

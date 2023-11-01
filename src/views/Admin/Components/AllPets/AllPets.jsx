@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect} from "react";
+import { useState, useContext} from "react";
 import "./AllPets.css";
 import NavBar from "../../../NavBar/NavBar";
 import Modal from "../../../ModalEditPet/ModalEditPet";
@@ -7,11 +7,9 @@ import { DataGrid } from "@mui/x-data-grid";
 import edit from '../../../../assets/img/editar.png';
 import deleteU from '../../../../assets/img/eliminar.png';
 import { UserContext } from '../../../../Context/context';
-import { useDispatch } from "react-redux";
-import { getPets } from "../../../../redux/actions";
+
 
 const AllPets = () => {
-    const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
     const [openBan, setOpenBan] = useState(false);
     const { pets } = useContext(UserContext);
@@ -91,28 +89,6 @@ const AllPets = () => {
             ),
         },
     ];
-    const columns = [
-        { field: "nombre", headerName: "Nombre", width: 150 },
-        { field: "especie", headerName: "Especie", width: 150 },
-        { field: "genero", headerName: "Genero", width: 150 },
-        { field: "raza", headerName: "Raza", width: 200 },
-        { field: "tamano", headerName: "Tamaño", width: 150 },
-        { field: "descripcion", headerName: "Descripción", width: 150 },
-        { field: "foto", headerName: "Foto", width: 150 },
-        { field: "edad", headerName: "Edad", width: 150 },
-        { field: "estado_adopcion", headerName: "Estado", width: 150 },
-        {
-            field: "Acciones",
-            headerName: "Acciones",
-            width: 200,
-            renderCell: (params) => (
-                <div className="container-icons">
-                    <img src={edit} alt="editar" onClick={() => handlerEdit(params.row)} />
-                    <img src={deleteU} alt="eliminar" onClick={() => handleDelete(params.row)} />
-                </div>
-            ),
-        },
-    ];
 
     const rows =  pets.length > 0 && pets?.map((pet) => ({
         id: pet.Mas_Id,
@@ -146,23 +122,6 @@ const AllPets = () => {
             }
         </>
     );
-    return (
-        <>
-            <NavBar />
-            <div className="container-all_user">
-                <DataGrid rows={rows} columns={columns} checkboxSelection />
-            </div>
-            {open && (
-                <Modal form={form} setOpen={setOpen} open={open} setForm={setForm} userState={actualPet} />
-            )}
-            {
-                openBan && (
-                    < ModalBan openBan={openBan} setOpenBan={setOpenBan} actualUser={actualPet} />
-                )
-            }
-        </>
-    );
 };
 
-export default AllPets;
 export default AllPets;
