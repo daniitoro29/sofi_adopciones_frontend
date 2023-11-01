@@ -1,18 +1,21 @@
-import { useState, useContext } from "react";
+import { useState, useContext} from "react";
 import "./AllPets.css";
 import NavBar from "../../../NavBar/NavBar";
-import Modal from "../../../ModalEdit/ModalEdit";
+import Modal from "../../../ModalEditPet/ModalEditPet";
 import ModalBan from '../../../ModalPetsDelete/ModalPetsDelete';
 import { DataGrid } from "@mui/x-data-grid";
 import edit from '../../../../assets/img/editar.png';
 import deleteU from '../../../../assets/img/eliminar.png';
 import { UserContext } from '../../../../Context/context';
 
+
 const AllPets = () => {
     const [open, setOpen] = useState(false);
     const [openBan, setOpenBan] = useState(false);
     const { pets } = useContext(UserContext);
 
+
+       
     console.log('Esto es lo que me está llegando en pets ****', pets);
 
 
@@ -33,10 +36,14 @@ const AllPets = () => {
         vol_id: ""
     });
 
+ 
+
     const handleDelete = (pet) => {
         setOpenBan(true);
         setActualPet(pets?.find((u) => u.Mas_Id === pet.id))
     };
+
+
 
     const handlerEdit = (pet) => {
         const petResult = pets?.find((u) => u.Mas_Id === pet.id);
@@ -57,6 +64,7 @@ const AllPets = () => {
             estado_adopcion: petResult.Mas_Estado_Adopcion,
             vol_id: petResult.Vol_Id
         });
+
     };
 
     const columns = [
@@ -82,7 +90,7 @@ const AllPets = () => {
         },
     ];
 
-    const rows =  pets?.map((pet) => ({
+    const rows =  pets.length > 0 && pets?.map((pet) => ({
         id: pet.Mas_Id,
         nombre: pet.Mas_Nombre,
         especie: pet.Mas_Especie,

@@ -104,17 +104,7 @@ export const createPet= ({Mas_Nombre,
   }
 }
 
-export const GET_PETS = 'GET_PETS';
 
-export const getPets= () => async (dispatch) => {
-    try {
-      const response = await axios.get('http://localhost:3001/pets');
-      const pets = response.data;
-      dispatch({ type: GET_PETS, payload: pets });
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
 
 export const EDIT_PET = 'EDIT_PET';
@@ -150,6 +140,31 @@ export const editPet = ({Mas_Id, Mas_Nombre,
     console.error(error);
   }
 }
+
+export const DELETE_PET = 'DELETE_PET';
+
+export const deletePet = (Mas_Id) => async (dispatch) => {
+  try {
+    const response = await axios.delete(`http://localhost:3001/pets/${Mas_Id}`)
+    const pets = response.data;
+    dispatch({type: DELETE_PET, payload: pets})
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const GET_PETS = 'GET_PETS';
+
+export const getPets= () => async (dispatch) => {
+    try {
+      const response = await axios.get('http://localhost:3001/pets');
+      const pets = response.data;
+      dispatch({ type: GET_PETS, payload: pets });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
 // Voluntarios
 
