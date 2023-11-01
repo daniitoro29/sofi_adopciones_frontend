@@ -15,7 +15,6 @@ import NavBar from "../NavBar/NavBar";
 const Form = () => {
  const dispatch = useDispatch();
  const navigate = useNavigate();
- const users = useSelector((state) => state.users);
  const [form, setForm] = useState({
   nombre: "",
   apellido: "",
@@ -26,8 +25,6 @@ const Form = () => {
   estado: "Activo",
   rol: "",
  });
-
-console.log("Correo********************", users)
 
  const changeHandler = (event) => {
   const property = event.target.name;
@@ -80,7 +77,7 @@ console.log("Correo********************", users)
           })
         );
   
-/*         setForm({
+        setForm({
           nombre: "",
           apellido: "",
           telefono: "",
@@ -89,9 +86,10 @@ console.log("Correo********************", users)
           genero: "",
           estado: "",
           rol: "",
-        }); */
+        });
   
         Swal.fire("¡Registro exitoso!", "El usuario se ha creado correctamente", "success");
+        navigate("/gallery")
       } catch (error) {
         if (error.response && error.response.status === 400) {
           Swal.fire("Error", error.response.data.message, "error");

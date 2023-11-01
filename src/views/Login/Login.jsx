@@ -54,7 +54,7 @@ function Login() {
         <div className="login">
             <NavBar />
 
-            <div style={{ display: "flex", justifyContent: "center" }}>
+            <div style={{ display: "flex", justifyContent: "center", height: "66.2vh" }}>
                 <div className="general-container_login">
                     <h1>¡Hola! Ingresa a tu cuenta</h1>
                     <Grid container className="container_login">
@@ -89,9 +89,10 @@ function Login() {
                             Iniciar sesión
                         </Button>
                         <Button
+                            className="login_button"
                             variant="outlined"
                             type="button"
-                            onClick={() => navigate("/register")}
+                            onClick={() => navigate("/register")}   
                         >
                             Registrate
                         </Button>
