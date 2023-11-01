@@ -3,20 +3,22 @@
     display: flex;
 }
 
-.toggle-button {
-    background-color: #3498db;
-    color: #fff;
-    border: none;
+.button-menu {
+    position: absolute !important;
+    margin-top: 80vh;
+    margin-left: 50vw;
+    background-color: var(--color1) !important;
+    margin-top: 20px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600 !important;
+    border: none !important;
     padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 20px;
-    transition: background-color 0.3s, color 0.3s;
+    border-radius: 10px
 }
 
-.toggle-button:hover {
-    background-color: #ffa500;
-    color: #fff;
+.button-menu a {
+    color: white !important;
+    text-decoration: none;
 }
 
 .sidebar {
