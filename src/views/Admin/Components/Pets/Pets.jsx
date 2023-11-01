@@ -120,7 +120,7 @@ const Form = () => {
       <div>
          <NavBar />
          <div style={{ display: "flex", justifyContent: "center" }}>
-            <div className="general-container_form">
+            <div className="general-container_formp">
                <h1>Completa los datos de la mascota</h1>
                <Grid container className="container_form">
                   <Grid item xs={6} md={6}>
