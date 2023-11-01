@@ -7,6 +7,7 @@ import Users from './views/Admin/Components/Users/Users';
 import Pets from './views/Admin/Components/Pets/Pets';
 import FormCreateUser from "./views/FormCreateUser/FormCreateUser";
 import Gallery from "./views/Gallery/Gallery";
+import AdoptionForm from "./views/AdoptionForm/AdoptionForm";
 
 function App() {
  return (
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/users" element={<Users/>} />
         <Route exact path="/pets" element={<Pets/>} />
         <Route exact path="/gallery" element={<Gallery/>} />
+        <Route exact path="/adoptions" element={<AdoptionForm/>} />
       </Routes>
   </div>
  );
