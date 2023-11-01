@@ -1,5 +1,5 @@
 import "../NavBar/NavBar.css";
-import logo from '../../assets/img/pets.svg';
+import logo5 from '../../assets/img/logo5.png';
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -41,7 +41,7 @@ function NavBar() {
     <div className="container-general_home">
       <nav>
         <a href="/">
-          <img src={logo} alt="logo" />
+          <img src={logo5} alt="logo5" />
         </a>
         <button className="menu-button" onClick={toggleMenu}>
           ☰
