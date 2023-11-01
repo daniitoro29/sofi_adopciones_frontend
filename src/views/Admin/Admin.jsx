@@ -1,23 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Drawer, List, ListItem, ListItemText } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import "./Admin.css";
 import logo5 from "../../assets/img/logo5.png";
+import Users from "./Components/Users/Users";
+import Pets from "./Components/Pets/Pets";
+import AllPets from "./Components/AllPets/AllPets";
+
+
 
 const Admin = () => {
-    const navigate = useNavigate();
     const [isDrawerOpen, setDrawerOpen] = useState(true);
+    const [isUser, setIsUser] = useState(false);
+    const [isPet, setIsPet] = useState(false);
+    const [isAllPet, setIsAllPet] = useState(false);
 
     const handleNavigateToUsers = () => {
-        navigate("/users");
+        setIsUser(true)
+        setIsPet(false)
+        setIsAllPet(false)
     };
 
     const handleNavigateToPets = () => {
-        navigate("/pets");
+        setIsPet(true)
+        setIsUser(false)
+        setIsAllPet(false)
     };
 
     const handleNavigateAllPets = () => {
-        navigate("/allpets");
+        setIsAllPet(true)
+        setIsPet(false)
+        setIsUser(false)
     };
 
     const toggleDrawer = (open) => (event) => {
@@ -26,6 +38,16 @@ const Admin = () => {
         }
         setDrawerOpen(open);
     };
+    
+    const handleResetState = () => {
+        setIsUser(false);
+        setIsPet(false);
+        setIsAllPet(false);
+      };
+    
+      useEffect(() => {
+        handleResetState();
+      }, []);
 
     return (
         <>
@@ -36,7 +58,7 @@ const Admin = () => {
 
                 <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer(false)}>
                     <div className="sidebar">
-                    <img src={logo5} alt="logo5" className="logoAdmin" />
+                        <img src={logo5} alt="logo5" className="logoAdmin" />
                         <List>
                             <ListItem button onClick={handleNavigateToUsers}>
                                 <ListItemText primary="Usuarios" />
@@ -47,18 +69,21 @@ const Admin = () => {
                             <ListItem button onClick={handleNavigateAllPets}>
                                 <ListItemText primary="Todas las mascotas" />
                             </ListItem>
-                            
+
                         </List>
-         {/*                <Button
-                            variant="contained"
-                            onClick={() => console.log("Botón adicional")}
-                            className="additional-button"
-                        >
-                            Otra acción
-                        </Button> */}
+
                     </div>
                 </Drawer>
             </div>
+            {
+                isUser && <Users /> 
+            }
+            {
+                isPet && <Pets />
+            }
+                        {
+                isAllPet && <AllPets />
+            }
         </>
     );
 };
