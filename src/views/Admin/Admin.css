@@ -5,16 +5,16 @@
 
 .button-menu {
     position: absolute !important;
-    margin-top: 80vh;
-    margin-left: 50vw;
+    margin-top: 3vh; /* Cambia esta propiedad para ajustar la posición vertical */
+    margin-left: 47%;
     background-color: var(--color1) !important;
-    margin-top: 20px;
     font-family: "Poppins", sans-serif;
     font-weight: 600 !important;
     border: none !important;
     padding: 10px 20px;
-    border-radius: 10px
-}
+    border-radius: 10px;
+    }
+
 
 .button-menu a {
     color: white !important;
