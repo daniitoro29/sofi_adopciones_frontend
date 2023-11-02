@@ -8,8 +8,8 @@ body {
   margin-top: 70px;
  max-width: 758px;
  height: 554px;
- background: #FCFAFA;
- border-radius: 8px;
+ background: var(--color12);
+ border-radius: Ñ8px;
 }
 
 .general-container_form .css-1osj8n2-MuiGrid-root,

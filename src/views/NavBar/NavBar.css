@@ -4,11 +4,10 @@ nav {
   width: 100%;
   padding: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 10px;
   background: var(--color1);
   align-items: center;
-  justify-content: center;
   align-items: center; /* Agrega esta línea para centrar verticalmente */
   height: 100%; /* Agrega esta línea para ocupar toda la altura disponible */
 }
@@ -36,7 +35,6 @@ img {
 ul.menu-items {
   display: flex;
   list-style-type: none;
-  margin-left: 890px;
 }
 
 ul.menu-items li {
