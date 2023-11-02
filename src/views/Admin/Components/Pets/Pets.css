@@ -8,7 +8,7 @@ body {
 margin-top: 70px;
  max-width: 758px;
  height: 760px !important;
- background: #f1f1f1;
+ background: var(--color12);
  border-radius: 16px;
 }
 
@@ -87,4 +87,5 @@ margin-top: 70px;
   width: 231px !important;
   border-radius: 4px;
   border: 1px solid #D9D9D9;
+  background-color: var(--color12);
 }

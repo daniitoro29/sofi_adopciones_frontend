@@ -117,7 +117,7 @@ const Form = () => {
 
 
    return (
-      <div>
+      <>
          <NavBar />
          <div style={{ display: "flex", justifyContent: "center" }}>
             <div className="general-container_formp">
@@ -264,7 +264,7 @@ const Form = () => {
                </div>
             </div>
          </div>
-      </div>
+      </>
    );
 };
 
