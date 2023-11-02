@@ -1,12 +1,5 @@
 @import '../../styles.css';
 
-
-/* Estilos generales para todas las resoluciones */
-.container-general_home {
-  display: flex;
-  justify-content: center;
-}
-
 nav {
   width: 100%;
   padding: 0;
@@ -15,12 +8,23 @@ nav {
   padding: 10px;
   background: var(--color1);
   align-items: center;
+  justify-content: center;
+  align-items: center; /* Agrega esta línea para centrar verticalmente */
+  height: 100%; /* Agrega esta línea para ocupar toda la altura disponible */
 }
+
+.container-general_home {
+  text-align: center;
+  background: var(--color1);
+}
+nav {
+  line-height: 150px; /* Ajusta esto según el tamaño de tu logo */
+}
+
 
 img {
   width: 180px;
   height: 160px;
-  margin: auto;
 }
 
 .menu-button {
@@ -32,8 +36,7 @@ img {
 ul.menu-items {
   display: flex;
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  margin-left: 890px;
 }
 
 ul.menu-items li {
@@ -41,12 +44,12 @@ ul.menu-items li {
   cursor: pointer;
   font-weight: 700;
   font-family: 'Poppins', sans-serif;
-  color: var(---color2);
+  color: var(--color2);
   transition: color 0.3s;
 }
 
 ul.menu-items li:hover {
-  color: #000;
+  color: #ffffff;
 }
 
 /* Estilos de responsive de 480px */
@@ -85,9 +88,5 @@ ul.menu-items li:hover {
 @media (min-width: 721px) and (max-width: 820px) {
   .menu-button {
     display: none; /* Oculta el botón de menú en el breakpoint de 820px */
-  }
-
-  ul.menu-items {
-    display: flex; /* Muestra los elementos de menú */
   }
 }
