@@ -1,4 +1,7 @@
-import { GET_USERS, DELETE_USER, CREATE_USER, EDIT_USER, BAN_USER, CREATE_PET, GET_VOLUNTEERS, GET_PETS, EDIT_PET, DELETE_PET, CREATE_FORM, CREATE_CAMPAIGN, CREATE_PARTICIPANT } from "./actions";
+import {
+    GET_USERS, DELETE_USER, CREATE_USER, EDIT_USER, BAN_USER, CREATE_PET, GET_VOLUNTEERS, GET_PETS, EDIT_PET, DELETE_PET, CREATE_FORM, CREATE_CAMPAIGN, CREATE_PARTICIPANT, GET_FORM,
+    GET_CAMPAIGNS, GET_PARTICIPANTS
+} from "./actions";
 
 const initialState = {
     users: [],
@@ -39,13 +42,19 @@ const rootReducer = (state = initialState, action) => {
         // Form Adoption
         case CREATE_FORM:
             return { ...state, form: action.payload };
+        case GET_FORM:
+            return { ...state, form: action.payload };
 
         // Campaña
         case CREATE_CAMPAIGN:
             return { ...state, campaigns: action.payload };
+        case GET_CAMPAIGNS:
+            return { ...state, campaigns: action.payload };
         // Participantes
         case CREATE_PARTICIPANT:
             return { ...state, participant: action.payload };
+            case GET_PARTICIPANTS:
+                return { ...state, participant: action.payload };
         default:
             return { ...state };
     }
