@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import {useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { getUsers, getPets, getVolunteers, getForm, getCampaigns, getParticipants } from "../redux/actions";
+import { getUsers, getPets, getVolunteers, getForm, getCampaigns, getParticipants, getAdopter } from "../redux/actions";
 
 const UserContext = createContext();
 
@@ -13,6 +13,7 @@ const UserProvider = ({ children }) => {
     const form= useSelector((state) => state?.form)  ;
     const campaigns= useSelector((state) => state?.campaigns)  ;
     const participant= useSelector((state) => state?.participant)  ;
+    const adopter = useSelector((state) => state?.adopter)  ;
 
 
   useEffect(() => {
@@ -22,10 +23,11 @@ const UserProvider = ({ children }) => {
     dispatch(getForm());
     dispatch(getCampaigns());
     dispatch(getParticipants());
+    dispatch(getAdopter());
   }, [dispatch]);
 
   return (
-    <UserContext.Provider value={{ users, pets }}>
+    <UserContext.Provider value={{ users, pets, volunteers, form, campaigns, participant, adopter }}>
       {children}
     </UserContext.Provider>
   );

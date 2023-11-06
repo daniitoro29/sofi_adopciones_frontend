@@ -1,6 +1,6 @@
 import {
     GET_USERS, DELETE_USER, CREATE_USER, EDIT_USER, BAN_USER, CREATE_PET, GET_VOLUNTEERS, GET_PETS, EDIT_PET, DELETE_PET, CREATE_FORM, CREATE_CAMPAIGN, CREATE_PARTICIPANT, GET_FORM,
-    GET_CAMPAIGNS, GET_PARTICIPANTS
+    GET_CAMPAIGNS, GET_PARTICIPANTS, CREATE_ADOPTER, GET_ADOPTER
 } from "./actions";
 
 const initialState = {
@@ -10,6 +10,7 @@ const initialState = {
     form: [],
     campaigns: [],
     participant: [],
+    adopter: [],
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -55,6 +56,12 @@ const rootReducer = (state = initialState, action) => {
             return { ...state, participant: action.payload };
             case GET_PARTICIPANTS:
                 return { ...state, participant: action.payload };
+
+        // Adopters
+        case CREATE_ADOPTER:
+            return { ...state, adopter: action.payload };
+            case GET_ADOPTER:
+                return { ...state, adopter: action.payload };
         default:
             return { ...state };
     }

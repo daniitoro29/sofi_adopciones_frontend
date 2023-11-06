@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { createParticipant } from '../../../../redux/actions'; // Asegúrate de importar la acción correcta
 import Swal from 'sweetalert2';
@@ -6,9 +6,13 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import NavBar from '../../../NavBar/NavBar';
+import { UserContext } from '../../../../Context/context';
 
 const ParticipantForm = () => {
   const dispatch = useDispatch();
+  const { campaigns, volunteers, pets, adopter } = useContext(UserContext);
+
+
   const [form, setForm] = useState({
     camId: '',
     volId: '',

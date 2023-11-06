@@ -317,3 +317,30 @@ export const getParticipants = () => async (dispatch) => {
     console.error(error);
   }
 };
+
+// Adopters
+export const CREATE_ADOPTER = 'CREATE_ADOPTER';
+
+export const createAdopter = ({ Usu_Id, Mas_Id }) => async (dispatch) => {
+  try {
+    const response = await axios.post(`http://localhost:3001/adopters`, {
+      Usu_Id, Mas_Id
+    });
+    const adopter = response.data;
+    dispatch({ type: CREATE_ADOPTER, payload: adopter });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const GET_ADOPTER = 'GET_ADOPTER';
+
+export const getAdopter = () => async (dispatch) => {
+  try {
+    const response = await axios.get('http://localhost:3001/adopters');
+    const adopter = response.data;
+    dispatch({ type: GET_ADOPTER, payload: adopter });
+  } catch (error) {
+    console.error(error);
+  }
+};
