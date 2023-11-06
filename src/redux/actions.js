@@ -265,3 +265,19 @@ export const createCampaign = ({ Cam_Lugar, Cam_Descripcion, Cam_Fecha_Campana }
       console.error(error);
     }
   }
+
+// Participantes
+
+export const CREATE_PARTICIPANT = 'CREATE_PARTICIPANT';
+
+export const createParticipant = ({ Cam_Id,Vol_Id,Ado_User_Id,Mas_Id }) => async (dispatch) => {
+    try {
+      const response = await axios.post(`http://localhost:3001/participants`, {
+        Cam_Id,Vol_Id,Ado_User_Id,Mas_Id
+      });
+      const participant = response.data;
+      dispatch({ type: CREATE_PARTICIPANT, payload: participant });
+    } catch (error) {
+      console.error(error);
+    }
+  }
