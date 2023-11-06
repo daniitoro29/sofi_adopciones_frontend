@@ -63,6 +63,12 @@ const Form = () => {
         return;
       }
 
+      const contraseñaRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+-]).*$/;
+      if (!contraseñaRegex.test(form.contraseña)) {
+        Swal.fire("Error", "La contrseña debera tener minimo 1 mayuscula, 1 numero y 1 caracter especiale", "error");
+        return;
+      }
+
       try {
         await dispatch(
           createUser({
