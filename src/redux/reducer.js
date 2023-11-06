@@ -1,9 +1,11 @@
-import { GET_USERS, DELETE_USER, CREATE_USER, EDIT_USER, BAN_USER, CREATE_PET, GET_VOLUNTEERS, GET_PETS, EDIT_PET, DELETE_PET } from "./actions";
+import { GET_USERS, DELETE_USER, CREATE_USER, EDIT_USER, BAN_USER, CREATE_PET, GET_VOLUNTEERS, GET_PETS, EDIT_PET, DELETE_PET, CREATE_FORM, CREATE_CAMPAIGN } from "./actions";
 
 const initialState = {
     users: [],
     volunteers: [],
     pets: [],
+    form: [],
+    campaigns: [],
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -32,6 +34,14 @@ const rootReducer = (state = initialState, action) => {
         // Voluntarios
         case GET_VOLUNTEERS:
             return { ...state, volunteers: action.payload };
+
+        // Form Adoption
+        case CREATE_FORM:
+            return { ...state, form: action.payload };
+
+        // Campaña
+        case CREATE_CAMPAIGN:
+            return { ...state, campaigns: action.payload };
         default:
             return { ...state };
     }

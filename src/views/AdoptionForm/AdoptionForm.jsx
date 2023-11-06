@@ -1,21 +1,26 @@
 import React, { useState } from "react";
-import { Button, Grid, TextField, Select, MenuItem, FormControl, InputLabel, RadioGroup, FormControlLabel, Radio, FormLabel, FormGroup, Checkbox } from "@mui/material";
+import { Button, Grid, TextField, Select, MenuItem, FormControl, InputLabel, RadioGroup, FormControlLabel, Radio, FormLabel} from "@mui/material";
 import NavBar from "../NavBar/NavBar";
 import "./AdoptionForm.css";
+import { createForm } from "../../redux/actions";
+import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
 
 const FormularioAdopcion = () => {
+    
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         Form_Nombre: "",
         Form_CedulaDocumento: "",
-        Form_Edad: 0,
+        Form_Edad: "",
         Form_TelefonoCasa: "",
         Form_Ocupacion: "",
         Form_Direccion: "",
         Form_Telefono: "",
         Form_Celular: "",
         Form_Correo: "",
-        Form_NumeroPersonasFamilia: 0,
-        Form_Adultos: 0,
+        Form_NumeroPersonasFamilia: 1,
+        Form_Adultos: 1,
         Form_Ninos: 0,
         Form_Bebes: 0,
         Form_EdadFamiliares: "",
@@ -43,8 +48,79 @@ const FormularioAdopcion = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        try {
+            await dispatch(
+                createForm({
+                    Form_Nombre: formData.Form_Nombre,
+                    Form_CedulaDocumento: formData.Form_CedulaDocumento,
+                    Form_Edad:formData.Form_Edad,
+                    Form_TelefonoCasa:formData.Form_TelefonoCasa,
+                    Form_Ocupacion:formData.Form_Ocupacion,
+                    Form_Direccion:formData.Form_Direccion,
+                    Form_Telefono:formData.Form_Telefono,
+                    Form_Celular:formData.Form_Celular,
+                    Form_Correo:formData.Form_Correo,
+                    Form_NumeroPersonasFamilia:formData.Form_NumeroPersonasFamilia,
+                    Form_Adultos:formData.Form_Adultos,
+                    Form_Ninos:formData.Form_Ninos,
+                    Form_Bebes:formData.Form_Bebes,
+                    Form_EdadFamiliares:formData.Form_EdadFamiliares,
+                    Form_MotivoAdopcion:formData.Form_MotivoAdopcion,
+                    Form_ExperienciaMascotasAntes:formData.Form_ExperienciaMascotasAntes,
+                    Form_CausasNoTenerMascotaAhora:formData.Form_CausasNoTenerMascotaAhora,
+                    Form_AutorizacionAdopcion:formData.Form_AutorizacionAdopcion,
+                    Form_DecisionMiembrosHogar:formData.Form_DecisionMiembrosHogar,
+                    Form_AsuncionGastosMascota:formData.Form_AsuncionGastosMascota,
+                    Form_TienePatioTerrazaJardin:formData.Form_TienePatioTerrazaJardin,
+                    Form_Cubierto:formData.Form_Cubierto,
+                    Form_DestinoViviendaMascota: formData.Form_DestinoViviendaMascota,
+                    Form_LugarDormirMascota: formData.Form_LugarDormirMascota,
+                    Form_ConocimientoGastosMascota: formData.Form_ConocimientoGastosMascota,
+                    Form_MascotasActuales: formData.Form_MascotasActuales,
+                    Form_PeriodoAjusteMascota: formData.Form_PeriodoAjusteMascota, 
+                })
+            );
+
+            setFormData({
+                Form_Nombre:"",
+                Form_CedulaDocumento:"",
+                Form_Edad:"",
+                Form_TelefonoCasa:"",
+                Form_Ocupacion:"",
+                Form_Direccion:"",
+                Form_Telefono:"",
+                Form_Celular:"",
+                Form_Correo:"",
+                Form_NumeroPersonasFamilia:"",
+                Form_Adultos:"",
+                Form_Ninos:"",
+                Form_Bebes:"",
+                Form_EdadFamiliares:"",
+                Form_MotivoAdopcion:"",
+                Form_ExperienciaMascotasAntes:"",
+                Form_CausasNoTenerMascotaAhora:"",
+                Form_AutorizacionAdopcion:"",
+                Form_DecisionMiembrosHogar:"",
+                Form_AsuncionGastosMascota:"",
+                Form_TienePatioTerrazaJardin:"",
+                Form_Cubierto:"",
+                Form_DestinoViviendaMascota:"",
+                Form_LugarDormirMascota:"",
+                Form_ConocimientoGastosMascota:"",
+                Form_MascotasActuales:"",
+                Form_PeriodoAjusteMascota: ""
+            });
+
+            Swal.fire("¡Registro exitoso!", "La mascota se ha creado correctamente", "success");
+        } catch (error) {
+            if (error.response && error.response.status === 400) {
+                Swal.fire("Error", error.response.data.message, "error");
+            } else {
+                Swal.fire("Error", "Ocurrió un error al registrar la mascota", "error");
+            }
+        }
     };
 
     return (
@@ -339,8 +415,8 @@ const FormularioAdopcion = () => {
                         </Grid>
                         <Grid item xs={6} md={6}>
                             <FormControl component="fieldset">
-                                <FormLabel component="legend"> ¿Está dispuesto a que el gato o perro tenga un periodo de ajuste en el que aprenda dónde debe ir 
-al baño y se adapte a la familia? </FormLabel>
+                                <FormLabel component="legend"> ¿Está dispuesto a que el gato o perro tenga un periodo de ajuste en el que aprenda dónde debe ir
+                                    al baño y se adapte a la familia? </FormLabel>
                                 <RadioGroup
                                     name="Form_PeriodoAjusteMascota"
                                     value={formData.Form_PeriodoAjusteMascota.toString()}
