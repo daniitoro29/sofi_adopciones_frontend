@@ -40,11 +40,11 @@ const CampaignForm = () => {
         })
       );
 
-/*       setForm({
+      setForm({
         lugar: '',
         descripcion: '',
         fechaCampaña: '',
-      }); */
+      });
 
       Swal.fire('¡Registro exitoso!', 'La campaña se ha creado correctamente', 'success');
     } catch (error) {
