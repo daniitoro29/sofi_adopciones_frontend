@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { createCampaign } from '../../../../redux/actions'; 
 import Swal from 'sweetalert2';
 import TextField from '@mui/material/TextField';
@@ -36,15 +36,15 @@ const CampaignForm = () => {
         createCampaign({
           Cam_Lugar: form.lugar,
           Cam_Descripcion: form.descripcion,
-          Cam_Fecha_Campaña: form.fechaCampaña,
+          Cam_Fecha_Campana: form.fechaCampaña,
         })
       );
 
-      setForm({
+/*       setForm({
         lugar: '',
         descripcion: '',
         fechaCampaña: '',
-      });
+      }); */
 
       Swal.fire('¡Registro exitoso!', 'La campaña se ha creado correctamente', 'success');
     } catch (error) {
