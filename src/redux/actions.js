@@ -248,20 +248,99 @@ export const createForm = ({ Form_Nombre,
     }
   }
 
+export const GET_FORM = 'GET_FORM';
+
+export const getForm = () => async (dispatch) => {
+  try {
+    const response = await axios.get('http://localhost:3001/voluntarios');
+    const form = response.data;
+    dispatch({ type: GET_FORM, payload: form });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // Campañas
 
 export const CREATE_CAMPAIGN = 'CREATE_CAMPAIGN';
 
 export const createCampaign = ({ Cam_Lugar, Cam_Descripcion, Cam_Fecha_Campana }) => async (dispatch) => {
-    try {
-      const response = await axios.post(`http://localhost:3001/campaings`, {
-        Cam_Lugar,
-        Cam_Descripcion,
-        Cam_Fecha_Campana
-      });
-      const campaign = response.data;
-      dispatch({ type: CREATE_CAMPAIGN, payload: campaign });
-    } catch (error) {
-      console.error(error);
-    }
+  try {
+    const response = await axios.post(`http://localhost:3001/campaings`, {
+      Cam_Lugar,
+      Cam_Descripcion,
+      Cam_Fecha_Campana
+    });
+    const campaign = response.data;
+    dispatch({ type: CREATE_CAMPAIGN, payload: campaign });
+  } catch (error) {
+    console.error(error);
   }
+}
+
+export const GET_CAMPAIGNS = 'GET_CAMPAIGNS';
+
+export const getCampaigns = () => async (dispatch) => {
+  try {
+    const response = await axios.get('http://localhost:3001/campaings');
+    const campaign = response.data;
+    dispatch({ type: GET_CAMPAIGNS, payload: campaign });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// Participantes
+
+export const CREATE_PARTICIPANT = 'CREATE_PARTICIPANT';
+
+export const createParticipant = ({ Cam_Id, Vol_Id, Ado_User_Id, Mas_Id }) => async (dispatch) => {
+  try {
+    const response = await axios.post(`http://localhost:3001/participants`, {
+      Cam_Id, Vol_Id, Ado_User_Id, Mas_Id
+    });
+    const participant = response.data;
+    dispatch({ type: CREATE_PARTICIPANT, payload: participant });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const GET_PARTICIPANTS = 'GET_PARTICIPANTS';
+
+export const getParticipants = () => async (dispatch) => {
+  try {
+    const response = await axios.get('http://localhost:3001/participants');
+    const participants = response.data;
+    dispatch({ type: GET_PARTICIPANTS, payload: participants });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// Adopters
+export const CREATE_ADOPTER = 'CREATE_ADOPTER';
+
+export const createAdopter = ({ Usu_Id, Mas_Id }) => async (dispatch) => {
+  try {
+    const response = await axios.post(`http://localhost:3001/adopters`, {
+      Usu_Id, Mas_Id
+    });
+    const adopter = response.data;
+    dispatch({ type: CREATE_ADOPTER, payload: adopter });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const GET_ADOPTER = 'GET_ADOPTER';
+
+export const getAdopter = () => async (dispatch) => {
+  try {
+    const response = await axios.get('http://localhost:3001/adopters');
+    const adopter = response.data;
+    dispatch({ type: GET_ADOPTER, payload: adopter });
+  } catch (error) {
+    console.error(error);
+  }
+};

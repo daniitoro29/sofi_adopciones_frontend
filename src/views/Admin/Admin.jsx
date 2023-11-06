@@ -6,7 +6,7 @@ import Users from "./Components/Users/Users";
 import Pets from "./Components/Pets/Pets";
 import AllPets from "./Components/AllPets/AllPets";
 import Campaigns from "./Components/Campaigns/Campaigns";
-
+import Participants from "./Components/Participants/Participants";
 
 
 const Admin = () => {
@@ -15,11 +15,13 @@ const Admin = () => {
     const [isPet, setIsPet] = useState(false);
     const [isAllPet, setIsAllPet] = useState(false);
     const [isCampaign, setIsCampaign] = useState(false);
+    const [isParticipant, setIsParticipant] = useState(false);
 
     const handleNavigateToUsers = () => {
         setIsUser(true);
         setIsPet(false);
         setIsAllPet(false);
+        setIsParticipant(false);
         setIsCampaign(false);
     };
 
@@ -27,6 +29,7 @@ const Admin = () => {
         setIsPet(true);
         setIsUser(false);
         setIsAllPet(false);
+        setIsParticipant(false)
         setIsCampaign(false);
     };
 
@@ -34,6 +37,7 @@ const Admin = () => {
         setIsAllPet(true);
         setIsPet(false);
         setIsUser(false);
+        setIsParticipant(false);
         setIsCampaign(false);
     };
 
@@ -41,7 +45,16 @@ const Admin = () => {
         setIsAllPet(false);
         setIsPet(false);
         setIsUser(false);
+        setIsParticipant(false);
         setIsCampaign(true);
+    }
+
+    const handleNavigateParticipants = () => {
+        setIsAllPet(false);
+        setIsPet(false);
+        setIsUser(false);
+        setIsCampaign(false);
+        setIsParticipant(true);
     }
 
     const toggleDrawer = (open) => (event) => {
@@ -84,6 +97,9 @@ const Admin = () => {
                             <ListItem button onClick={handleNavigateCampaigns}>
                                 <ListItemText primary="Campañas" />
                             </ListItem>
+                            <ListItem button onClick={handleNavigateParticipants}>
+                                <ListItemText primary="Participantes" />
+                            </ListItem>
 
                         </List>
 
@@ -101,6 +117,9 @@ const Admin = () => {
             }
             {
                 isCampaign && <Campaigns />
+            }
+                        {
+                isParticipant && <Participants />
             }
 
             {
