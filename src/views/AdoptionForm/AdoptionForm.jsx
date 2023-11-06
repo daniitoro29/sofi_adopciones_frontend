@@ -67,7 +67,7 @@ const FormularioAdopcion = () => {
                     <Grid container spacing={2}>
                         <Grid item xs={6} md={6}>
                             <TextField
-                                label="Nombre"
+                                label="Nombre y apellido"
                                 name="Form_Nombre"
                                 value={formData.Form_Nombre}
                                 onChange={handleChange}
@@ -199,7 +199,7 @@ const FormularioAdopcion = () => {
                         </Grid>
                         <Grid item xs={12} md={12}>
                             <TextField
-                                label="Edades de los Familiares"
+                                label="Edades de cada uno de los integrantes de la familia (Por favor separe las edades con un guión)"
                                 name="Form_EdadFamiliares"
                                 value={formData.Form_EdadFamiliares}
                                 onChange={handleChange}
@@ -209,7 +209,7 @@ const FormularioAdopcion = () => {
                         </Grid>
                         <Grid item xs={12} md={12}>
                             <TextField
-                                label="Motivo de Adopción"
+                                label="¿Por qué quiere adoptar un animal?"
                                 name="Form_MotivoAdopcion"
                                 value={formData.Form_MotivoAdopcion}
                                 onChange={handleChange}
@@ -219,7 +219,7 @@ const FormularioAdopcion = () => {
                         </Grid>
                         <Grid item xs={12} md={12}>
                             <TextField
-                                label="Experiencia con Mascotas Antes"
+                                label="¿Ha tenido animales de compañía antes? Especifique cuál y por cuánto tiempo. "
                                 name="Form_ExperienciaMascotasAntes"
                                 value={formData.Form_ExperienciaMascotasAntes}
                                 onChange={handleChange}
@@ -229,7 +229,7 @@ const FormularioAdopcion = () => {
                         </Grid>
                         <Grid item xs={12} md={12}>
                             <TextField
-                                label="Causas para no Tener Mascota Ahora"
+                                label="¿Por qué no lo tiene ahora? Explicar las causas."
                                 name="Form_CausasNoTenerMascotaAhora"
                                 value={formData.Form_CausasNoTenerMascotaAhora}
                                 onChange={handleChange}
@@ -239,7 +239,7 @@ const FormularioAdopcion = () => {
                         </Grid>
                         <Grid item xs={12} md={12}>
                             <TextField
-                                label="Autorización para la Adopción"
+                                label="¿Quién autoriza la adopción del animal?"
                                 name="Form_AutorizacionAdopcion"
                                 value={formData.Form_AutorizacionAdopcion}
                                 onChange={handleChange}
@@ -249,7 +249,7 @@ const FormularioAdopcion = () => {
                         </Grid>
                         <Grid item xs={12} md={12}>
                             <TextField
-                                label="Decisión de los Miembros del Hogar"
+                                label="¿Comparten esta decisión el resto de miembros del hogar?"
                                 name="Form_DecisionMiembrosHogar"
                                 value={formData.Form_DecisionMiembrosHogar}
                                 onChange={handleChange}
@@ -259,7 +259,7 @@ const FormularioAdopcion = () => {
                         </Grid>
                         <Grid item xs={12} md={12}>
                             <TextField
-                                label="Asunción de Gastos de la Mascota"
+                                label="¿Quién va a asumir los gastos derivados del animal?"
                                 name="Form_AsuncionGastosMascota"
                                 value={formData.Form_AsuncionGastosMascota}
                                 onChange={handleChange}
@@ -269,7 +269,7 @@ const FormularioAdopcion = () => {
                         </Grid>
                         <Grid item xs={6} md={6}>
                             <FormControl fullWidth>
-                                <InputLabel>Tiene Patio, Terraza o Jardín</InputLabel>
+                                <InputLabel>¿Su vivienda tiene patio, terraza o jardín?</InputLabel>
                                 <Select
                                     name="Form_TienePatioTerrazaJardin"
                                     value={formData.Form_TienePatioTerrazaJardin}
@@ -284,7 +284,7 @@ const FormularioAdopcion = () => {
                         </Grid>
                         <Grid item xs={6} md={6}>
                             <FormControl fullWidth>
-                                <InputLabel>¿Está Cubierto?</InputLabel>
+                                <InputLabel> Si es así, ¿es cubierto? </InputLabel>
                                 <Select
                                     name="Form_Cubierto"
                                     value={formData.Form_Cubierto}
@@ -299,7 +299,7 @@ const FormularioAdopcion = () => {
                         </Grid>
                         <Grid item xs={12} md={12}>
                             <TextField
-                                label="Destino de la Vivienda para la Mascota"
+                                label="¿Qué lugar de la vivienda estaría destinado al perro/gato?"
                                 name="Form_DestinoViviendaMascota"
                                 value={formData.Form_DestinoViviendaMascota}
                                 onChange={handleChange}
@@ -309,7 +309,7 @@ const FormularioAdopcion = () => {
                         </Grid>
                         <Grid item xs={12} md={12}>
                             <TextField
-                                label="Lugar de Dormir de la Mascota"
+                                label=" ¿En dónde dormiría el animal?"
                                 name="Form_LugarDormirMascota"
                                 value={formData.Form_LugarDormirMascota}
                                 onChange={handleChange}
@@ -319,7 +319,7 @@ const FormularioAdopcion = () => {
                         </Grid>
                         <Grid item xs={12} md={12}>
                             <TextField
-                                label="Conocimiento de Gastos de la Mascota"
+                                label="¿Conoce los gastos que implica tener un animal?"
                                 name="Form_ConocimientoGastosMascota"
                                 value={formData.Form_ConocimientoGastosMascota}
                                 onChange={handleChange}
@@ -329,7 +329,7 @@ const FormularioAdopcion = () => {
                         </Grid>
                         <Grid item xs={12} md={12}>
                             <TextField
-                                label="Mascotas Actuales"
+                                label="¿Tiene actualmente mascotas? ¿Cuál (es)? "
                                 name="Form_MascotasActuales"
                                 value={formData.Form_MascotasActuales}
                                 onChange={handleChange}
@@ -339,7 +339,8 @@ const FormularioAdopcion = () => {
                         </Grid>
                         <Grid item xs={6} md={6}>
                             <FormControl component="fieldset">
-                                <FormLabel component="legend">¿Acepta un período de ajuste para la mascota?</FormLabel>
+                                <FormLabel component="legend"> ¿Está dispuesto a que el gato o perro tenga un periodo de ajuste en el que aprenda dónde debe ir 
+al baño y se adapte a la familia? </FormLabel>
                                 <RadioGroup
                                     name="Form_PeriodoAjusteMascota"
                                     value={formData.Form_PeriodoAjusteMascota.toString()}
