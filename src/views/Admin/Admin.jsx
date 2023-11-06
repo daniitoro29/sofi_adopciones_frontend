@@ -5,6 +5,7 @@ import logo5 from "../../assets/img/logo5.png";
 import Users from "./Components/Users/Users";
 import Pets from "./Components/Pets/Pets";
 import AllPets from "./Components/AllPets/AllPets";
+import Campaigns from "./Components/Campaigns/Campaigns";
 
 
 
@@ -13,24 +14,35 @@ const Admin = () => {
     const [isUser, setIsUser] = useState(false);
     const [isPet, setIsPet] = useState(false);
     const [isAllPet, setIsAllPet] = useState(false);
+    const [isCampaign, setIsCampaign] = useState(false);
 
     const handleNavigateToUsers = () => {
-        setIsUser(true)
-        setIsPet(false)
-        setIsAllPet(false)
+        setIsUser(true);
+        setIsPet(false);
+        setIsAllPet(false);
+        setIsCampaign(false);
     };
 
     const handleNavigateToPets = () => {
-        setIsPet(true)
-        setIsUser(false)
-        setIsAllPet(false)
+        setIsPet(true);
+        setIsUser(false);
+        setIsAllPet(false);
+        setIsCampaign(false);
     };
 
     const handleNavigateAllPets = () => {
-        setIsAllPet(true)
-        setIsPet(false)
-        setIsUser(false)
+        setIsAllPet(true);
+        setIsPet(false);
+        setIsUser(false);
+        setIsCampaign(false);
     };
+
+    const handleNavigateCampaigns = () => {
+        setIsAllPet(false);
+        setIsPet(false);
+        setIsUser(false);
+        setIsCampaign(true);
+    }
 
     const toggleDrawer = (open) => (event) => {
         if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
@@ -69,6 +81,9 @@ const Admin = () => {
                             <ListItem button onClick={handleNavigateAllPets}>
                                 <ListItemText primary="Todas las mascotas" />
                             </ListItem>
+                            <ListItem button onClick={handleNavigateCampaigns}>
+                                <ListItemText primary="Campañas" />
+                            </ListItem>
 
                         </List>
 
@@ -83,6 +98,9 @@ const Admin = () => {
             }
             {
                 isAllPet && <AllPets />
+            }
+            {
+                isCampaign && <Campaigns />
             }
 
             {
