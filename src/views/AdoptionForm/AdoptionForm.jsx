@@ -113,7 +113,7 @@ const FormularioAdopcion = () => {
                 Form_PeriodoAjusteMascota: ""
             });
 
-            Swal.fire("¡Registro exitoso!", "La mascota se ha creado correctamente", "success");
+            Swal.fire("Sus datos se guardaron correctamente", "El formulario está en revisión", "success");
         } catch (error) {
             if (error.response && error.response.status === 400) {
                 Swal.fire("Error", error.response.data.message, "error");
