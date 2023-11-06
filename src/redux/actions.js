@@ -68,7 +68,7 @@ export const banUser = (Usu_Id) => async (dispatch) => {
 
 // Mascotas
 
-export const CREATE_PET ='CRREATE_PET ';
+export const CREATE_PET ='CREATE_PET';
 
 export const createPet= ({Mas_Nombre,
   Mas_Especie,
@@ -179,3 +179,71 @@ export const getVolunteers = () => async (dispatch) => {
       console.error(error);
     }
   };
+
+// Form Adoption
+
+export const CREATE_FORM ='CREATE_FORM';
+
+export const createForm= ({Form_Nombre,
+  Form_CedulaDocumento,
+  Form_Edad,
+  Form_TelefonoCasa,
+  Form_Ocupacion,
+  Form_Direccion,
+  Form_Telefono,
+  Form_Celular,
+  Form_Correo,
+  Form_NumeroPersonasFamilia,
+  Form_Adultos,
+  Form_Ninos,
+  Form_Bebes,
+  Form_EdadFamiliares,
+  Form_MotivoAdopcion,
+  Form_ExperienciaMascotasAntes,
+  Form_CausasNoTenerMascotaAhora,
+  Form_AutorizacionAdopcion,
+  Form_DecisionMiembrosHogar,
+  Form_AsuncionGastosMascota,
+  Form_TienePatioTerrazaJardin,
+  Form_Cubierto,
+  Form_DestinoViviendaMascota,
+  Form_LugarDormirMascota,
+  Form_ConocimientoGastosMascota,
+  Form_MascotasActuales,
+  Form_PeriodoAjusteMascota}) => async (dispatch) => {
+  try {
+    const response = await axios.post(`http://localhost:3001/form`, {
+      Form_Nombre,
+    Form_CedulaDocumento,
+    Form_Edad,
+    Form_TelefonoCasa,
+    Form_Ocupacion,
+    Form_Direccion,
+    Form_Telefono,
+    Form_Celular,
+    Form_Correo,
+    Form_NumeroPersonasFamilia,
+    Form_Adultos,
+    Form_Ninos,
+    Form_Bebes,
+    Form_EdadFamiliares,
+    Form_MotivoAdopcion,
+    Form_ExperienciaMascotasAntes,
+    Form_CausasNoTenerMascotaAhora,
+    Form_AutorizacionAdopcion,
+    Form_DecisionMiembrosHogar,
+    Form_AsuncionGastosMascota,
+    Form_TienePatioTerrazaJardin,
+    Form_Cubierto,
+    Form_DestinoViviendaMascota,
+    Form_LugarDormirMascota,
+    Form_ConocimientoGastosMascota,
+    Form_MascotasActuales,
+    Form_PeriodoAjusteMascota
+    });
+    const form = response.data;
+    dispatch({type: CREATE_FORM, payload: form});
+  } catch (error) {
+    console.error (error);
+  }
+}
