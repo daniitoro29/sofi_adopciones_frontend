@@ -413,9 +413,9 @@ const FormularioAdopcion = () => {
                                 required
                             />
                         </Grid>
-                        <Grid item xs={6} md={6}>
+                        <Grid item xs={12} md={12}>
                             <FormControl component="fieldset">
-                                <FormLabel component="legend"> ¿Está dispuesto a que el gato o perro tenga un periodo de ajuste en el que aprenda dónde debe ir
+                                <FormLabel component="legend"> ¿Está dispuesto a que la mascota tenga un periodo de ajuste en el que aprenda dónde debe ir
                                     al baño y se adapte a la familia? </FormLabel>
                                 <RadioGroup
                                     name="Form_PeriodoAjusteMascota"
