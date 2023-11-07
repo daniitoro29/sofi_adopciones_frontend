@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { Button, Grid, TextField, Select, MenuItem, FormControl, InputLabel, RadioGroup, FormControlLabel, Radio, FormLabel} from "@mui/material";
+import React, { useState, useContext } from "react";
+import { Button, Grid, TextField, Select, MenuItem, FormControl, InputLabel, RadioGroup, FormControlLabel, Radio, FormLabel } from "@mui/material";
 import NavBar from "../NavBar/NavBar";
 import "./AdoptionForm.css";
-import { createForm } from "../../redux/actions";
+import { createForm, createAdopter } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
+import { UserContext } from '../../Context/context';
 
 const FormularioAdopcion = () => {
-    
+    const { pets, users } = useContext(UserContext);
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         Form_Nombre: "",
@@ -39,12 +40,27 @@ const FormularioAdopcion = () => {
         Form_PeriodoAjusteMascota: false,
     });
 
+    const [form, setForm] = useState({
+        usuId: '',
+        masId: '',
+    });
+
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         const newValue = type === "checkbox" ? checked : value;
         setFormData({
             ...formData,
             [name]: newValue,
+        });
+    };
+
+    const changeHandler = (event) => {
+        const property = event.target.name;
+        const value = event.target.value;
+
+        setForm({
+            ...form,
+            [property]: value,
         });
     };
 
@@ -55,70 +71,101 @@ const FormularioAdopcion = () => {
                 createForm({
                     Form_Nombre: formData.Form_Nombre,
                     Form_CedulaDocumento: formData.Form_CedulaDocumento,
-                    Form_Edad:formData.Form_Edad,
-                    Form_TelefonoCasa:formData.Form_TelefonoCasa,
-                    Form_Ocupacion:formData.Form_Ocupacion,
-                    Form_Direccion:formData.Form_Direccion,
-                    Form_Telefono:formData.Form_Telefono,
-                    Form_Celular:formData.Form_Celular,
-                    Form_Correo:formData.Form_Correo,
-                    Form_NumeroPersonasFamilia:formData.Form_NumeroPersonasFamilia,
-                    Form_Adultos:formData.Form_Adultos,
-                    Form_Ninos:formData.Form_Ninos,
-                    Form_Bebes:formData.Form_Bebes,
-                    Form_EdadFamiliares:formData.Form_EdadFamiliares,
-                    Form_MotivoAdopcion:formData.Form_MotivoAdopcion,
-                    Form_ExperienciaMascotasAntes:formData.Form_ExperienciaMascotasAntes,
-                    Form_CausasNoTenerMascotaAhora:formData.Form_CausasNoTenerMascotaAhora,
-                    Form_AutorizacionAdopcion:formData.Form_AutorizacionAdopcion,
-                    Form_DecisionMiembrosHogar:formData.Form_DecisionMiembrosHogar,
-                    Form_AsuncionGastosMascota:formData.Form_AsuncionGastosMascota,
-                    Form_TienePatioTerrazaJardin:formData.Form_TienePatioTerrazaJardin,
-                    Form_Cubierto:formData.Form_Cubierto,
+                    Form_Edad: formData.Form_Edad,
+                    Form_TelefonoCasa: formData.Form_TelefonoCasa,
+                    Form_Ocupacion: formData.Form_Ocupacion,
+                    Form_Direccion: formData.Form_Direccion,
+                    Form_Telefono: formData.Form_Telefono,
+                    Form_Celular: formData.Form_Celular,
+                    Form_Correo: formData.Form_Correo,
+                    Form_NumeroPersonasFamilia: formData.Form_NumeroPersonasFamilia,
+                    Form_Adultos: formData.Form_Adultos,
+                    Form_Ninos: formData.Form_Ninos,
+                    Form_Bebes: formData.Form_Bebes,
+                    Form_EdadFamiliares: formData.Form_EdadFamiliares,
+                    Form_MotivoAdopcion: formData.Form_MotivoAdopcion,
+                    Form_ExperienciaMascotasAntes: formData.Form_ExperienciaMascotasAntes,
+                    Form_CausasNoTenerMascotaAhora: formData.Form_CausasNoTenerMascotaAhora,
+                    Form_AutorizacionAdopcion: formData.Form_AutorizacionAdopcion,
+                    Form_DecisionMiembrosHogar: formData.Form_DecisionMiembrosHogar,
+                    Form_AsuncionGastosMascota: formData.Form_AsuncionGastosMascota,
+                    Form_TienePatioTerrazaJardin: formData.Form_TienePatioTerrazaJardin,
+                    Form_Cubierto: formData.Form_Cubierto,
                     Form_DestinoViviendaMascota: formData.Form_DestinoViviendaMascota,
                     Form_LugarDormirMascota: formData.Form_LugarDormirMascota,
                     Form_ConocimientoGastosMascota: formData.Form_ConocimientoGastosMascota,
                     Form_MascotasActuales: formData.Form_MascotasActuales,
-                    Form_PeriodoAjusteMascota: formData.Form_PeriodoAjusteMascota, 
+                    Form_PeriodoAjusteMascota: formData.Form_PeriodoAjusteMascota,
                 })
             );
 
             setFormData({
-                Form_Nombre:"",
-                Form_CedulaDocumento:"",
-                Form_Edad:"",
-                Form_TelefonoCasa:"",
-                Form_Ocupacion:"",
-                Form_Direccion:"",
-                Form_Telefono:"",
-                Form_Celular:"",
-                Form_Correo:"",
-                Form_NumeroPersonasFamilia:"",
-                Form_Adultos:"",
-                Form_Ninos:"",
-                Form_Bebes:"",
-                Form_EdadFamiliares:"",
-                Form_MotivoAdopcion:"",
-                Form_ExperienciaMascotasAntes:"",
-                Form_CausasNoTenerMascotaAhora:"",
-                Form_AutorizacionAdopcion:"",
-                Form_DecisionMiembrosHogar:"",
-                Form_AsuncionGastosMascota:"",
-                Form_TienePatioTerrazaJardin:"",
-                Form_Cubierto:"",
-                Form_DestinoViviendaMascota:"",
-                Form_LugarDormirMascota:"",
-                Form_ConocimientoGastosMascota:"",
-                Form_MascotasActuales:"",
+                Form_Nombre: "",
+                Form_CedulaDocumento: "",
+                Form_Edad: "",
+                Form_TelefonoCasa: "",
+                Form_Ocupacion: "",
+                Form_Direccion: "",
+                Form_Telefono: "",
+                Form_Celular: "",
+                Form_Correo: "",
+                Form_NumeroPersonasFamilia: "",
+                Form_Adultos: "",
+                Form_Ninos: "",
+                Form_Bebes: "",
+                Form_EdadFamiliares: "",
+                Form_MotivoAdopcion: "",
+                Form_ExperienciaMascotasAntes: "",
+                Form_CausasNoTenerMascotaAhora: "",
+                Form_AutorizacionAdopcion: "",
+                Form_DecisionMiembrosHogar: "",
+                Form_AsuncionGastosMascota: "",
+                Form_TienePatioTerrazaJardin: "",
+                Form_Cubierto: "",
+                Form_DestinoViviendaMascota: "",
+                Form_LugarDormirMascota: "",
+                Form_ConocimientoGastosMascota: "",
+                Form_MascotasActuales: "",
                 Form_PeriodoAjusteMascota: ""
             });
 
             Swal.fire("Sus datos se guardaron correctamente", "El formulario está en revisión", "success");
+            handleSend();
         } catch (error) {
             if (error.response && error.response.status === 400) {
                 Swal.fire("Error", error.response.data.message, "error");
             } else {
                 Swal.fire("Error", "Ocurrió un error al registrar la mascota", "error");
+            }
+        }
+    };
+
+    const handleSend = async () => {
+        if (!form.usuId || !form.masId) {
+            Swal.fire('Error', 'Por favor, completa todos los campos', 'error');
+            return;
+        }
+
+        try {
+            await dispatch(
+                createAdopter({
+                    Usu_Id: form.usuId,
+                    Mas_Id: form.masId,
+                })
+            );
+
+            setForm({
+                Usu_Id: "",
+                Mas_Id: "",
+            });
+
+           // Swal.fire('¡Registro exitoso!', 'El participante se ha registrado correctamente', 'success');
+           console.log('Prueba *****')
+        } catch (error) {
+            if (error.response && error.response.status === 400) {
+                Swal.fire('Error', error.response.data.message, 'error');
+            } else {
+                Swal.fire('Error', 'Ocurrió un error al registrar el participante', 'error');
             }
         }
     };
@@ -428,6 +475,32 @@ const FormularioAdopcion = () => {
                             </FormControl>
                         </Grid>
                     </Grid>
+
+                    <Grid item xs={6} md={6}>
+                        <label>Confirme su nombre</label>
+                        <Select name="usuId" value={form.usuId} onChange={changeHandler}>
+                            {users?.map((user, i) => (
+                                <MenuItem key={i} value={user?.Usu_Id}>
+                                    {user.Usu_Nombre} {user.Usu_Apellido}
+                                </MenuItem>
+                            ))
+                            }
+                        </Select>
+                    </Grid>
+
+                    <Grid item xs={6} md={6}>
+                        <label>Mascota</label>
+                        <Select name="masId" value={form.masId} onChange={changeHandler}>
+                            {pets?.map((pet, i) => (
+                                <MenuItem key={i} value={pet?.Mas_Id}>
+                                    {pet.Mas_Nombre}
+                                </MenuItem>
+                            ))
+                            }
+                        </Select>
+                    </Grid>
+
+
                     <Button
                         type="submit"
                         variant="contained"
