@@ -12,6 +12,7 @@ function NavBar() {
   const [isRegister, setIsRegister] = useState(false);
   const [ isLogin, setIsLogin ] = useState(false);
   const [ isGallery, setIsGallery ] = useState(false);
+  const [ isCampaña, setIsCampaña ] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -33,6 +34,11 @@ function NavBar() {
     navigate("/gallery");
   }
 
+  const handlerCampaña = () => {
+    setIsCampaña(!isCampaña);
+    navigate("/campana");
+  }
+
   return (
     <div className="container-general_home">
       <nav>
@@ -46,6 +52,7 @@ function NavBar() {
           <li > <Link to="/">Inicio</Link></li>
           {/* <li>Acerca de nosotros</li> */}
           <li onClick={handlerGallery}>Galería</li>
+          <li onClick={handlerCampaña}>Campañas</li>
           <li onClick={handlerRegister}>Registrate</li>
           <li onClick={handlerLogin}>Ingresar</li>
         </ul>
