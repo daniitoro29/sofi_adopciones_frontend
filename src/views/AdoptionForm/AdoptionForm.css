@@ -1,38 +1,93 @@
-@import '../../styles.css';
-
 .adoptions {
-    height: 72.5vh;
-    padding: 50px;
+    text-align: center;
+    margin: 2rem;
+    padding: 2rem;
+    background-color: var(--color12);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .adoptions h1 {
+    font-size: 24px;
+    color: var(--color7);
+    margin-bottom: 1rem;
+  }
+  
+  .adoptions h2 {
+    font-size: 20px;
+    color: var(--color1);
+    margin-bottom: 1rem;
+  }
+  
+  .adoptions p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+  
+  .adoptions form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+  }
+  
+  .adoptions form label {
+    font-size: 16px;
+    margin: 0rem 0;
+    color: var(--color11);
+  }
+  
+  .adoptions form input,
+  .adoptions form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.2rem 0;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    max-width: 100%;
+    text-align: end;
+  }
+  
+  .adoptions form select {
+    appearance: none;   
+  }
+  
+  .adoptions form button {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    background-color: var(--color7);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+  }
+  
+  .adoptions form button:hover {
+    background-color: var(--color8);
+  }
+  
+  .yes-no-buttons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    padding: 7px;
+    text-align: end;
+    color: var(--color11)
 }
 
-.adoptions h1 {
-    margin-bottom: 50px;
+.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root{
+    font-size: 20px !important;
+    margin: 1rem 0!important;
 }
 
-.adoptions h2 {
-    margin-bottom: 30px;
-}
-
-.adoptions button {
-    margin-top: 50px;
-}
-
-.button-adoptions {
-    background-color: var(--color1) !important;
-    margin-top: 20px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 600 !important;
-    border: none !important;
-
-    padding: 10px 20px;
-    border-radius: 10px
-}
-
-.button-adoptions a {
-    color: white !important;
-    text-decoration: none;
+.css-14lo706{
+    float: inline-end !important;
 }
