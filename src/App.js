@@ -8,6 +8,7 @@ import FormCreateUser from "./views/FormCreateUser/FormCreateUser";
 import Gallery from "./views/Gallery/Gallery";
 import AdoptionForm from "./views/AdoptionForm/AdoptionForm";
 import AllPets from "./views/Admin/Components/AllPets/AllPets";
+import Campaña from "./views/Campanas/Campanas";
 
 function App() {
  return (
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/gallery" element={<Gallery/>} />
         <Route exact path="/adoptions" element={<AdoptionForm/>} />
         <Route exact path="/allpets" element={<AllPets/>} />
+        <Route exact path="/campana" element={<Campaña/>} />
       </Routes>
   </div>
  );
