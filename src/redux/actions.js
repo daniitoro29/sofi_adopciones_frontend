@@ -327,6 +327,7 @@ export const createAdopter = ({ Usu_Id, Mas_Id }) => async (dispatch) => {
       Usu_Id, Mas_Id
     });
     const adopter = response.data;
+    console.log('Pruebita create_adopter ****', adopter)
     dispatch({ type: CREATE_ADOPTER, payload: adopter });
   } catch (error) {
     console.error(error);
@@ -339,6 +340,7 @@ export const getAdopter = () => async (dispatch) => {
   try {
     const response = await axios.get('http://localhost:3001/adopters');
     const adopter = response.data;
+
     dispatch({ type: GET_ADOPTER, payload: adopter });
   } catch (error) {
     console.error(error);
