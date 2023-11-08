@@ -45,7 +45,17 @@ function Login() {
                 return;
             }
 
-            foundUser.Rol_Id === 1 ? navigate("/admin") : navigate("/adoptions");
+            switch (foundUser.Rol_Id) {
+                case 1:
+                    navigate("/admin")
+                    break;
+                case 2:
+                    navigate("/volunteer")
+                    break;
+                default:
+                    navigate("/gallery")
+            }
+
         }
 
     };
@@ -95,9 +105,9 @@ function Login() {
                             onClick={() => navigate("/register")}
                             onKeyPress={(e) => {
                                 if (e.key === "Enter") {
-                                  handlerValidateUser();
+                                    handlerValidateUser();
                                 }
-                              }}   
+                            }}
                         >
                             Registrate
                         </Button>
