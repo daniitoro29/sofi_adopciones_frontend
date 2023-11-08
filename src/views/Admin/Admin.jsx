@@ -7,6 +7,7 @@ import Pets from "./Components/Pets/Pets";
 import AllPets from "./Components/AllPets/AllPets";
 import Campaigns from "./Components/Campaigns/Campaigns";
 import Participants from "./Components/Participants/Participants";
+import Reports from "./Components/Reports/Reports";
 
 
 const Admin = () => {
@@ -16,6 +17,7 @@ const Admin = () => {
     const [isAllPet, setIsAllPet] = useState(false);
     const [isCampaign, setIsCampaign] = useState(false);
     const [isParticipant, setIsParticipant] = useState(false);
+    const [isInform, setIsInform] = useState(false);
 
     const handleNavigateToUsers = () => {
         setIsUser(true);
@@ -55,6 +57,15 @@ const Admin = () => {
         setIsUser(false);
         setIsCampaign(false);
         setIsParticipant(true);
+    }
+
+    const handleNavigateInforme = () => {
+        setIsAllPet(false);
+        setIsPet(false);
+        setIsUser(false);
+        setIsCampaign(false);
+        setIsParticipant(false);
+        setIsInform(true)
     }
 
     const toggleDrawer = (open) => (event) => {
@@ -100,6 +111,9 @@ const Admin = () => {
                             <ListItem button onClick={handleNavigateParticipants}>
                                 <ListItemText primary="Participantes" />
                             </ListItem>
+                            <ListItem button onClick={handleNavigateInforme}>
+                                <ListItemText primary="Informe participantes" />
+                            </ListItem>
 
                         </List>
 
@@ -121,6 +135,10 @@ const Admin = () => {
                         {
                 isParticipant && <Participants />
             }
+                                    {
+                isInform && <Reports />
+            }
+
 
             {
                 !isDrawerOpen &&
