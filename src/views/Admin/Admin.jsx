@@ -25,6 +25,7 @@ const Admin = () => {
         setIsAllPet(false);
         setIsParticipant(false);
         setIsCampaign(false);
+        setIsInform(false);
     };
 
     const handleNavigateToPets = () => {
@@ -33,6 +34,7 @@ const Admin = () => {
         setIsAllPet(false);
         setIsParticipant(false)
         setIsCampaign(false);
+        setIsInform(false);
     };
 
     const handleNavigateAllPets = () => {
@@ -41,6 +43,7 @@ const Admin = () => {
         setIsUser(false);
         setIsParticipant(false);
         setIsCampaign(false);
+        setIsInform(false);
     };
 
     const handleNavigateCampaigns = () => {
@@ -49,6 +52,7 @@ const Admin = () => {
         setIsUser(false);
         setIsParticipant(false);
         setIsCampaign(true);
+        setIsInform(false);
     }
 
     const handleNavigateParticipants = () => {
@@ -57,6 +61,7 @@ const Admin = () => {
         setIsUser(false);
         setIsCampaign(false);
         setIsParticipant(true);
+        setIsInform(false);
     }
 
     const handleNavigateInforme = () => {

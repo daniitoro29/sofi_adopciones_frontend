@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "../Login/Login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../redux/actions";
@@ -9,8 +9,10 @@ import Button from "@mui/material/Button";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import Swal from "sweetalert2";
+import { UserContext } from '../../Context/context';
 
 function Login() {
+    const { isAuthenticated, setIsAuthenticated} = useContext(UserContext);
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -20,7 +22,6 @@ function Login() {
 
     useEffect(() => {
         dispatch(getUsers());
-        // eslint-disable-next-line
     }, []);
 
     const handlerValidateUser = () => {
@@ -55,6 +56,8 @@ function Login() {
                 default:
                     navigate("/gallery")
             }
+            setIsAuthenticated(true);
+            console.log('El usuario está autenticado ****', isAuthenticated);
 
         }
 
