@@ -3,13 +3,15 @@
 .home h1 {
     text-align: center;
     padding: 1.5rem 13rem 0 13rem;
-    font-family: sans-serif;
+    font-family: var(--letra);
+    font-weight: 600;
   }
   
   .home h2 {
     text-align: center;
-    font-family: sans-serif;
+    font-family: var(--letra);
     padding: 3rem;
+    font-weight: 600;
   }
   
   .cont-parrafos {
@@ -22,14 +24,15 @@
     width: 250px;
     height: auto;
     padding: 1.5rem;
-    border-radius: 2rem;
-    font-family: sans-serif;
+    border-radius: 1rem;
+    font-family: var(--letra);
     color: #ffffff;
+    font-weight: 600;
   }
   
   .agradecimiento {
     text-align: center;
-    font-family: sans-serif;
+    font-family: var(--letra);
     font-weight: 700;
     margin: 5rem 0;
   }
@@ -43,12 +46,13 @@
   .description img {
     width: 500px;
     height: auto;
-    border-radius: 50px;
+    border-radius: 20px;
+    margin:20px
   }
   
   footer {
     text-align: center;
-    font-family: sans-serif;
+    font-family: var(--letra);
     background-color: #d9d9d9;
     padding: 10px;
   }
@@ -93,4 +97,7 @@
 
 .home h1 {
   margin-bottom: 50px;
+}
+.home .description img {
+  box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5);
 }
