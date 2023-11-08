@@ -40,7 +40,7 @@ function NavBar() {
   }
 
   return (
-    <div className="container-general_home">
+    <div className="container-general_nav">
       <nav>
         <a href="/">
           <img src={logo5} alt="logo5" />
@@ -50,7 +50,6 @@ function NavBar() {
         </button>
         <ul className={`menu-items ${isMenuOpen ? "open" : ""}`}>
           <li > <Link to="/">Inicio</Link></li>
-          {/* <li>Acerca de nosotros</li> */}
           <li onClick={handlerGallery}>Galería</li>
           <li onClick={handlerCampaña}>Campañas</li>
           <li onClick={handlerRegister}>Registrate</li>
