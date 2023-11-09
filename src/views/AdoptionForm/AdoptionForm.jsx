@@ -491,7 +491,7 @@ const FormularioAdopcion = () => {
 
 
 
-                    <Grid item xs={6} md={6}>
+                    <Grid item xs={6} md={6} className="select_Mascota">
                         <label>Mascota</label>
                         <Select name="masId" value={form.masId} onChange={changeHandler}>
                             {pets?.map((pet, i) => (
