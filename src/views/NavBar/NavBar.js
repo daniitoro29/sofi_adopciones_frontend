@@ -44,6 +44,7 @@ function NavBar() {
   const handlerLeft = () => {
     setIsAuthenticated(false);
     localStorage.removeItem("authToken");
+    localStorage.removeItem("rolUser");
     navigate("/");
   }
 

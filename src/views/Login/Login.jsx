@@ -17,6 +17,7 @@ function Login() {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [tokenExpiration, setTokenExpiration] = useState(0);
     const users = useSelector((state) => state?.users);
 
     const dispatch = useDispatch();
@@ -55,8 +56,16 @@ function Login() {
                 if (response.data.token) {
                     localStorage.setItem('authToken', response.data.token);
                     localStorage.setItem('rolUser', foundUser.Rol_Id);
+                    setTokenExpiration(Date.now() + 1 * 60 * 1000);
                     setIsAuthenticated(true);
                     // Redirige a la página principal o a la página deseada.
+
+                    setTimeout(() => {
+                        localStorage.removeItem('authToken');
+                        localStorage.removeItem('rolUser');
+                        setIsAuthenticated(false);
+                        console.log('Se ejecuto el timeout ****')
+                    }, 1 * 60 * 1000);
                     switch (foundUser.Rol_Id) {
                         case 1:
                             navigate("/admin")
