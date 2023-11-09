@@ -1,22 +1,25 @@
-import { useState, useContext} from "react";
+import { useState, useContext, useEffect} from "react";
 import "./AllPets.css";
-import NavBar from "../../../NavBar/NavBar";
 import Modal from "../../../ModalEditPet/ModalEditPet";
 import ModalBan from '../../../ModalPetsDelete/ModalPetsDelete';
 import { DataGrid } from "@mui/x-data-grid";
 import edit from '../../../../assets/img/editar.png';
 import deleteU from '../../../../assets/img/eliminar.png';
 import { UserContext } from '../../../../Context/context';
-
+import { getPets } from "../../../../redux/actions";
+import {  useDispatch } from "react-redux";
 
 const AllPets = () => {
     const [open, setOpen] = useState(false);
     const [openBan, setOpenBan] = useState(false);
     const { pets } = useContext(UserContext);
+    const dispatch = useDispatch();
 
 
        
-    console.log('Esto es lo que me está llegando en pets ****', pets);
+    useEffect(() => {
+        dispatch(getPets());
+       }, [pets]); 
 
 
     const [actualPet, setActualPet] = useState({});
@@ -108,9 +111,9 @@ const AllPets = () => {
 
     return (
         <>
-            <NavBar />
-            <div className="container-all_user">
-                <DataGrid rows={rows} columns={columns} checkboxSelection />
+            <div className="container-all_pets">
+                <h1>Listado de mascotas</h1>
+                <DataGrid rows={rows} columns={columns} />
             </div>
             {open && (
                 <Modal form={form} setOpen={setOpen} open={open} setForm={setForm} userState={actualPet} />

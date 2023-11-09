@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Drawer, List, ListItem, ListItemText } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import "./Admin.css";
 import logo5 from "../../assets/img/logo5.png";
 import Users from "./Components/Users/Users";
@@ -9,13 +10,12 @@ import Campaigns from "./Components/Campaigns/Campaigns";
 import Participants from "./Components/Participants/Participants";
 import Reports from "./Components/Reports/Reports";
 
-
-const Admin = () => {
+const Volunteer = () => {
+    const navigate = useNavigate();
     const [isDrawerOpen, setDrawerOpen] = useState(true);
     const [isPet, setIsPet] = useState(false);
     const [isAllPet, setIsAllPet] = useState(false);
     const [isCampaign, setIsCampaign] = useState(false);
-
 
     const handleNavigateToPets = () => {
         setIsPet(true);
@@ -33,8 +33,7 @@ const Admin = () => {
         setIsAllPet(false);
         setIsPet(false);
         setIsCampaign(true);
-    }
-
+    };
 
     const toggleDrawer = (open) => (event) => {
         if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
@@ -53,6 +52,13 @@ const Admin = () => {
         handleResetState();
     }, []);
 
+    const rol = localStorage.getItem('rolUser');
+    
+    if (rol !== '2') {
+        navigate('/login'); 
+        return null; 
+    }
+
     return (
         <>
             <div className="admin-container">
@@ -69,31 +75,22 @@ const Admin = () => {
                             <ListItem button onClick={handleNavigateCampaigns}>
                                 <ListItemText primary="Campañas" />
                             </ListItem>
-
                         </List>
-
                     </div>
                 </Drawer>
             </div>
 
-            {
-                isPet && <Pets />
-            }
-            {
-                isAllPet && <AllPets />
-            }
-            {
-                isCampaign && <Campaigns />
-            }
-            {
-                !isDrawerOpen &&
+            {isPet && <Pets />}
+            {isAllPet && <AllPets />}
+            {isCampaign && <Campaigns />}
+
+            {!isDrawerOpen && (
                 <button type="button" className="button-menu" onClick={toggleDrawer(!isDrawerOpen)}>
                     Menú
                 </button>
-            }
-
+            )}
         </>
     );
 };
 
-export default Admin;
+export default Volunteer;

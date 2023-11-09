@@ -10,7 +10,6 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import NavBar from "../../../NavBar/NavBar";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { UserContext } from '../../../../Context/context';
@@ -118,7 +117,6 @@ const Form = () => {
 
    return (
       <>
-         <NavBar />
          <div style={{ display: "flex", justifyContent: "center" }}>
             <div className="general-container_formp">
                <h1>Completa los datos de la mascota</h1>

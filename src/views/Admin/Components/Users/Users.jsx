@@ -1,19 +1,19 @@
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { getUsers } from "../../../../redux/actions";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./Users.css";
-import NavBar from "../../../NavBar/NavBar";
 import Modal from "../../../ModalEdit/ModalEdit";
 import ModalBan from '../../../ModalDelete/ModalDelete';
 import { DataGrid } from "@mui/x-data-grid";
 import edit from '../../../../assets/img/editar.png';
 import deleteU from '../../../../assets/img/eliminar.png';
+import { UserContext } from '../../../../Context/context';
 
 const Users = () => {
  const [open, setOpen] = useState(false);
  const [openBan, setOpenBan] = useState(false);
  const [userState, setUser] = useState("");
- const users = useSelector((state) => state?.users)  ;
+ const { users } = useContext(UserContext);
  const [actualUser, setActualUser] = useState({})
  const [form, setForm] = useState({
   id: "",
@@ -30,7 +30,7 @@ const Users = () => {
 
  useEffect(() => {
   dispatch(getUsers());
- }, [dispatch]); // Update the users whenever getUsers action is dispatched
+ }, [users]); 
 
  const handleDelete = (user) => {
 setOpenBan(true);
@@ -85,9 +85,9 @@ setActualUser (users.find((u) => u.Usu_Id === user.id))
 
  return (
   <>
-   <NavBar />
    <div className="container-all_user">
-    <DataGrid rows={rows} columns={columns} checkboxSelection />
+      <h1>Listado de usuarios</h1>
+    <DataGrid rows={rows} columns={columns} />
    </div>
    {open && (
     <Modal form={form} setOpen={setOpen} open={open} setForm={setForm} userState={userState} />

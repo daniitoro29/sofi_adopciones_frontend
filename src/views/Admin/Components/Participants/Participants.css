@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;600&display=swap');
+@import '../../../../styles.css';
+
+body {
+  background: #F5F4F4;
+}
+.general-container_formp-participant {
+margin-top: 10%;
+ max-width: 758px;
+ height: 460px !important;
+ background: var(--color12);
+ border-radius: 16px;
+}
+
+.general-container_formp-participant .css-1osj8n2-MuiGrid-root,
+.general-container_formp-participant .css-1dsnw5r-MuiGrid-root {
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+}
+.general-container_formp-participant .css-1x51dt5-MuiInputBase-input-MuiInput-input {
+  border: 1px solid #D9D9D9;
+    border-radius: 6px;
+    
+}
+
+.general-container_formp-participant .css-v4u5dn-MuiInputBase-root-MuiInput-root:before {
+  border-bottom: none;
+}
+.general-container_formp-participant .css-1u3bzj6-MuiFormControl-root-MuiTextField-root,
+.general-container_formp-participant .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  width: 231px;
+  height: 40px;
+  padding: 0 !important;
+}
+
+.general-container_formp-participant .css-11lq3yg-MuiGrid-root {
+  row-gap: 20px;
+  padding-left: 86px;
+  padding-bottom: 30px;
+}
+.general-container_formp-participant h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  margin: 50px 86px 35px;
+  font-weight: 600;
+  
+}
+
+.general-container_formp-participant .css-sghohy-MuiButtonBase-root-MuiButton-root {
+
+  background-color: var(--color1) !important;
+}
+
+.general-container_formp-participant .css-1rwt2y5-MuiButtonBase-root-MuiButton-root{
+  color: var(--color1) !important;
+  border: 1px solid #D9D9D9;
+}
+
+.container_button {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.container_button button {
+  width: 198px;
+}
+
+.general-container_formp-participant .css-sghohy-MuiButtonBase-root-MuiButton-root, 
+.general-container_formp-participant .css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.general-container_formp-participant label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #969696;
+  margin-bottom: 5px;
+}
+
+.general-container_formp-participant .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border-color: #D9D9D9;
+}
+
+.text_area {
+  width: 231px !important;
+  border-radius: 4px;
+  border: 1px solid #D9D9D9;
+  background-color: var(--color12);
+}

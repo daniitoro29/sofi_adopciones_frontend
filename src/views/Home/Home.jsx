@@ -6,6 +6,8 @@ import instagram from "../../assets/img/redes/instagram 1.svg";
 import twitter from "../../assets/img/redes/twitter 1.svg";
 import perro1 from "../../assets/img/img-perros-1.png";
 import perro2 from "../../assets/img/img-perros-2.png";
+import Footer from "../Footer/Footer";
+import "../Footer/Footer.css";
 
 function Home() {
   return (
@@ -57,14 +59,15 @@ function Home() {
         opciòn de amor!
       </p>
     </div>
-      <footer>
+{/*       <footer>
         <div className="cont-redes-img">
           <img src={facebook} alt="logo" />
           <img src={instagram} alt="logo" />
           <img src={twitter} alt="logo" />
         </div>
         <p>Copyright © SOF&</p>
-      </footer>
+      </footer> */}
+      <Footer/>
     </>
   );
 }

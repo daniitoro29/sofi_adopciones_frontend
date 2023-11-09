@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-import NavBar from '../../../NavBar/NavBar';
+import "./Campaigns.css";
 
 const CampaignForm = () => {
   const dispatch = useDispatch();
@@ -58,9 +58,8 @@ const CampaignForm = () => {
 
   return (
     <>
-      <NavBar />
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <div className="general-container_formp">
+        <div className="general-container_formp-campaigns">
           <h1>Completa los datos de la campaña</h1>
           <Grid container className="container_form">
             <Grid item xs={6} md={6}>

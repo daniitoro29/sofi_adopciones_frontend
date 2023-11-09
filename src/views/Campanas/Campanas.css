@@ -1,0 +1,15 @@
+@import '../../styles.css';
+
+.container-campaigns {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--letra);
+    gap: 50pax;
+    margin-top: 50px;
+
+    & h1 {
+        font-weight: 600;
+    }
+}
