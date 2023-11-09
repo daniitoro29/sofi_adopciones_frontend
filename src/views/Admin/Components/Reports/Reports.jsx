@@ -3,7 +3,6 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { DataGrid } from '@mui/x-data-grid'; 
 import { UserContext } from '../../../../Context/context';
-import NavBar from "../../../NavBar/NavBar";
 
 
 const AllParticipants = () => {
@@ -59,8 +58,8 @@ const AllParticipants = () => {
 
   return (
     <>
-      <NavBar />
       <div className="container-all_user">
+        <h1>Reporte de campañas</h1>
         <button onClick={exportPDF}>Exportar como PDF</button>
         <DataGrid rows={rows} columns={columns}/>
       </div>

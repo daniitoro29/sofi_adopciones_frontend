@@ -1,6 +1,5 @@
 import { useState, useContext} from "react";
 import "./AllPets.css";
-import NavBar from "../../../NavBar/NavBar";
 import Modal from "../../../ModalEditPet/ModalEditPet";
 import ModalBan from '../../../ModalPetsDelete/ModalPetsDelete';
 import { DataGrid } from "@mui/x-data-grid";
@@ -108,7 +107,6 @@ const AllPets = () => {
 
     return (
         <>
-            <NavBar />
             <div className="container-all_user">
                 <DataGrid rows={rows} columns={columns} checkboxSelection />
             </div>

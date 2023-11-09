@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { createParticipant } from '../../../../redux/actions'; // Asegúrate de importar la acción correcta
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-import NavBar from '../../../NavBar/NavBar';
 import { UserContext } from '../../../../Context/context';
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
@@ -90,7 +89,6 @@ const ParticipantForm = () => {
 
     return (
         <>
-            <NavBar />
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div className="general-container_formp">
                     <h1>Completa los datos del participante de la campaña</h1>

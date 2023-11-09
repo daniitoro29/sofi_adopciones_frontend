@@ -8,6 +8,7 @@ import AllPets from "./Components/AllPets/AllPets";
 import Campaigns from "./Components/Campaigns/Campaigns";
 import Participants from "./Components/Participants/Participants";
 import Reports from "./Components/Reports/Reports";
+import Menu from "../../assets/img/menu.svg";
 
 
 const Admin = () => {
@@ -94,12 +95,11 @@ const Admin = () => {
         <>
             <div className="admin-container">
 
-
-
-
                 <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer(false)}>
                     <div className="sidebar">
-                        <img src={logo5} alt="logo5" className="logoAdmin" />
+                        <a href="/">
+                            <img src={logo5} alt="logo5" className="logoAdmin" />
+                        </a>
                         <List>
                             <ListItem button onClick={handleNavigateToUsers}>
                                 <ListItemText primary="Usuarios" />
@@ -125,6 +125,18 @@ const Admin = () => {
                     </div>
                 </Drawer>
             </div>
+
+            {
+                !isDrawerOpen &&
+                <div className="container-button_sidebar">
+<img src={Menu} alt="Menu" className="sidebar_menu_img" onClick={toggleDrawer(!isDrawerOpen)}/>
+{/*                 <button type="button" className="button-menu" onClick={toggleDrawer(!isDrawerOpen)}>
+                    Menú
+                </button> */}
+                </div>
+            }
+            <div>
+                
             {
                 isUser && <Users />
             }
@@ -137,23 +149,19 @@ const Admin = () => {
             {
                 isCampaign && <Campaigns />
             }
-                        {
+            {
                 isParticipant && <Participants />
             }
-                                    {
+            {
                 isInform && <Reports />
             }
 
-
-            {
-                !isDrawerOpen &&
-                <button type="button" className="button-menu" onClick={toggleDrawer(!isDrawerOpen)}>
-                    Menú
-                </button>
-            }
-
+            </div>
+        
         </>
     );
 };
 
 export default Admin;
+
+

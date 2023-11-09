@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUsers } from "../../../../redux/actions";
 import { useState, useEffect } from "react";
 import "./Users.css";
-import NavBar from "../../../NavBar/NavBar";
 import Modal from "../../../ModalEdit/ModalEdit";
 import ModalBan from '../../../ModalDelete/ModalDelete';
 import { DataGrid } from "@mui/x-data-grid";
@@ -85,9 +84,9 @@ setActualUser (users.find((u) => u.Usu_Id === user.id))
 
  return (
   <>
-   <NavBar />
    <div className="container-all_user">
-    <DataGrid rows={rows} columns={columns} checkboxSelection />
+      <h1>Listado de usuarios</h1>
+    <DataGrid rows={rows} columns={columns} />
    </div>
    {open && (
     <Modal form={form} setOpen={setOpen} open={open} setForm={setForm} userState={userState} />
