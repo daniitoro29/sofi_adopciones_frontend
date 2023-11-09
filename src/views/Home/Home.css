@@ -50,21 +50,7 @@
     margin:20px
   }
   
-  footer {
-    text-align: center;
-    font-family: var(--letra);
-    background-color: #d9d9d9;
-    padding: 10px;
-  }
-  
-  footer img {
-    width: 20px;
-    height: 20px;
-  }
-  
-  footer p {
-    margin: 0;
-  }
+
   
   /* Estilos para celular de 480px */
   @media (max-width: 480px) {

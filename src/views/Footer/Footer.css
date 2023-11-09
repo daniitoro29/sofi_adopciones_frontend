@@ -1,14 +1,18 @@
+@import '../../styles.css';
+
 footer {
     text-align: center;
-    font-family: sans-serif;
+    font-family: var(--letra);
     background-color: #d9d9d9;
     padding: 10px;
-   }
-   footer img {
+    margin-top: auto;
+}
+
+footer img {
     width: 20px;
     height: 20px;
-   }
-   footer p {
+}
+
+footer p {
     margin: 0;
-   }
-   
+}
