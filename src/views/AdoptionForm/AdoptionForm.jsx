@@ -476,10 +476,10 @@ const FormularioAdopcion = () => {
                         </Grid>
                     </Grid>
 
-                    <Grid item xs={6} md={6}>
+                    <Grid item xs={6} md={6} className="select_Confirmar_nombre">
                         <label>Confirme su nombre</label>
                         <Select name="usuId" value={form.usuId} onChange={changeHandler}>
-                            {users?.map((user, i) => (
+                            {users&&users?.map((user, i) => (
                                 <MenuItem key={i} value={user?.Usu_Id}>
                                     {user.Usu_Nombre} {user.Usu_Apellido}
                                 </MenuItem>
@@ -488,8 +488,8 @@ const FormularioAdopcion = () => {
                         </Select>
                     </Grid>
 
-                    <Grid item xs={6} md={6}>
-                        <label>Mascota</label>
+                    <Grid item xs={6} md={6} className="select_Mascota">
+                        <label>Confirme el nombre de la mascota</label>
                         <Select name="masId" value={form.masId} onChange={changeHandler}>
                             {pets?.map((pet, i) => (
                                 <MenuItem key={i} value={pet?.Mas_Id}>
