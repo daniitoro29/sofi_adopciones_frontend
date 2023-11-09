@@ -109,3 +109,14 @@
 .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
   padding-right: 140px;
 }
+
+.adoption-mascota {
+  width: 100%;
+  display: flex;
+  column-gap: 20px;
+
+}
+
+.adoption-mascota_option {
+  width: 200px;
+}

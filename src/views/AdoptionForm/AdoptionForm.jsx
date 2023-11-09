@@ -490,11 +490,11 @@ const FormularioAdopcion = () => {
                     </Grid>
 
 
-                    <Grid item xs={6} md={6}>
-                        <label>Mascota</label>
-                        <Select name="masId" value={form.masId} onChange={changeHandler}>
+                    <Grid item xs={6} md={6} className="adoption-mascota">
+                        <label>Elige el nombre de la mascota que deseas adoptar</label>
+                        <Select name="masId" value={form.masId} onChange={changeHandler} className="adoption-mascota_option">
                             {pets?.map((pet, i) => (
-                                <MenuItem key={i} value={pet?.Mas_Id}>
+                                <MenuItem key={i} value={pet?.Mas_Id} >
                                     {pet.Mas_Nombre}
                                 </MenuItem>
                             ))
