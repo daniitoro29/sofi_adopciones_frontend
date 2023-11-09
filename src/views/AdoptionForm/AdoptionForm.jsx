@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Button, Grid, TextField, Select, MenuItem, FormControl, InputLabel, RadioGroup, FormControlLabel, Radio, FormLabel } from "@mui/material";
 import NavBar from "../NavBar/NavBar";
 import "./AdoptionForm.css";
@@ -6,12 +6,24 @@ import { createForm, createAdopter } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import { UserContext } from '../../Context/context';
+import { useNavigate } from "react-router-dom";
 
 const FormularioAdopcion = () => {
+    const navigate = useNavigate();
     const { pets, users } = useContext(UserContext);
     const dispatch = useDispatch();
+    const [nombrel, setNombre] = useState('')
+    const [apellidol, setApellido] = useState('')
+    const [idl, setId] = useState('')
+
+    useEffect(() => {
+        setNombre(localStorage.getItem('nombre'));
+        setApellido(localStorage.getItem('apellido'))
+        setId(localStorage.getItem('id'));
+    }, []);
+
     const [formData, setFormData] = useState({
-        Form_Nombre: "",
+        Form_Nombre: `${nombrel} ${apellidol}`,
         Form_CedulaDocumento: "",
         Form_Edad: "",
         Form_TelefonoCasa: "",
@@ -131,6 +143,7 @@ const FormularioAdopcion = () => {
 
             Swal.fire("Sus datos se guardaron correctamente", "El formulario está en revisión", "success");
             handleSend();
+
         } catch (error) {
             if (error.response && error.response.status === 400) {
                 Swal.fire("Error", error.response.data.message, "error");
@@ -141,7 +154,7 @@ const FormularioAdopcion = () => {
     };
 
     const handleSend = async () => {
-        if (!form.usuId || !form.masId) {
+        if (!idl || !form.masId) {
             Swal.fire('Error', 'Por favor, completa todos los campos', 'error');
             return;
         }
@@ -149,7 +162,7 @@ const FormularioAdopcion = () => {
         try {
             await dispatch(
                 createAdopter({
-                    Usu_Id: form.usuId,
+                    Usu_Id: idl,
                     Mas_Id: form.masId,
                 })
             );
@@ -159,8 +172,8 @@ const FormularioAdopcion = () => {
                 Mas_Id: "",
             });
 
-           // Swal.fire('¡Registro exitoso!', 'El participante se ha registrado correctamente', 'success');
-           console.log('Prueba *****')
+           Swal.fire('¡Registro exitoso!', 'El participante se ha registrado correctamente', 'success');
+           navigate("/gallery");
         } catch (error) {
             if (error.response && error.response.status === 400) {
                 Swal.fire('Error', error.response.data.message, 'error');
@@ -190,10 +203,10 @@ const FormularioAdopcion = () => {
                     <Grid container spacing={2}>
                         <Grid item xs={6} md={6}>
                             <TextField
-                                label="Nombre y apellido"
+                                // label="Nombre y apellido"
                                 name="Form_Nombre"
-                                value={formData.Form_Nombre}
-                                onChange={handleChange}
+                                value={`${nombrel} ${apellidol}`}
+                                //onChange={handleChange}
                                 fullWidth
                                 required
                             />
@@ -476,7 +489,7 @@ const FormularioAdopcion = () => {
                         </Grid>
                     </Grid>
 
-                    <Grid item xs={6} md={6}>
+{/*                     <Grid item xs={6} md={6}>
                         <label>Confirme su nombre</label>
                         <Select name="usuId" value={form.usuId} onChange={changeHandler}>
                             {users?.map((user, i) => (
@@ -487,7 +500,7 @@ const FormularioAdopcion = () => {
                             }
                         </Select>
                     </Grid>
-
+ */}
                     <Grid item xs={6} md={6}>
                         <label>Mascota</label>
                         <Select name="masId" value={form.masId} onChange={changeHandler}>
