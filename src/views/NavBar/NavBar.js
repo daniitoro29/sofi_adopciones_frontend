@@ -1,18 +1,20 @@
 import "../NavBar/NavBar.css";
 import logo5 from '../../assets/img/logo5.png';
-import { Navigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import { UserContext } from '../../Context/context';
 
 function NavBar() {
+  const { setIsAuthenticated } = useContext(UserContext);
   const navigate = useNavigate();
- 
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
-  const [ isLogin, setIsLogin ] = useState(false);
-  const [ isGallery, setIsGallery ] = useState(false);
-  const [ isCampaña, setIsCampaña ] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
+  const [isGallery, setIsGallery] = useState(false);
+  const [isCampaña, setIsCampaña] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -39,6 +41,11 @@ function NavBar() {
     navigate("/campana");
   }
 
+  const handlerLeft = () => {
+    setIsAuthenticated(false);
+    navigate("/");
+  }
+
   return (
     <div className="container-general_nav">
       <nav>
@@ -53,7 +60,17 @@ function NavBar() {
           <li onClick={handlerGallery}>Galería</li>
           <li onClick={handlerCampaña}>Campañas</li>
           <li onClick={handlerRegister}>Registrate</li>
-          <li onClick={handlerLogin}>Ingresar</li>
+          <li>
+          <NavDropdown
+            id="nav-dropdown-dark-example"
+            title="Ingresar"
+            menuVariant="dark"
+          >
+            <NavDropdown.Item href="#action/3.1" onClick={handlerLogin}>Ingresar</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2" nClick={handlerLeft}>
+              Salir
+            </NavDropdown.Item>
+          </NavDropdown></li>
         </ul>
       </nav>
     </div>
