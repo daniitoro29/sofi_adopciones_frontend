@@ -70,7 +70,7 @@ function NavBar() {
           <li>
           <NavDropdown
             id="nav-dropdown-dark-example"
-            title="Ingresar"
+            title=""
             menuVariant="dark"
           >
             <NavDropdown.Item onClick={handlerLogin}>Ingresar</NavDropdown.Item>
