@@ -2,12 +2,14 @@
 
 .gallery-container {
     padding: 5rem 7rem;
+
 }
 
 .gallery-container .container-image {
     display: flex;
     justify-content: center;
     height: 200px;
+    
 
     & img {
         height: 100%;
@@ -17,6 +19,12 @@
 .gallery-container_carousel {
     height: 600px;
     padding: 2rem;
+    content: '';
+    position: absolute;
+    background: linear-gradient(0deg,#ffa60056,#ffa6003f,transparent,  transparent, transparent);
+    z-index: 1;
+    transform-origin: bottom right;
+    animation: ov-animar-borde 6s linear infinite;
     border-radius: 20px;
 
 }
@@ -42,10 +50,16 @@ p {
 }
 
 .button-gallery {
-    background-color: var(--color1) !important;
+    padding: 15px 30px !important;
     margin-top: 20px;
     font-family: "Poppins", sans-serif;
     font-weight: 600 !important;
     border: none !important;
-    color: white !important;
+    color: var(--color1) !important;
+    font-size: 20px !important;
+    
+
+    &:hover {
+        background: linear-gradient(0deg,var(--color3),var(--color4),  var(--color5), var(--color6));
+    }
    }
