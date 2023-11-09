@@ -1,18 +1,19 @@
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { getUsers } from "../../../../redux/actions";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./Users.css";
 import Modal from "../../../ModalEdit/ModalEdit";
 import ModalBan from '../../../ModalDelete/ModalDelete';
 import { DataGrid } from "@mui/x-data-grid";
 import edit from '../../../../assets/img/editar.png';
 import deleteU from '../../../../assets/img/eliminar.png';
+import { UserContext } from '../../../../Context/context';
 
 const Users = () => {
  const [open, setOpen] = useState(false);
  const [openBan, setOpenBan] = useState(false);
  const [userState, setUser] = useState("");
- const users = useSelector((state) => state?.users)  ;
+ const { users } = useContext(UserContext);
  const [actualUser, setActualUser] = useState({})
  const [form, setForm] = useState({
   id: "",
@@ -29,7 +30,7 @@ const Users = () => {
 
  useEffect(() => {
   dispatch(getUsers());
- }, [dispatch]); // Update the users whenever getUsers action is dispatched
+ }, [users]); 
 
  const handleDelete = (user) => {
 setOpenBan(true);
