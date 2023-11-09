@@ -7,6 +7,7 @@ import { UserContext } from '../../../../Context/context';
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Swal from "sweetalert2";
+import "./Participants.css";
 
 const ParticipantForm = () => {
     const dispatch = useDispatch();
@@ -90,7 +91,7 @@ const ParticipantForm = () => {
     return (
         <>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <div className="general-container_formp">
+                <div className="general-container_formp-participant">
                     <h1>Completa los datos del participante de la campaña</h1>
                     <Grid container className="container_form">
 

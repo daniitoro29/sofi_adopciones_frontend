@@ -1,0 +1,87 @@
+@import '../../../../styles.css';
+
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+  }
+  
+  /* Contenedor principal de la página */
+  .container-all_reports {
+    margin: 20px;
+    max-width: 1400px;
+    padding-top: 30px;
+    width: 80%;
+    place-items: center;
+  }
+  
+  /* Estilos para la tabla de usuarios */
+  .data-grid-container {
+    height: 400px; 
+    width: 100%; 
+    background-color: #fff; 
+    border: 1px solid #ccc; 
+    margin: auto;
+  }
+  
+  /* Estilos para los botones de edición y eliminación */
+  .container-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Estilos para los íconos de edición y eliminación */
+  .container-icons img {
+    cursor: pointer; 
+    margin: 0 10px; 
+    transition: transform 0.2s; 
+  }
+  
+  /* Cambia el tamaño de los íconos al pasar el mouse */
+  .container-icons img:hover {
+    transform: scale(1.3);
+  }
+  
+  /* Ajusta el tamaño de los íconos de edición y eliminación */
+  .container-icons img {
+    cursor: pointer;
+    margin: 0 5px;
+    transition: transform 0.2s;
+    width: 24px; 
+    height: 24px; 
+  }
+  
+  /* Aplicar negrilla a los encabezados de la tabla */
+  .css-t89xny-MuiDataGrid-columnHeaderTitle {
+    font-weight: bolder !important; 
+  }
+  
+  /* Restaurar el valor de font-weight usando la variable */
+  .css-t89xny-MuiDataGrid-columnHeaderTitle {
+    font-weight: bold(--unstable_DataGrid-headWeight) !important;
+  }
+  
+  .container-all_reports {
+    max-width: 1180px;
+    padding-top: 20px;
+    display: grid; /* Utiliza CSS Grid para el diseño */
+    grid-template-columns: repeat(auto-fill, minmax(1100px, 1fr)); /* Divide en columnas, mínimo 200px de ancho */
+    gap: 50px; 
+  }
+  
+  .MuiDataGrid-cell {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .container-all_reports_button {
+    background-color: var(--color1) !important;
+    margin-top: 20px;
+     border: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 20px;
+   }

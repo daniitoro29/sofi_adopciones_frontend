@@ -15,10 +15,8 @@ import { UserContext } from './Context/context';
 
 
 function App() {
-  let { isAuthenticated} = useContext(UserContext);
-  console.log('isAuthenticated *****', isAuthenticated);
+  const { isAuthenticated} = useContext(UserContext);
 
-  isAuthenticated = true;
  return (
   <div className="App" style={{ width: "100%" }}>
     

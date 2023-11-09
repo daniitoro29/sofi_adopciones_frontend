@@ -107,8 +107,9 @@ const AllPets = () => {
 
     return (
         <>
-            <div className="container-all_user">
-                <DataGrid rows={rows} columns={columns} checkboxSelection />
+            <div className="container-all_pets">
+                <h1>Listado de mascotas</h1>
+                <DataGrid rows={rows} columns={columns} />
             </div>
             {open && (
                 <Modal form={form} setOpen={setOpen} open={open} setForm={setForm} userState={actualPet} />
