@@ -52,20 +52,28 @@ function Login() {
                     password: password,
                     users: users,
                 });
-
+console.log('ESTO ES foundUser ****', foundUser )
                 if (response.data.token) {
                     localStorage.setItem('authToken', response.data.token);
                     localStorage.setItem('rolUser', foundUser.Rol_Id);
-                    setTokenExpiration(Date.now() + 10 * 60 * 1000);
+                    localStorage.setItem('nombre', foundUser.Usu_Nombre)
+                    localStorage.setItem('apellido', foundUser.Usu_Apellido)
+                    localStorage.setItem('id', foundUser.Usu_Id)
+                    
+
+                    setTokenExpiration(Date.now() + 40 * 60 * 1000);
                     setIsAuthenticated(true);
                     // Redirige a la página principal o a la página deseada.
 
                     setTimeout(() => {
                         localStorage.removeItem('authToken');
                         localStorage.removeItem('rolUser');
+                        localStorage.removeItem('nombre')
+                        localStorage.removeItem('apellido')
+                        localStorage.removeItem('id')
                         setIsAuthenticated(false);
                         console.log('Se ejecuto el timeout ****')
-                    }, 10 * 60 * 1000);
+                    }, 40 * 60 * 1000);
                     switch (foundUser.Rol_Id) {
                         case 1:
                             navigate("/admin")
