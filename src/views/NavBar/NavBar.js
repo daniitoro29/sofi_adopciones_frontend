@@ -66,8 +66,8 @@ function NavBar() {
             title="Ingresar"
             menuVariant="dark"
           >
-            <NavDropdown.Item href="#action/3.1" onClick={handlerLogin}>Ingresar</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2" nClick={handlerLeft}>
+            <NavDropdown.Item onClick={handlerLogin}>Ingresar</NavDropdown.Item>
+            <NavDropdown.Item onClick={handlerLeft}>
               Salir
             </NavDropdown.Item>
           </NavDropdown></li>
