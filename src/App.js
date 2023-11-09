@@ -10,12 +10,22 @@ import AdoptionForm from "./views/AdoptionForm/AdoptionForm";
 import AllPets from "./views/Admin/Components/AllPets/AllPets";
 import Campaña from "./views/Campanas/Campanas";
 import Volunteer from "./views/Admin/Volunteer";
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { UserContext } from './Context/context';
 
 
 function App() {
-  const { isAuthenticated} = useContext(UserContext);
+  const { isAuthenticated, setIsAuthenticated } = useContext(UserContext);
+
+  useEffect(() => {
+    const token = localStorage.getItem('authToken');
+
+    if (token ) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, [isAuthenticated]);
 
  return (
   <div className="App" style={{ width: "100%" }}>
@@ -25,10 +35,10 @@ function App() {
         <Route exact path="/register" element={<FormCreateUser/>} />
         <Route exact path="/login" element={<Login/>} />
         <Route exact path="/admin" element={
-          !isAuthenticated ? (
-            <Navigate to="/login" />
+          isAuthenticated  ? (
+             <Admin />
           ) : (
-            <Admin />
+            <Navigate to="/login" />
           )
         }/>
         <Route exact path="/users" element={

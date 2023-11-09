@@ -43,7 +43,12 @@ function NavBar() {
 
   const handlerLeft = () => {
     setIsAuthenticated(false);
+    localStorage.removeItem("authToken");
     navigate("/");
+  }
+
+  const handlerAdmin = () => {
+    navigate("/admin");
   }
 
   return (
@@ -60,6 +65,7 @@ function NavBar() {
           <li onClick={handlerGallery}>Galería</li>
           <li onClick={handlerCampaña}>Campañas</li>
           <li onClick={handlerRegister}>Registrate</li>
+          <li onClick={handlerAdmin}>Administrador</li>
           <li>
           <NavDropdown
             id="nav-dropdown-dark-example"
