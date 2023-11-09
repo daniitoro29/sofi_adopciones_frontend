@@ -25,11 +25,12 @@ function Login() {
     useEffect(() => {
         dispatch(getUsers());
     }, []);
-    const foundUser = users.find(user => user.Usu_Correo === username);
+    let foundUser 
     const handlerValidateUser = async () => { // Marca la función como asíncrona
         if (username === '' || password === '') {
             Swal.fire("Error", "Por favor diligencie todos los campos", "error");
         } else {
+            foundUser = users?.find(user => user.Usu_Correo === username);
 
             if (!foundUser) {
                 Swal.fire("Error", "El correo ingresado es incorrecto", "error");

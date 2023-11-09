@@ -489,18 +489,7 @@ const FormularioAdopcion = () => {
                         </Grid>
                     </Grid>
 
-{/*                     <Grid item xs={6} md={6}>
-                        <label>Confirme su nombre</label>
-                        <Select name="usuId" value={form.usuId} onChange={changeHandler}>
-                            {users?.map((user, i) => (
-                                <MenuItem key={i} value={user?.Usu_Id}>
-                                    {user.Usu_Nombre} {user.Usu_Apellido}
-                                </MenuItem>
-                            ))
-                            }
-                        </Select>
-                    </Grid>
- */}
+
                     <Grid item xs={6} md={6}>
                         <label>Mascota</label>
                         <Select name="masId" value={form.masId} onChange={changeHandler}>

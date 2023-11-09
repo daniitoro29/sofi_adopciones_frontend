@@ -9,9 +9,8 @@
   /* Contenedor principal de la página */
   .container-all_reports {
     margin: 20px;
-    max-width: 1400px;
     padding-top: 30px;
-    width: 80%;
+    width: 100%;
     place-items: center;
   }
   
@@ -63,11 +62,11 @@
   }
   
   .container-all_reports {
-    max-width: 1180px;
     padding-top: 20px;
     display: grid; /* Utiliza CSS Grid para el diseño */
     grid-template-columns: repeat(auto-fill, minmax(1100px, 1fr)); /* Divide en columnas, mínimo 200px de ancho */
     gap: 50px; 
+    justify-content: center;
   }
   
   .MuiDataGrid-cell {

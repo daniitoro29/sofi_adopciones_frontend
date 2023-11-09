@@ -3,12 +3,10 @@ import { Drawer, List, ListItem, ListItemText } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./Admin.css";
 import logo5 from "../../assets/img/logo5.png";
-import Users from "./Components/Users/Users";
 import Pets from "./Components/Pets/Pets";
 import AllPets from "./Components/AllPets/AllPets";
 import Campaigns from "./Components/Campaigns/Campaigns";
-import Participants from "./Components/Participants/Participants";
-import Reports from "./Components/Reports/Reports";
+import Menu from "../../assets/img/menu.svg";
 
 const Volunteer = () => {
     const navigate = useNavigate();
@@ -53,10 +51,10 @@ const Volunteer = () => {
     }, []);
 
     const rol = localStorage.getItem('rolUser');
-    
+
     if (rol !== '2') {
-        navigate('/login'); 
-        return null; 
+        navigate('/login');
+        return null;
     }
 
     return (
@@ -85,9 +83,11 @@ const Volunteer = () => {
             {isCampaign && <Campaigns />}
 
             {!isDrawerOpen && (
-                <button type="button" className="button-menu" onClick={toggleDrawer(!isDrawerOpen)}>
-                    Menú
-                </button>
+
+
+                <div className="container-button_sidebar">
+                    <img src={Menu} alt="Menu" className="sidebar_menu_img" onClick={toggleDrawer(!isDrawerOpen)} />
+                </div>
             )}
         </>
     );
