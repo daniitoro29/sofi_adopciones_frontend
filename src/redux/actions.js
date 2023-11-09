@@ -318,6 +318,20 @@ export const getParticipants = () => async (dispatch) => {
   }
 };
 
+export const EDIT_PARTICIPANTS = 'EDIT_PARTICIPANTS';
+
+export const editParticipant = ({ Part_Id, Cam_Id,Vol_Id,Ado_User_Id,Mas_Id }) => async (dispatch) => {
+    try {
+      const response = await axios.put(`http://localhost:3001/participants/${Part_Id}`, {
+        Part_Id, Cam_Id,Vol_Id,Ado_User_Id,Mas_Id
+      })
+      const participant = response.data;
+      dispatch({ type: EDIT_PARTICIPANTS, payload: participant })
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
 // Adopters
 export const CREATE_ADOPTER = 'CREATE_ADOPTER';
 
@@ -327,7 +341,6 @@ export const createAdopter = ({ Usu_Id, Mas_Id }) => async (dispatch) => {
       Usu_Id, Mas_Id
     });
     const adopter = response.data;
-    console.log('Pruebita create_adopter ****', adopter)
     dispatch({ type: CREATE_ADOPTER, payload: adopter });
   } catch (error) {
     console.error(error);
