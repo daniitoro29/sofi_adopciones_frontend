@@ -15,9 +15,9 @@ const AllPets = () => {
 
 
   const columns = [
-    { field: "Lugar", headerName: "Cam_Lugar", width: 300 },
-    { field: "Descripcion", headerName: "Cam_Descripcion", width: 300 },
-    { field: "Fecha_Campana", headerName: "Cam_Fecha_Campana", width: 300 },
+    { field: "Lugar", headerName: "Lugar", width: 300 },
+    { field: "Descripcion", headerName: "Descripcion", width: 300 },
+    { field: "Fecha_Campana", headerName: "Fecha", width: 300 },
   ];
 
 

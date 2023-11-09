@@ -1,9 +1,6 @@
 import React from "react";
 import NavBar from "../NavBar/NavBar";
 import "./Home.css";
-import facebook from "../../assets/img/redes/Facebook 1.svg";
-import instagram from "../../assets/img/redes/instagram 1.svg";
-import twitter from "../../assets/img/redes/twitter 1.svg";
 import perro1 from "../../assets/img/img-perros-1.png";
 import perro2 from "../../assets/img/img-perros-2.png";
 import Footer from "../Footer/Footer";
