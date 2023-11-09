@@ -56,7 +56,7 @@ function Login() {
                 if (response.data.token) {
                     localStorage.setItem('authToken', response.data.token);
                     localStorage.setItem('rolUser', foundUser.Rol_Id);
-                    setTokenExpiration(Date.now() + 1 * 60 * 1000);
+                    setTokenExpiration(Date.now() + 10 * 60 * 1000);
                     setIsAuthenticated(true);
                     // Redirige a la página principal o a la página deseada.
 
@@ -65,7 +65,7 @@ function Login() {
                         localStorage.removeItem('rolUser');
                         setIsAuthenticated(false);
                         console.log('Se ejecuto el timeout ****')
-                    }, 1 * 60 * 1000);
+                    }, 10 * 60 * 1000);
                     switch (foundUser.Rol_Id) {
                         case 1:
                             navigate("/admin")
